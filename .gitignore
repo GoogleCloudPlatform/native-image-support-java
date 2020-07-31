@@ -1,0 +1,12 @@
+# maven
+target
+
+# intellij / idea
+*.iml
+.idea
+
+# Ignores generated files through testing
+**/transaction.log
+
+# local libs
+/libs
