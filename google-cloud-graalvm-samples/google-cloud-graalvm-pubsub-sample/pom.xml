@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <parent>
     <artifactId>google-cloud-graalvm-samples</artifactId>
     <groupId>com.google.cloud</groupId>
@@ -10,6 +11,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>google-cloud-graalvm-pubsub-sample</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>com.example.Driver</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <dependencies>
     <dependency>
@@ -39,6 +59,14 @@
       <groupId>io.grpc</groupId>
       <artifactId>grpc-netty</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-tcnative-boringssl-static</artifactId>
+      <version>2.0.31.Final</version>
+      <scope>runtime</scope>
+    </dependency>
+
   </dependencies>
 
   <dependencyManagement>
@@ -79,7 +107,9 @@
                 -H:+ReportExceptionStackTraces
                 -H:EnableURLProtocols=http,https
                 -H:+TraceClassInitialization
+                --report-unsupported-elements-at-runtime
                 --initialize-at-build-time=org.conscrypt
+                --initialize-at-run-time=io.netty.handler.ssl.OpenSsl,io.netty.handler.ssl.OpenSslContext,io.netty.handler.ssl.ReferenceCountedOpenSslEngine,io.netty.internal.tcnative.CertificateVerifier,io.netty.internal.tcnative.SSL,io.netty.internal.tcnative.SSLPrivateKeyMethod
                 --enable-all-security-services
               </buildArgs>
             </configuration>
@@ -92,29 +122,8 @@
               </execution>
             </executions>
           </plugin>
-          <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-          </plugin>
         </plugins>
       </build>
     </profile>
   </profiles>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>spring-milestone</id>
-      <name>Spring milestone</name>
-      <url>https://repo.spring.io/milestone</url>
-    </pluginRepository>
-  </pluginRepositories>
-
-  <repositories>
-    <repository>
-      <id>spring-milestone</id>
-      <name>Spring milestone</name>
-      <url>https://repo.spring.io/milestone</url>
-    </repository>
-  </repositories>
-
 </project>

@@ -1,37 +1,37 @@
 [
 {
-  "name":"io.grpc.netty.shaded.io.netty.handler.ssl.ReferenceCountedOpenSslContext$AbstractCertificateVerifier",
+  "name":"io.netty.handler.ssl.ReferenceCountedOpenSslContext$AbstractCertificateVerifier",
   "methods":[{"name":"verify","parameterTypes":["long","byte[][]","java.lang.String"] }]
 },
 {
-  "name":"io.grpc.netty.shaded.io.netty.channel.epoll.NativeStaticallyReferencedJniMethods",
+  "name":"io.netty.channel.epoll.NativeStaticallyReferencedJniMethods",
   "allDeclaredMethods": true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.epoll.Native",
+  "name": "io.netty.channel.epoll.Native",
   "allDeclaredMethods": true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.LimitsStaticallyReferencedJniMethods",
+  "name": "io.netty.channel.unix.LimitsStaticallyReferencedJniMethods",
   "allDeclaredMethods": true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.ErrorsStaticallyReferencedJniMethods",
+  "name": "io.netty.channel.unix.ErrorsStaticallyReferencedJniMethods",
   "allDeclaredMethods": true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.epoll.NativeDatagramPacketArray",
+  "name": "io.netty.channel.epoll.NativeDatagramPacketArray",
   "allDeclaredClasses" : true,
   "allDeclaredMethods": true,
   "allDeclaredFields": true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.epoll.NativeDatagramPacketArray$NativeDatagramPacket",
+  "name": "io.netty.channel.epoll.NativeDatagramPacketArray$NativeDatagramPacket",
   "allDeclaredMethods": true,
   "allDeclaredFields": true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.ChannelException",
+  "name": "io.netty.channel.ChannelException",
   "allDeclaredMethods": true,
   "allDeclaredFields": true
 },
@@ -42,7 +42,7 @@
   ]
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.FileDescriptor",
+  "name": "io.netty.channel.unix.FileDescriptor",
   "methods": [
     { "name": "<init>", "parameterTypes": [] }
   ],
@@ -68,13 +68,13 @@
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.Socket",
+  "name": "io.netty.channel.unix.Socket",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.DatagramSocketAddress",
+  "name": "io.netty.channel.unix.DatagramSocketAddress",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
@@ -86,21 +86,21 @@
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.Buffer",
+  "name": "io.netty.channel.unix.Buffer",
   "allDeclaredMethods":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.epoll.LinuxSocket",
+  "name": "io.netty.channel.epoll.LinuxSocket",
   "allDeclaredMethods":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.unix.PeerCredentials",
+  "name": "io.netty.channel.unix.PeerCredentials",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.channel.DefaultFileRegion",
+  "name": "io.netty.channel.DefaultFileRegion",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
@@ -118,84 +118,84 @@
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.NativeStaticallyReferencedJniMethods",
+  "name": "io.netty.internal.tcnative.NativeStaticallyReferencedJniMethods",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.Library",
+  "name": "io.netty.internal.tcnative.Library",
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.Buffer",
+  "name": "io.netty.internal.tcnative.Buffer",
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
 {
-  "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSL",
+  "name": "io.netty.internal.tcnative.SSL",
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLContext",
+    "name": "io.netty.internal.tcnative.SSLContext",
     "allDeclaredMethods":true,
     "allDeclaredConstructors":true
   },
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLTask",
+    "name": "io.netty.internal.tcnative.SSLTask",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allDeclaredConstructors":true
   },
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.CertificateCallbackTask",
+    "name": "io.netty.internal.tcnative.CertificateCallbackTask",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allDeclaredConstructors":true
   },
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.CertificateVerifierTask",
-    "allDeclaredFields":true,
-    "allDeclaredMethods":true,
-    "allDeclaredConstructors":true
-  },
-
-  {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.CertificateVerifier",
-    "allDeclaredFields":true,
-    "allDeclaredMethods":true,
-    "allDeclaredConstructors":true
-  },
-  {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLPrivateKeyMethodTask",
-    "allDeclaredFields":true,
-    "allDeclaredMethods":true,
-    "allDeclaredConstructors":true
-  },
-  {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLPrivateKeyMethodSignTask",
+    "name": "io.netty.internal.tcnative.CertificateVerifierTask",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allDeclaredConstructors":true
   },
 
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLPrivateKeyMethod",
+    "name": "io.netty.internal.tcnative.CertificateVerifier",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allDeclaredConstructors":true
   },
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLPrivateKeyMethodDecryptTask",
+    "name": "io.netty.internal.tcnative.SSLPrivateKeyMethodTask",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allDeclaredConstructors":true
+  },
+  {
+    "name": "io.netty.internal.tcnative.SSLPrivateKeyMethodSignTask",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allDeclaredConstructors":true
   },
 
   {
-    "name": "io.grpc.netty.shaded.io.netty.internal.tcnative.SSLSession"
+    "name": "io.netty.internal.tcnative.SSLPrivateKeyMethod",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allDeclaredConstructors":true
+  },
+  {
+    "name": "io.netty.internal.tcnative.SSLPrivateKeyMethodDecryptTask",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allDeclaredConstructors":true
+  },
+
+  {
+    "name": "io.netty.internal.tcnative.SSLSession"
   },
 {
   "name":"java.lang.ClassLoader",
