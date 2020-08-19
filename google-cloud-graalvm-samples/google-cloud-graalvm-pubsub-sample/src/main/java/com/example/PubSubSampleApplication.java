@@ -21,10 +21,10 @@ import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
 import com.google.pubsub.v1.PubsubMessage;
 
-public class Driver {
+public class PubSubSampleApplication {
 
   /**
-   * Driver for the Sample application which publishes a message to a specified topic.
+   * Driver for the Pub/Sub Sample application which publishes a message to a specified topic.
    *
    * <p>The topic should be specified over command line in the form:
    * java -jar YOUR_JAR.jar projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME
