@@ -24,12 +24,25 @@ import com.google.pubsub.v1.PubsubMessage;
 public class Driver {
 
   /**
-   * Driver for the Sample application compiled with GraalVM which uses Pub/Sub client libraries.
+   * Driver for the Sample application which publishes a message to a specified topic.
+   *
+   * <p>The topic should be specified over command line in the form:
+   * java -jar YOUR_JAR.jar projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME
    */
   public static void main(String[] args) throws Exception {
+    if (args.length <= 0) {
+      System.err.println("Error: Please provided a Pub/Sub topic name as an additional argument "
+          + "to invoking this JAR. The command should be in the form: "
+          + "java -jar YOUR_JAR.jar projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME");
+    }
+
+    publishMessage(args[0]);
+  }
+
+  private static void publishMessage(String topicName) throws Exception {
     Publisher publisher =
         Publisher
-            .newBuilder("projects/my-kubernetes-codelab-217414/topics/exampleTopic")
+            .newBuilder(topicName)
             .build();
 
     String message = "This is the published message.";
