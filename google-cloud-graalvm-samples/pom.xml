@@ -14,5 +14,6 @@
 
   <modules>
     <module>google-cloud-graalvm-pubsub-sample</module>
+    <module>spring-boot-pubsub-sample</module>
   </modules>
 </project>
