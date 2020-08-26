@@ -17,35 +17,78 @@
 package com.example;
 
 import com.google.api.core.ApiFuture;
+import com.google.api.gax.rpc.NotFoundException;
+import com.google.cloud.ServiceOptions;
 import com.google.cloud.pubsub.v1.Publisher;
+import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
+import com.google.cloud.pubsub.v1.TopicAdminClient;
+import com.google.cloud.pubsub.v1.stub.GrpcSubscriberStub;
+import com.google.cloud.pubsub.v1.stub.SubscriberStub;
+import com.google.cloud.pubsub.v1.stub.SubscriberStubSettings;
 import com.google.protobuf.ByteString;
+import com.google.pubsub.v1.AcknowledgeRequest;
+import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.PubsubMessage;
+import com.google.pubsub.v1.PullRequest;
+import com.google.pubsub.v1.PullResponse;
+import com.google.pubsub.v1.PushConfig;
+import com.google.pubsub.v1.ReceivedMessage;
+import com.google.pubsub.v1.Subscription;
+import com.google.pubsub.v1.Topic;
+import com.google.pubsub.v1.TopicName;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class PubSubSampleApplication {
 
+  private static final String PROJECT_ID = ServiceOptions.getDefaultProjectId();
+
   /**
    * Driver for the Pub/Sub Sample application which publishes a message to a specified topic.
-   *
-   * <p>The topic should be specified over command line in the form:
-   * java -jar YOUR_JAR.jar projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME
    */
   public static void main(String[] args) throws Exception {
-    if (args.length <= 0) {
-      System.err.println("Error: Please provided a Pub/Sub topic name as an additional argument "
-          + "to invoking this JAR. The command should be in the form: "
-          + "java -jar YOUR_JAR.jar projects/YOUR_PROJECT_ID/topics/YOUR_TOPIC_NAME");
-    }
+    String topicId = "graal-pubsub-test-" + UUID.randomUUID().toString();
+    String subscriptionId = "graal-pubsub-test-sub" + UUID.randomUUID().toString();
 
-    publishMessage(args[0]);
+    createTopic(topicId);
+    createSubscription(subscriptionId, topicId);
+
+    publishMessage(topicId);
+    subscribeSync(subscriptionId);
+
+    deleteTopic(topicId);
   }
 
-  private static void publishMessage(String topicName) throws Exception {
+  private static void createTopic(String topicId) throws IOException {
+    try (TopicAdminClient topicAdminClient = TopicAdminClient.create()) {
+      TopicName topicName = TopicName.of(PROJECT_ID, topicId);
+      Topic topic = topicAdminClient.createTopic(topicName);
+      System.out.println("Created topic: " + topic.getName() + " under project: " + PROJECT_ID);
+    }
+  }
+
+  private static void createSubscription(String subscriptionId, String topicId) throws IOException {
+    try (SubscriptionAdminClient subscriptionAdminClient = SubscriptionAdminClient.create()) {
+      TopicName topicName = TopicName.of(PROJECT_ID, topicId);
+      ProjectSubscriptionName subscriptionName =
+          ProjectSubscriptionName.of(PROJECT_ID, subscriptionId);
+      Subscription subscription =
+          subscriptionAdminClient.createSubscription(
+              subscriptionName, topicName, PushConfig.getDefaultInstance(), 10);
+      System.out.println("Created pull subscription: " + subscription.getName());
+    }
+  }
+
+  private static void publishMessage(String topicId) throws Exception {
     Publisher publisher =
         Publisher
-            .newBuilder(topicName)
+            .newBuilder(TopicName.of(PROJECT_ID, topicId))
             .build();
 
-    String message = "This is the published message.";
+    String message = "Pub/Sub Graal Test published message at timestamp: " + Instant.now();
     ByteString data = ByteString.copyFromUtf8(message);
     PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
 
@@ -54,7 +97,53 @@ public class PubSubSampleApplication {
     ApiFuture<String> messageIdFuture = publisher.publish(pubsubMessage);
     String messageId = messageIdFuture.get();
 
-    System.out.println("Published message ID: " + messageId);
-    System.out.println("Goodbye.");
+    System.out.println("Published message with ID: " + messageId);
+  }
+
+  private static void subscribeSync(String subscriptionId) throws IOException {
+    SubscriberStubSettings subscriberStubSettings =
+        SubscriberStubSettings.newBuilder()
+            .setTransportChannelProvider(
+                SubscriberStubSettings.defaultGrpcTransportProviderBuilder()
+                    .setMaxInboundMessageSize(20 * 1024 * 1024) // 20MB (maximum message size).
+                    .build())
+            .build();
+
+    try (SubscriberStub subscriber = GrpcSubscriberStub.create(subscriberStubSettings)) {
+      String subscriptionName = ProjectSubscriptionName.format(PROJECT_ID, subscriptionId);
+      PullRequest pullRequest =
+          PullRequest.newBuilder()
+              .setMaxMessages(1)
+              .setSubscription(subscriptionName)
+              .build();
+
+      PullResponse pullResponse = subscriber.pullCallable().call(pullRequest);
+      List<String> ackIds = new ArrayList<>();
+      for (ReceivedMessage message : pullResponse.getReceivedMessagesList()) {
+        String payload = message.getMessage().getData().toStringUtf8();
+        ackIds.add(message.getAckId());
+        System.out.println("Received Payload: " + payload);
+      }
+
+      AcknowledgeRequest acknowledgeRequest =
+          AcknowledgeRequest.newBuilder()
+              .setSubscription(subscriptionName)
+              .addAllAckIds(ackIds)
+              .build();
+
+      subscriber.acknowledgeCallable().call(acknowledgeRequest);
+    }
+  }
+
+  private static void deleteTopic(String topicId) throws IOException {
+    try (TopicAdminClient topicAdminClient = TopicAdminClient.create()) {
+      TopicName topicName = TopicName.of(PROJECT_ID, topicId);
+      try {
+        topicAdminClient.deleteTopic(topicName);
+        System.out.println("Deleted topic " + topicName);
+      } catch (NotFoundException e) {
+        System.out.println(e.getMessage());
+      }
+    }
   }
 }
