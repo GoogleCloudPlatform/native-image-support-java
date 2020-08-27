@@ -60,8 +60,8 @@ public class PubSubSampleApplication {
       publishMessage(topicId);
       subscribeSync(subscriptionId);
     } finally {
-      deleteSubscription(subscriptionId);
       deleteTopic(topicId);
+      deleteSubscription(subscriptionId);
     }
   }
 
