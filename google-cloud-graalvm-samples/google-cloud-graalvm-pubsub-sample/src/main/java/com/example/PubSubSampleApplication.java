@@ -53,13 +53,16 @@ public class PubSubSampleApplication {
     String topicId = "graal-pubsub-test-" + UUID.randomUUID().toString();
     String subscriptionId = "graal-pubsub-test-sub" + UUID.randomUUID().toString();
 
-    createTopic(topicId);
-    createSubscription(subscriptionId, topicId);
+    try {
+      createTopic(topicId);
+      createSubscription(subscriptionId, topicId);
 
-    publishMessage(topicId);
-    subscribeSync(subscriptionId);
-
-    deleteTopic(topicId);
+      publishMessage(topicId);
+      subscribeSync(subscriptionId);
+    } finally {
+      deleteSubscription(subscriptionId);
+      deleteTopic(topicId);
+    }
   }
 
   private static void createTopic(String topicId) throws IOException {
@@ -141,6 +144,20 @@ public class PubSubSampleApplication {
       try {
         topicAdminClient.deleteTopic(topicName);
         System.out.println("Deleted topic " + topicName);
+      } catch (NotFoundException e) {
+        System.out.println(e.getMessage());
+      }
+    }
+  }
+
+  private static void deleteSubscription(String subscriptionId)
+      throws IOException {
+    try (SubscriptionAdminClient subscriptionAdminClient = SubscriptionAdminClient.create()) {
+      ProjectSubscriptionName subscriptionName =
+          ProjectSubscriptionName.of(PROJECT_ID, subscriptionId);
+      try {
+        subscriptionAdminClient.deleteSubscription(subscriptionName);
+        System.out.println("Deleted subscription " + subscriptionName);
       } catch (NotFoundException e) {
         System.out.println(e.getMessage());
       }
