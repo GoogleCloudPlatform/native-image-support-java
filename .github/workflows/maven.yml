@@ -20,6 +20,7 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: |
+        mvn clean install
         cd google-cloud-graalvm-samples
         mvn -B package
     - name: Run Samples
