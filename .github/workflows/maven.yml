@@ -78,4 +78,4 @@ jobs:
         ./google-cloud-graalvm-pubsub-sample/target/com.example.pubsubsampleapplication
       env:
         GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-        GOOGLE_APPLICATION_CREDENTIALS: $HOME/admin.json
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ HOME }}/admin.json
