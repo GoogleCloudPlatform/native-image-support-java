@@ -73,8 +73,10 @@ jobs:
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
-        echo $GCP_SERVICE_ACCOUNT > admin.json
-         export GOOGLE_APPLICATION_CREDENTIALS=admin.json;
+        echo $GCP_SERVICE_ACCOUNT > $HOME/admin.json
+        ls $HOME
+         export GOOGLE_APPLICATION_CREDENTIALS=$HOME/admin.json;
+        echo "RUNNING APP NOW"
         ./google-cloud-graalvm-pubsub-sample/target/com.example.pubsubsampleapplication
       env:
         GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
