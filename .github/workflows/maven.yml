@@ -65,14 +65,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-#    - name: Setup gcloud
-#      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-#      with:
-#        version: latest
-#        project_id: spring-cloud-gcp-ci
-#        service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-#        export_default_credentials: true
-
     - name: Native Image Compile
       run: |
         mvn clean install -B -q
@@ -81,4 +73,8 @@ jobs:
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
+        echo $GCP_SERVICE_ACCOUNT > admin.json
+         export GOOGLE_APPLICATION_CREDENTIALS=admin.json;
         ./google-cloud-graalvm-pubsub-sample/target/com.example.pubsubsampleapplication
+      env:
+        GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
