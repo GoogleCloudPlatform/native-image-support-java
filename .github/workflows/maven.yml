@@ -73,7 +73,8 @@ jobs:
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
-        echo $GCP_SERVICE_ACCOUNT > ${{ runner.temp }}/admin.json
+        echo "Write admin json."
+        echo "$GCP_SERVICE_ACCOUNT" > ${{ runner.temp }}/admin.json
         echo "Running the GraalVM Sample App..."
         ./google-cloud-graalvm-pubsub-sample/target/com.example.pubsubsampleapplication
       env:
