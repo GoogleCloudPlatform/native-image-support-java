@@ -1,9 +1,5 @@
 [
 {
-  "name":"com.example.Driver",
-  "methods":[{"name":"main","parameterTypes":["java.lang.String[]"] }]
-},
-{
   "name":"java.nio.DirectByteBuffer",
   "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
 },
@@ -18,22 +14,6 @@
   "methods": [
     { "name": "<init>", "parameterTypes": [] }
   ]
-},
-{
-  "name":"io.netty.channel.epoll.Epoll",
-  "methods":[{"name":"isAvailable","parameterTypes":[] }]
-},
-{
-  "name":"io.netty.channel.epoll.EpollEventLoopGroup",
-  "methods":[{"name":"<init>","parameterTypes":["int","java.util.concurrent.ThreadFactory"] }]
-},
-{
-  "name":"io.netty.channel.epoll.EpollServerSocketChannel",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"io.netty.channel.epoll.EpollSocketChannel",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"io.netty.handler.codec.ByteToMessageDecoder",
@@ -350,45 +330,6 @@
   "methods":[{"name":"newBuilder","parameterTypes":[] }]
 },
 {
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler",
-  "allDeclaredMethods" : true
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$ProtocolNegotiationHandler",
-  "allDeclaredMethods" : true
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$WaitUntilActiveHandler",
-  "allDeclaredMethods" : true
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$ClientTlsHandler",
-  "allDeclaredMethods" : true,
-  "methods":[
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"channelRead","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] },
-    {"name":"channelReadComplete","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"channelRegistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"channelUnregistered","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"channelWritabilityChanged","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] },
-    {"name":"userEventTriggered","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object"] },
-    {"name":"bind","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","io.netty.channel.ChannelPromise"] },
-    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] },
-    {"name":"connect","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.net.SocketAddress","java.net.SocketAddress","io.netty.channel.ChannelPromise"] },
-    {"name":"deregister","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] },
-    {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] },
-    {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
-  ]
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.WriteBufferingAndExceptionHandler",
-  "allDeclaredMethods" : true
-},
-{
   "name":"io.netty.channel.ChannelDuplexHandler",
   "allDeclaredMethods" : true,
   "methods":[
@@ -399,21 +340,6 @@
     {"name":"disconnect","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] },
     {"name":"flush","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
     {"name":"read","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
-  ]
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.AbstractNettyHandler",
-  "methods":[
-    {"name":"channelActive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"exceptionCaught","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Throwable"] }
-  ]
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.NettyClientHandler",
-  "methods":[
-    {"name":"channelInactive","parameterTypes":["io.netty.channel.ChannelHandlerContext"] },
-    {"name":"close","parameterTypes":["io.netty.channel.ChannelHandlerContext","io.netty.channel.ChannelPromise"] },
     {"name":"write","parameterTypes":["io.netty.channel.ChannelHandlerContext","java.lang.Object","io.netty.channel.ChannelPromise"] }
   ]
 },
