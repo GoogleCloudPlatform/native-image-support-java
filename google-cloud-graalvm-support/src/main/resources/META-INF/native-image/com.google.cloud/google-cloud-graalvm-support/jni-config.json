@@ -4,33 +4,6 @@
   "methods":[{"name":"verify","parameterTypes":["long","byte[][]","java.lang.String"] }]
 },
 {
-  "name":"io.netty.channel.epoll.NativeStaticallyReferencedJniMethods",
-  "allDeclaredMethods": true
-},
-{
-  "name": "io.netty.channel.epoll.Native",
-  "allDeclaredMethods": true
-},
-{
-  "name": "io.netty.channel.unix.LimitsStaticallyReferencedJniMethods",
-  "allDeclaredMethods": true
-},
-{
-  "name": "io.netty.channel.unix.ErrorsStaticallyReferencedJniMethods",
-  "allDeclaredMethods": true
-},
-{
-  "name": "io.netty.channel.epoll.NativeDatagramPacketArray",
-  "allDeclaredClasses" : true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "io.netty.channel.epoll.NativeDatagramPacketArray$NativeDatagramPacket",
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
   "name": "io.netty.channel.ChannelException",
   "allDeclaredMethods": true,
   "allDeclaredFields": true
@@ -40,14 +13,6 @@
   "methods": [
     { "name": "<init>", "parameterTypes": [] }
   ]
-},
-{
-  "name": "io.netty.channel.unix.FileDescriptor",
-  "methods": [
-    { "name": "<init>", "parameterTypes": [] }
-  ],
-  "allDeclaredFields": true,
-  "allDeclaredMethods": true
 },
 {
   "name": "java.nio.Buffer",
@@ -67,34 +32,9 @@
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
 },
-{
-  "name": "io.netty.channel.unix.Socket",
-  "allDeclaredFields":true,
-  "allDeclaredMethods":true,
-  "allDeclaredConstructors":true
-},
-{
-  "name": "io.netty.channel.unix.DatagramSocketAddress",
-  "allDeclaredFields":true,
-  "allDeclaredMethods":true,
-  "allDeclaredConstructors":true
-},
+
 {
   "name": "java.net.InetSocketAddress",
-  "allDeclaredFields":true,
-  "allDeclaredMethods":true,
-  "allDeclaredConstructors":true
-},
-{
-  "name": "io.netty.channel.unix.Buffer",
-  "allDeclaredMethods":true
-},
-{
-  "name": "io.netty.channel.epoll.LinuxSocket",
-  "allDeclaredMethods":true
-},
-{
-  "name": "io.netty.channel.unix.PeerCredentials",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "allDeclaredConstructors":true
