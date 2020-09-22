@@ -49,9 +49,9 @@ version `1.32.1` (or later):
 ```
 
 The Java client libraries import this dependency to your project automatically as a
-transitive dependency. The latest version of this library contains a patch to enable native image
-compilation, so this version must be (temporarily) manually upgraded for native image compilation
-to work.
+transitive dependency. The latest version of `grpc-netty-shaded` contains a patch to enable native
+image compilation, so this version must be (temporarily) manually upgraded for native image
+compilation to work.
 
 ## Samples
 
