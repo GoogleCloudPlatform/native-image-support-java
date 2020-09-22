@@ -33,7 +33,7 @@
     <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-netty-shaded</artifactId>
-      <!-- Remove the version after libraries-bom is updated to offer this version -->
+      <!-- Remove this dep after libraries-bom is updated to offer this version -->
       <version>1.32.1</version>
     </dependency>
 
