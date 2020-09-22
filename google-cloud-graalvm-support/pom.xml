@@ -11,12 +11,4 @@
 
   <artifactId>google-cloud-graalvm-support</artifactId>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.graalvm.nativeimage</groupId>
-      <artifactId>svm</artifactId>
-      <version>${graalvm.version}</version>
-    </dependency>
-  </dependencies>
-
 </project>
