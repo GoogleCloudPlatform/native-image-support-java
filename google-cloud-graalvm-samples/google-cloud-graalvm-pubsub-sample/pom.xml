@@ -10,9 +10,6 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <properties>
-    <graalvm.version>20.1.0</graalvm.version>
-  </properties>
 
   <artifactId>google-cloud-graalvm-pubsub-sample</artifactId>
 
@@ -31,41 +28,23 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-pubsub</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>io.grpc</groupId>
-          <artifactId>grpc-netty-shaded</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
       <groupId>io.grpc</groupId>
-      <artifactId>grpc-netty</artifactId>
+      <artifactId>grpc-netty-shaded</artifactId>
+      <!-- Remove the version after libraries-bom is updated to offer this version -->
+      <version>1.32.1</version>
     </dependency>
 
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative-boringssl-static</artifactId>
-      <version>2.0.31.Final</version>
-      <scope>runtime</scope>
-    </dependency>
   </dependencies>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-bom</artifactId>
-        <version>4.1.51.Final</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>libraries-bom</artifactId>
-        <version>9.0.0</version>
+        <version>10.1.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -130,8 +109,6 @@
                 -H:EnableURLProtocols=http,https
                 -H:+TraceClassInitialization
                 --report-unsupported-elements-at-runtime
-                --initialize-at-build-time=org.conscrypt
-                --initialize-at-run-time=io.netty.handler.ssl.OpenSsl,io.netty.handler.ssl.OpenSslContext,io.netty.handler.ssl.ReferenceCountedOpenSslEngine,io.netty.internal.tcnative.CertificateVerifier,io.netty.internal.tcnative.SSL,io.netty.internal.tcnative.SSLPrivateKeyMethod
                 --enable-all-security-services
               </buildArgs>
             </configuration>
