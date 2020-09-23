@@ -2,8 +2,7 @@
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java)
-to be built as [GraalVM Native Images](https://www.graalvm.org/docs/reference-manual/native-image).
+This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java) to be built as [GraalVM Native Images](https://www.graalvm.org/docs/reference-manual/native-image).
 
 ## Quick Setup
 
@@ -20,8 +19,7 @@ First, add the Sonatype Snapshots repository to your project build file.
 </repositories>
 ```
 
-After adding the snapshots repository, you can add the `google-cloud-graalvm-support` dependency
-to your project.
+After adding the snapshots repository, you can add the `google-cloud-graalvm-support` dependency to your project.
 
 ```
 <dependency>
@@ -31,14 +29,11 @@ to your project.
 </dependency>
 ```
 
-This dependency contains the GraalVM configurations (reflection config, native call config) to
-provide out-of-the-box support for native-image compilation of applications depending on the
-Google Java Client Libraries.
+This dependency contains the GraalVM configurations (reflection config, native call config) to provide out-of-the-box support for native-image compilation of applications depending on the Google Java Client Libraries.
 
 ### Note on grpc-netty-shaded version
 
-As an additional step, you will also need to override the version of `grpc-netty-shaded` to
-version `1.32.1` (or later):
+As an additional step, you will also need to override the version of `grpc-netty-shaded` to version `1.32.1` (or later):
 
 ```
   <dependencyManagement>
@@ -52,15 +47,12 @@ version `1.32.1` (or later):
   </dependencyManagement>
 ```
 
-The Java client libraries import this dependency to your project automatically as a
-transitive dependency. The latest version of `grpc-netty-shaded` contains a patch to enable native
-image compilation, so this version must be (temporarily) manually upgraded for native image
-compilation to work.
+The Java client libraries import this dependency to your project automatically as a transitive dependency.
+The latest version of `grpc-netty-shaded` contains a patch to enable native image compilation, so this version must be (temporarily) manually upgraded for native image compilation to work.
 
 ## Samples
 
-Sample projects can be found in the [google-cloud-graalvm-samples](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples)
-directory.
+Sample projects can be found in the [google-cloud-graalvm-samples](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples) directory.
 
 ## Supported Libraries
 
