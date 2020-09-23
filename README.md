@@ -35,7 +35,7 @@ This dependency contains the GraalVM configurations (reflection config, native c
 provide out-of-the-box support for native-image compilation of applications depending on the
 Google Java Client Libraries.
 
-### Note
+### Note on grpc-netty-shaded version
 
 As an additional step, you will also need to override the version of `grpc-netty-shaded` to
 version `1.32.1` (or later):
