@@ -25,7 +25,7 @@ The Pub/Sub sample application demonstrates some common operations with Pub/Sub 
     gu install native-image
     ```
    
-    Once you finish following the instructions, verify that the default version of Java is set to the Graal version for running this sample by running `java -version` in a terminal.
+    Once you finish following the instructions, verify that the default version of Java is set to the Graal version by running `java -version` in a terminal.
     
     You will see something similar to the below output:
     
