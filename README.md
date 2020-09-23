@@ -41,11 +41,15 @@ As an additional step, you will also need to override the version of `grpc-netty
 version `1.32.1` (or later):
 
 ```
-<dependency>
-    <groupId>io.grpc</groupId>
-    <artifactId>grpc-netty-shaded</artifactId>
-    <version>1.32.1</version>
-</dependency>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-netty-shaded</artifactId>
+        <version>1.32.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 ```
 
 The Java client libraries import this dependency to your project automatically as a
