@@ -5,9 +5,8 @@
 },
 {
   "name": "io.grpc.netty.shaded.io.netty.channel.socket.nio.NioSocketChannel",
-  "methods": [
-    { "name": "<init>", "parameterTypes": [] }
-  ]
+  "allDeclaredConstructors" : true,
+  "allDeclaredMethods" : true
 },
 {
   "name":"io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder",
