@@ -17,8 +17,6 @@
 package com.google.cloud.graalvm.feature.spring;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
-import com.oracle.svm.core.jdk.proxy.DynamicProxyRegistry;
-import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
@@ -37,30 +35,19 @@ final class StackdriverTraceAutoConfigurationFeature implements Feature {
     Class<?> traceAutoconfiguration = access.findClassByName(TRACE_AUTOCONFIGURATION_CLASS);
     if (traceAutoconfiguration != null) {
 
-      // Register Reflection calls
       try {
-        Class<?> managedChannel = access.findClassByName("io.grpc.ManagedChannel");
-        RuntimeReflection.register(managedChannel.getMethod("shutdownNow"));
+        // Register Reflection calls
+        registerMethod("io.grpc.ManagedChannel", "shutdownNow", access);
       } catch (NoSuchMethodException e) {
         throw new RuntimeException(e);
       }
     }
   }
 
-  @Override
-  public void duringSetup(DuringSetupAccess access) {
-    Class<?> traceAutoconfiguration = access.findClassByName(TRACE_AUTOCONFIGURATION_CLASS);
-    if (traceAutoconfiguration != null) {
-      // Register Proxies
-      addProxy("org.springframework.aop.SpringProxy", access);
-      addProxy("org.springframework.aop.framework.Advised", access);
-      addProxy("org.springframework.core.DecoratingProxy", access);
-    }
-  }
-
-  private static void addProxy(String className, DuringSetupAccess access) {
-    Class<?> proxy = access.findClassByName(className);
-    DynamicProxyRegistry dynamicProxyRegistry = ImageSingletons.lookup(DynamicProxyRegistry.class);
-    dynamicProxyRegistry.addProxyClass(proxy);
+  private static void registerMethod(
+      String className, String methodName, BeforeAnalysisAccess access)
+      throws NoSuchMethodException {
+    Class<?> clazz = access.findClassByName(className);
+    RuntimeReflection.register(clazz.getMethod(methodName));
   }
 }
