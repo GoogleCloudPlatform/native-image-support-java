@@ -53,7 +53,12 @@ public class TraceSampleApplication {
 
     try {
       // This checks Cloud trace for the new trace that was just created.
-      GetTraceRequest getTraceRequest = createGetTraceRequest(traceId);
+      GetTraceRequest getTraceRequest =
+          GetTraceRequest.newBuilder()
+              .setProjectId(PROJECT_ID)
+              .setTraceId(traceId)
+              .build();
+
       Trace trace = traceServiceClient.getTrace(getTraceRequest);
 
       System.out.println("Retrieved trace: " + trace.getTraceId());
@@ -67,15 +72,6 @@ public class TraceSampleApplication {
           + "Please check https://console.cloud.google.com/traces/traces to "
           + "find your trace in the traces viewer.");
     }
-  }
-
-  private static GetTraceRequest createGetTraceRequest(String traceId) {
-    GetTraceRequest request =
-        GetTraceRequest.newBuilder()
-            .setProjectId(PROJECT_ID)
-            .setTraceId(traceId)
-            .build();
-    return request;
   }
 
   private static PatchTracesRequest createPatchTraceRequest(String traceId) {
