@@ -1,0 +1,4 @@
+steps:
+  - name: oracle/graalvm-ce:latest
+    entrypoint: bash
+    args: ['./mvnw', 'clean', 'install', 'package', '-B', '-q', '-P', 'graal']
