@@ -1,4 +1,4 @@
 steps:
   - name: oracle/graalvm-ce:latest
     entrypoint: bash
-    args: ['./graal-build-script.sh']
+    args: ['./.cloudbuild/graal-build-script.sh']
