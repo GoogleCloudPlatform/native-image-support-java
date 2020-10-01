@@ -60,13 +60,11 @@ The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well s
 
 This project should support many Java Google Client Libraries out-of-the-box.
 
-Our project has code samples demonstrating compatibility with the following APIs:
+Our project has [code samples](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples) demonstrating compatibility with the following APIs:
 
-* [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub)
-
-## Samples
-
-Sample projects can be found in the [google-cloud-graalvm-samples](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples) directory.
+| Google Cloud Service    | Sample Link              | 
+|-------------------------|--------------------------|
+| [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [google-cloud-graalvm-pubsub-sample](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples/google-cloud-graalvm-pubsub-sample) |
 
 ## Questions
 
