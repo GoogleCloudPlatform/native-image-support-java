@@ -1,4 +1,8 @@
 steps:
   - name: maven:3.6-jdk-11
     entrypoint: mvn
-    args: ['--version']
+    args: ['clean', 'install', '-B', '-q']
+
+  - name: maven:3.6-jdk-11
+    entrypoint: mvn
+    args: ['package', '-B', '--file', 'google-cloud-graalvm-samples/']
