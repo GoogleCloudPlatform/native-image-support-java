@@ -1,5 +1,8 @@
 #!/bin/sh
 
 gu install native-image
-./mvnw clean install package -B -q -P graal
+echo ${JAVA_HOME}
+java --version
+./mvnw clean install -B -q
+./mvnw package -P graal -B --file google-cloud-graalvm-samples/
 ./google-cloud-graalvm-samples/google-cloud-graalvm-pubsub-sample/target/com.example.pubsubsampleapplication
