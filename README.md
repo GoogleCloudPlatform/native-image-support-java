@@ -42,20 +42,6 @@ To get your application working with GraalVM compilation, you will also have to 
 **NOTE:** Most users typically manage their client library versions using the [Cloud Libraries Bill of Materials](https://github.com/GoogleCloudPlatform/cloud-opensource-java/wiki/The-Google-Cloud-Platform-Libraries-BOM) (`libraries-bom`).
 The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well so you don't have to manage it yourself.
 
-```
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>libraries-bom</artifactId>
-            <version>11.0.0</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-
 ## Supported Libraries
 
 This project should support many Java Google Client Libraries out-of-the-box.
