@@ -2,3 +2,5 @@ steps:
   - name: oracle/graalvm-ce:latest
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
+options:
+  machineType: 'n1-highcpu-8'
