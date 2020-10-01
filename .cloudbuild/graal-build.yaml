@@ -3,4 +3,4 @@ steps:
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 options:
-  machineType: 'n1-highcpu-8'
+  machineType: 'N1_HIGHCPU_8'
