@@ -33,7 +33,7 @@ This dependency contains the GraalVM configurations (reflection config, native c
 
 ### Client Library Versions
 
-To get your application working with GraalVM compilation, you will also have to ensure that the client library versions in your project are supported by your chosen version of `google-cloud-graalvm-support`.
+To compile with GraalVM (native-image), ensure the client library version in your project is supported by `google-cloud-graalvm-support`.
 
 | GraalVM Support version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|:-------------------------|-----------------------------|
@@ -46,11 +46,11 @@ The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well s
 
 This project should support many Java Google Client Libraries out-of-the-box.
 
-Our project has [code samples](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples) demonstrating compatibility with the following APIs:
+Our project has [code samples](./google-cloud-graalvm-samples) demonstrating compatibility with the following APIs:
 
 | Google Cloud Service    | Sample Link              | 
 |-------------------------|--------------------------|
-| [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [google-cloud-graalvm-pubsub-sample](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples/google-cloud-graalvm-pubsub-sample) |
+| [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [google-cloud-graalvm-pubsub-sample](./google-cloud-graalvm-samples/google-cloud-graalvm-pubsub-sample) |
 
 ## Questions
 
