@@ -31,31 +31,43 @@ After adding the snapshots repository, you can add the `google-cloud-graalvm-sup
 
 This dependency contains the GraalVM configurations (reflection config, native call config) to provide out-of-the-box support for native-image compilation of applications depending on the Google Java Client Libraries.
 
-### Note on grpc-netty-shaded version
+### Client Library Versions
 
-As an additional step, you will also need to override the version of `grpc-netty-shaded` to version `1.32.1` (or later):
+To get your application working with GraalVM compilation, you will also have to ensure that the client library versions in your project are supported by your chosen version of `google-cloud-graalvm-support`.
+
+| GraalVM Support version | *`libraries-bom` version | `grpc-netty-shaded` version |
+|-------------------------|:-------------------------|-----------------------------|
+| `1.0.0-SNAPSHOT`        | `>= 11.0.0`              | `>= 1.32.1`                 |
+
+**NOTE:** Most users typically manage their client library versions using the [Cloud Libraries Bill of Materials](https://github.com/GoogleCloudPlatform/cloud-opensource-java/wiki/The-Google-Cloud-Platform-Libraries-BOM) (`libraries-bom`).
+The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well so you don't have to manage it yourself.
 
 ```
-  <dependencyManagement>
+<dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>io.grpc</groupId>
-        <artifactId>grpc-netty-shaded</artifactId>
-        <version>1.32.1</version>
-      </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>libraries-bom</artifactId>
+            <version>11.0.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
     </dependencies>
-  </dependencyManagement>
+</dependencyManagement>
 ```
 
-The Java client libraries import this dependency to your project automatically as a transitive dependency.
-The latest version of `grpc-netty-shaded` contains a patch to enable native image compilation, so this version must be (temporarily) manually upgraded for native image compilation to work.
+## Supported Libraries
+
+This project should support many Java Google Client Libraries out-of-the-box.
+
+Our project has code samples demonstrating compatibility with the following APIs:
+
+* [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub)
 
 ## Samples
 
 Sample projects can be found in the [google-cloud-graalvm-samples](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/tree/master/google-cloud-graalvm-samples) directory.
 
-## Supported Libraries
+## Questions
 
-The project currently supports the following Google Client Libraries:
-
-* [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub)
+Please report any issues and questions to our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/issues).
