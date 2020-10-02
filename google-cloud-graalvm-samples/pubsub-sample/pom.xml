@@ -33,16 +33,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>io.grpc</groupId>
-        <artifactId>grpc-netty-shaded</artifactId>
-        <!-- Remove this dep after libraries-bom is updated to offer this version -->
-        <version>1.32.1</version>
-      </dependency>
-
-      <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>libraries-bom</artifactId>
-        <version>10.1.0</version>
+        <version>11.0.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
