@@ -10,8 +10,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-
-  <artifactId>google-cloud-graalvm-pubsub-sample</artifactId>
+  <artifactId>pubsub-sample</artifactId>
 
   <dependencies>
     <dependency>
