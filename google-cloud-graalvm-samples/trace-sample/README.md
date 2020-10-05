@@ -34,6 +34,3 @@ Navigate to this directory in a new terminal.
     It has the following spans: 
     Span: graalvm-trace-sample-test
     ```
-
-
-
