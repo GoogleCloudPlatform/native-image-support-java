@@ -1,8 +1,8 @@
 steps:
-  - name: maven:3.6-jdk-11
-    entrypoint: mvn
-    args: ['clean', 'install', 'package', '-B', '-q']
+  - name: openjdk:11-jdk
+    entrypoint: bash
+    args: ['./mvnw', 'clean', 'install', 'package', '-B', '-q']
 
-  - name: maven:3.6-jdk-11
+  - name: openjdk:11-jdk
     entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/google-cloud-graalvm-pubsub-sample/target/google-cloud-graalvm-pubsub-sample-1.0.0-SNAPSHOT.jar']
