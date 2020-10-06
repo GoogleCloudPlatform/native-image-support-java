@@ -13,6 +13,7 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>logging-sample</module>
     <module>pubsub-sample</module>
     <module>trace-sample</module>
   </modules>
