@@ -1,0 +1,7 @@
+steps:
+  - name: oracle/graalvm-ce:20.2.0-java11
+    entrypoint: bash
+    args: ['./.cloudbuild/graal-build-script.sh']
+options:
+  # Need to specify a better machine to avoid OOM errors.
+  machineType: 'N1_HIGHCPU_8'
