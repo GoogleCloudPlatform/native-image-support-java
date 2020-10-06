@@ -4,7 +4,7 @@ This application uses the Google Cloud [Logging Client Libraries](https://github
 
 ## Setup Instructions
 
-1. Follow the [GCP Project and GraalVM Setup Instructions](../README.md).
+1. Follow the [GCP Project Authentication and GraalVM Setup Instructions](../README.md).
 
 2. Enable the [Logging APIs](https://console.cloud.google.com/flows/enableapi?apiid=logging.googleapis.com).
 
@@ -24,9 +24,9 @@ Navigate to this directory in a new terminal.
    ./target/com.example.loggingsampleapplication
    ```
 
-3. The application will log a message. Navigate to the [Cloud Console Logs Viewer](https://console.cloud.google.com/logs/viewer) to view the newly generated log entry.
+3. The application will log a message to your local terminal and to Cloud Console.
 
+    Navigate to the [Cloud Console Logs Viewer](https://console.cloud.google.com/logs/viewer) to view you logs and find the newly generated log entry in Cloud Console:
     ```
-    Log message written to Cloud Logging.
-    See your logs in the Cloud Console: https://console.cloud.google.com/logs/viewer
+    This is a log produced by GraalVM.
     ```
