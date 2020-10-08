@@ -26,7 +26,7 @@ Navigate to this directory in a new terminal.
 
 3. The application will run through basic Cloud Storage operations of creating, reading, and deleting Cloud Storage resources.
 
-    You can manually manage Cloud Storage resources through [Google Cloud Console](https://console.cloud.google.com/storage).
+    You can manually manage Cloud Storage resources through [Google Cloud Console](https://console.cloud.google.com/storage) as well.
 
     ```
     Creating bucket graalvm-sample-bucket-7221f161-688c-4a7a-9120-8900d20f0802
