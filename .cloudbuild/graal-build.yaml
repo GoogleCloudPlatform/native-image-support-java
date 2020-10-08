@@ -4,11 +4,9 @@ steps:
     args: ['./.cloudbuild/graal-build-script.sh']
 
   - name: oracle/graalvm-ce:20.1.0-java11
-    entrypoint: bash
     args: ['./google-cloud-graalvm-samples/pubsub-sample/target/com.example.pubsubsampleapplication']
 
   - name: oracle/graalvm-ce:20.1.0-java11
-    entrypoint: bash
     args: ['./google-cloud-graalvm-samples/storage-sample/target/com.example.storagesampleapplication']
 
 options:
