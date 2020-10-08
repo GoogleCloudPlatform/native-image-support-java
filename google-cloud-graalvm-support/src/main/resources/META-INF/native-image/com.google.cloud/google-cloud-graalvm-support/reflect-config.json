@@ -143,15 +143,7 @@
     {"name":"valueOf","parameterTypes":["com.google.protobuf.Descriptors$EnumValueDescriptor"] }
   ]
 },
-{
-  "name":"com.google.api.client.http.GenericUrl",
-  "allDeclaredFields":true
-},
-{
-  "name":"com.google.api.client.http.HttpHeaders",
-  "allDeclaredFields":true,
-  "allDeclaredMethods":true
-},
+
 {
   "name":"com.google.protobuf.DescriptorProtos$FieldOptions",
   "methods":[
@@ -633,54 +625,7 @@
   "allDeclaredMethods" : true
 },
 
-{
-  "name": "com.google.api.client.json.GenericJson",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.json.webtoken.JsonWebToken",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.json.webtoken.JsonWebToken$Header",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.json.webtoken.JsonWebToken$Payload",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.util.GenericData",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.http.UrlEncodedContent",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.json.webtoken.JsonWebSignature$Header",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
-{
-  "name": "com.google.api.client.json.webtoken.JsonWebSignature",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true,
-  "allDeclaredFields": true
-},
+
 {
   "name": "java.lang.management.ManagementFactory",
   "allDeclaredConstructors": true,

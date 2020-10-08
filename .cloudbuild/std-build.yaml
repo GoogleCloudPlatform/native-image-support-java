@@ -6,3 +6,7 @@ steps:
   - name: openjdk:11-jdk
     entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/pubsub-sample/target/pubsub-sample-1.0.0-SNAPSHOT.jar']
+
+  - name: openjdk:11-jdk
+    entrypoint: java
+    args: ['-jar', 'google-cloud-graalvm-samples/storage-sample/target/storage-sample-1.0.0-SNAPSHOT.jar']
