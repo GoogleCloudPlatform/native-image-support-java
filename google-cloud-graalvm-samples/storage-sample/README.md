@@ -1,6 +1,6 @@
-# Pub/Sub Sample Application with GraalVM
+# Storage Sample Application with GraalVM
 
-The Pub/Sub sample application demonstrates some common operations with Pub/Sub and is compatible with GraalVM compilation.
+The Storage sample application demonstrates some common operations with Google Cloud Storage and is compatible with GraalVM compilation.
 
 ## Setup Instructions
 
