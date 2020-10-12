@@ -32,10 +32,6 @@
   "fields":[{"name":"contextSpi", "allowUnsafeAccess":true}]
 },
 {
-  "name":"jdk.internal.misc.Unsafe",
-  "methods":[{"name":"getUnsafe","parameterTypes":[] }]
-},
-{
   "name" : "io.grpc.netty.shaded.io.netty.util.internal.shaded.org.jctools.queues.MpscArrayQueueProducerIndexField",
   "fields": [
     {"name": "producerIndex", "allowUnsafeAccess": true}
@@ -69,40 +65,6 @@
   "name" : "io.grpc.netty.shaded.io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueConsumerFields",
   "fields": [
     {"name": "consumerIndex", "allowUnsafeAccess": true}
-  ]
-},
-{
-  "name":"sun.misc.Unsafe",
-  "allDeclaredFields":true,
-  "methods":[
-    {"name":"arrayBaseOffset","parameterTypes":["java.lang.Class"] },
-    {"name":"arrayIndexScale","parameterTypes":["java.lang.Class"] },
-    {"name":"copyMemory","parameterTypes":["long","long","long"] },
-    {"name":"copyMemory","parameterTypes":["java.lang.Object","long","java.lang.Object","long","long"] },
-    {"name":"getAndAddLong","parameterTypes":["java.lang.Object","long","long"] },
-    {"name":"getAndSetObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] },
-    {"name":"getBoolean","parameterTypes":["java.lang.Object","long"] },
-    {"name":"getByte","parameterTypes":["long"] },
-    {"name":"getByte","parameterTypes":["java.lang.Object","long"] },
-    {"name":"getDouble","parameterTypes":["java.lang.Object","long"] },
-    {"name":"getFloat","parameterTypes":["java.lang.Object","long"] },
-    {"name":"getInt","parameterTypes":["long"] },
-    {"name":"getInt","parameterTypes":["java.lang.Object","long"] },
-    {"name":"getLong","parameterTypes":["long"] },
-    {"name":"getLong","parameterTypes":["java.lang.Object","long"] },
-    {"name":"getObject","parameterTypes":["java.lang.Object","long"] },
-    {"name":"invokeCleaner","parameterTypes":["java.nio.ByteBuffer"] },
-    {"name":"objectFieldOffset","parameterTypes":["java.lang.reflect.Field"] },
-    {"name":"putBoolean","parameterTypes":["java.lang.Object","long","boolean"] },
-    {"name":"putByte","parameterTypes":["long","byte"] },
-    {"name":"putByte","parameterTypes":["java.lang.Object","long","byte"] },
-    {"name":"putDouble","parameterTypes":["java.lang.Object","long","double"] },
-    {"name":"putFloat","parameterTypes":["java.lang.Object","long","float"] },
-    {"name":"putInt","parameterTypes":["long","int"] },
-    {"name":"putInt","parameterTypes":["java.lang.Object","long","int"] },
-    {"name":"putLong","parameterTypes":["long","long"] },
-    {"name":"putLong","parameterTypes":["java.lang.Object","long","long"] },
-    {"name":"putObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] }
   ]
 },
 {
@@ -476,154 +438,7 @@
   "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
-{
-  "name":"sun.security.ssl.SSLContextImpl",
-  "fields":[{"name":"trustManager", "allowUnsafeAccess":true}]
-},
-{
-  "name":"sun.security.ssl.SSLContextImpl$TLSContext",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.provider.X509Factory",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.KeyUsageExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.ExtendedKeyUsageExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.BasicConstraintsExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.SubjectKeyIdentifierExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.AuthorityKeyIdentifierExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.AuthorityInfoAccessExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.CertificateIssuerExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.CertificatePoliciesExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.CRLDistributionPointsExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.CRLNumberExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.CRLReasonCodeExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.DeltaCRLIndicatorExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.InhibitAnyPolicyExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.InvalidityDateExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.IssuerAlternativeNameExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.IssuingDistributionPointExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.NameConstraintsExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.NetscapeCertTypeExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.OCSPNoCheckExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.PolicyConstraintsExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.PolicyMappingsExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.PrivateKeyUsageExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.SubjectAlternativeNameExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.SubjectInfoAccessExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.x509.UnparseableExtension",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.provider.certpath.PKIXCertPathValidator",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
-{
-  "name":"sun.security.provider.certpath.PKIXMasterCertPathValidator",
-  "allDeclaredConstructors" : true,
-  "allDeclaredMethods" : true
-},
+
 
 
 {
