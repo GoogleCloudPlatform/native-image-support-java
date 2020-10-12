@@ -1,15 +1,6 @@
 [
-{
-  "name":"java.nio.DirectByteBuffer",
-  "methods":[{"name":"<init>","parameterTypes":["long","int"] }]
-},
-{
-  "name":"io.grpc.netty.shaded.io.netty.handler.codec.ByteToMessageDecoder",
-  "methods":[
-    {"name":"channelRead","parameterTypes":["io.grpc.netty.shaded.io.netty.channel.ChannelHandlerContext","java.lang.Object"] },
-    {"name":"userEventTriggered","parameterTypes":["io.grpc.netty.shaded.io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
-  ]
-},
+
+
 {
   "name" : "io.grpc.netty.shaded.io.netty.util.internal.NativeLibraryUtil",
   "methods": [
@@ -29,9 +20,7 @@
   "name":"io.grpc.internal.JndiResourceResolverFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
-{
-  "name":"com.google.auth.oauth2.GoogleCredentials"
-},
+
 {
   "name":"com.google.auth.oauth2.ServiceAccountCredentials",
   "methods":[
@@ -108,22 +97,7 @@
     {"name":"userEventTriggered","parameterTypes":["io.grpc.netty.shaded.io.netty.channel.ChannelHandlerContext","java.lang.Object"] }
   ]
 },
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$GrpcNegotiationHandler",
-  "allDeclaredMethods" : true
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$ProtocolNegotiationHandler",
-  "allDeclaredMethods" : true
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.ProtocolNegotiators$WaitUntilActiveHandler",
-  "allDeclaredMethods" : true
-},
-{
-  "name":"io.grpc.netty.shaded.io.grpc.netty.WriteBufferingAndExceptionHandler",
-  "allDeclaredMethods" : true
-},
+
 {
   "name":"io.grpc.netty.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext",
   "methods":[
