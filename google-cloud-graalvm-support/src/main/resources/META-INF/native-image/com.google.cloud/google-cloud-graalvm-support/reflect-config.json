@@ -433,22 +433,5 @@
 {
   "name":"io.grpc.netty.shaded.io.netty.channel.epoll.EpollSocketChannel",
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-
-
-
-{
-  "name": "java.lang.management.ManagementFactory",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true
-},
-{
-  "name": "java.lang.management.RuntimeMXBean",
-  "allDeclaredConstructors": true,
-  "allDeclaredMethods": true
 }
 ]

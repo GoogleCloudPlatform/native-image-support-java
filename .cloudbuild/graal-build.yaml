@@ -6,9 +6,6 @@ steps:
   - name: oracle/graalvm-ce:20.1.0-java11
     args: ['./google-cloud-graalvm-samples/pubsub-sample/target/com.example.pubsubsampleapplication']
 
-  - name: oracle/graalvm-ce:20.1.0-java11
-    args: ['./google-cloud-graalvm-samples/storage-sample/target/com.example.storagesampleapplication']
-
 options:
   # Need to specify a better machine to avoid OOM errors.
-  machineType: 'N1_HIGHCPU_8'
+  machineType: 'N1_HIGHCPU_32'
