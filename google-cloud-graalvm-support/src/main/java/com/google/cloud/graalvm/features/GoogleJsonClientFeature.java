@@ -16,7 +16,7 @@
 
 package com.google.cloud.graalvm.features;
 
-import static com.google.cloud.graalvm.features.NativeImageUtils.registerForReflection;
+import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerForReflectiveInstantiation;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
@@ -57,9 +57,9 @@ public class GoogleJsonClientFeature implements Feature {
           access, "com.google.api.client.googleapis.json.GoogleJsonError");
       registerForReflectiveInstantiation(
           access, "com.google.api.client.googleapis.json.GoogleJsonError$ErrorInfo");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.googleapis.services.AbstractGoogleClientRequest");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest");
     }
   }
@@ -69,27 +69,27 @@ public class GoogleJsonClientFeature implements Feature {
     Class<?> googleHttpClientClass = access.findClassByName(GOOGLE_HTTP_CLIENT_CLASS);
 
     if (googleHttpClientClass != null) {
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.util.GenericData");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.json.GenericJson");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.json.webtoken.JsonWebToken");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.json.webtoken.JsonWebToken$Header");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.json.webtoken.JsonWebToken$Payload");
-      registerForReflection(
+      registerClassForReflection(
           access,  "com.google.api.client.json.webtoken.JsonWebSignature$Header");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.json.webtoken.JsonWebSignature");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.http.UrlEncodedContent");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.http.GenericUrl");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.http.HttpRequest");
-      registerForReflection(
+      registerClassForReflection(
           access, "com.google.api.client.http.HttpHeaders");
     }
   }
