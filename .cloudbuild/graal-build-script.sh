@@ -2,4 +2,5 @@
 
 gu install native-image
 ./mvnw clean install -B -q
-./mvnw package -P graal -B --file google-cloud-graalvm-samples
+./mvnw package -P graal -B --file google-cloud-graalvm-samples/pubsub-sample
+./mvnw package -P graal -B --file google-cloud-graalvm-samples/storage-sample
