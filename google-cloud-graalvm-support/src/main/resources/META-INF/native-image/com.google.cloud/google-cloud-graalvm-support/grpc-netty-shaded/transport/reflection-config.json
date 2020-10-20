@@ -1,0 +1,15 @@
+[
+    {
+      "name": "io.grpc.netty.shaded.io.netty.channel.socket.nio.NioServerSocketChannel",
+      "methods": [
+        { "name": "<init>", "parameterTypes": [] }
+      ]
+    },
+    {
+      "name": "sun.nio.ch.SelectorImpl",
+      "fields": [
+        { "name": "selectedKeys",  "allowUnsafeAccess" : true},
+        { "name": "publicSelectedKeys",  "allowUnsafeAccess" : true}
+      ]
+    }
+]
