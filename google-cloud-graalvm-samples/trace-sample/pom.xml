@@ -98,6 +98,8 @@
                 -H:EnableURLProtocols=http,https
                 --report-unsupported-elements-at-runtime
                 --enable-all-security-services
+                -H:+TraceClassInitialization
+                -H:+ReportExceptionStackTraces
               </buildArgs>
             </configuration>
             <executions>
