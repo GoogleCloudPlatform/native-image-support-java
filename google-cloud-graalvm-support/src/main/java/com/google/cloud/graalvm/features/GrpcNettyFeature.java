@@ -33,19 +33,57 @@ public class GrpcNettyFeature implements Feature {
   private static final String GRPC_NETTY_SHADED_CLASS =
       "io.grpc.netty.shaded.io.grpc.netty.NettyServer";
 
+  private static final String GOOGLE_AUTH_CLASS =
+      "com.google.auth.oauth2.ServiceAccountCredentials";
+
   @Override
   public void beforeAnalysis(BeforeAnalysisAccess access) {
+    loadGoogleAuthClasses(access);
+    loadGrpcNettyClasses(access);
+    loadMiscClasses(access);
+  }
+
+  private static void loadGoogleAuthClasses(BeforeAnalysisAccess access) {
+    // For com.google.auth:google-auth-library-oauth2-http
+    Class<?> authClass = access.findClassByName(GOOGLE_AUTH_CLASS);
+    if (authClass != null) {
+      registerClassHierarchyForReflection(
+          access, "com.google.auth.oauth2.ServiceAccountCredentials");
+      registerClassHierarchyForReflection(
+          access, "com.google.auth.oauth2.ServiceAccountJwtAccessCredentials");
+    }
+  }
+
+  private static void loadGrpcNettyClasses(BeforeAnalysisAccess access) {
+    // For io.grpc:grpc-netty-shaded
     Class<?> nettyShadedClass = access.findClassByName(GRPC_NETTY_SHADED_CLASS);
     if (nettyShadedClass != null) {
+      // Misc. Google classes
       registerClassHierarchyForReflection(
           access, "com.google.protobuf.DescriptorProtos");
+      registerClassForReflection(access, "com.google.api.FieldBehavior");
 
-      registerClassForReflection(
-          access, "io.grpc.netty.shaded.io.netty.util.internal.NativeLibraryUtil");
-
+      // Misc. classes used by grpc-netty-shaded
       registerForReflectiveInstantiation(
           access, "io.grpc.netty.shaded.io.netty.channel.socket.nio.NioSocketChannel");
+      registerClassForReflection(
+          access, "io.grpc.netty.shaded.io.netty.util.internal.NativeLibraryUtil");
+      registerClassForReflection(
+          access, "io.grpc.netty.shaded.io.netty.util.ReferenceCountUtil");
+      registerClassForReflection(
+          access, "io.grpc.netty.shaded.io.netty.buffer.AbstractByteBufAllocator");
 
+      // Epoll Libraries
+      registerClassForReflection(
+          access, "io.grpc.netty.shaded.io.netty.channel.epoll.Epoll");
+      registerClassForReflection(
+          access, "io.grpc.netty.shaded.io.netty.channel.epoll.EpollEventLoopGroup");
+      registerForReflectiveInstantiation(
+          access, "io.grpc.netty.shaded.io.netty.channel.epoll.EpollServerSocketChannel");
+      registerForReflectiveInstantiation(
+          access, "io.grpc.netty.shaded.io.netty.channel.epoll.EpollSocketChannel");
+
+      // Unsafe field accesses
       registerForUnsafeFieldAccess(
           access,
           "io.grpc.netty.shaded.io.netty.util.internal.shaded."
@@ -79,4 +117,16 @@ public class GrpcNettyFeature implements Feature {
     }
   }
 
+  /**
+   * Miscellaneous classes that need to be registered coming from various JARs.
+   */
+  private static void loadMiscClasses(BeforeAnalysisAccess access) {
+    registerForUnsafeFieldAccess(
+        access, "javax.net.ssl.SSLContext", "contextSpi");
+
+    registerClassForReflection(
+        access, "java.lang.management.ManagementFactory");
+    registerClassForReflection(
+        access, "java.lang.management.RuntimeMXBean");
+  }
 }
