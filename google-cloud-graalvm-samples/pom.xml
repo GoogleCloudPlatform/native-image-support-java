@@ -15,8 +15,9 @@
   <modules>
     <module>logging-sample</module>
     <module>pubsub-sample</module>
-    <module>trace-sample</module>
     <module>storage-sample</module>
+    <module>trace-sample</module>
+    <module>quarkus-pubsub-sample</module>
   </modules>
 
   <build>
