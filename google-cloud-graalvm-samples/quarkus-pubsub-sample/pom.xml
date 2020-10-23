@@ -121,10 +121,10 @@
 
   <profiles>
     <profile>
-      <id>native</id>
+      <id>graal</id>
       <activation>
         <property>
-          <name>native</name>
+          <name>graal</name>
         </property>
       </activation>
       <build>
