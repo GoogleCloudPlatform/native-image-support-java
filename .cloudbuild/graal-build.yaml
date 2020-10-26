@@ -3,17 +3,17 @@ steps:
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
-  - name: oracle/graalvm-ce:20.2.0-java11
-    args: ['./google-cloud-graalvm-samples/pubsub-sample/target/com.example.pubsubsampleapplication']
-
-  - name: oracle/graalvm-ce:20.2.0-java11
-    args: ['./google-cloud-graalvm-samples/storage-sample/target/com.example.storagesampleapplication']
-
-  - name: oracle/graalvm-ce:20.2.0-java11
-    args: ['./google-cloud-graalvm-samples/logging-sample/target/com.example.loggingsampleapplication']
-
-  - name: oracle/graalvm-ce:20.2.0-java11
-    args: ['./google-cloud-graalvm-samples/trace-sample/target/com.example.tracesampleapplication']
+#  - name: oracle/graalvm-ce:20.2.0-java11
+#    args: ['./google-cloud-graalvm-samples/pubsub-sample/target/com.example.pubsubsampleapplication']
+#
+#  - name: oracle/graalvm-ce:20.2.0-java11
+#    args: ['./google-cloud-graalvm-samples/storage-sample/target/com.example.storagesampleapplication']
+#
+#  - name: oracle/graalvm-ce:20.2.0-java11
+#    args: ['./google-cloud-graalvm-samples/logging-sample/target/com.example.loggingsampleapplication']
+#
+#  - name: oracle/graalvm-ce:20.2.0-java11
+#    args: ['./google-cloud-graalvm-samples/trace-sample/target/com.example.tracesampleapplication']
 
 timeout: 1800s # 30 minutes
 options:
