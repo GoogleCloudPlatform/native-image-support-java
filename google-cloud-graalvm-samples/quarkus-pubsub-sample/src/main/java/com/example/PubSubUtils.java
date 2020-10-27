@@ -38,12 +38,10 @@ import com.google.pubsub.v1.TopicName;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Simple utility class demonstrating common operations in Google Cloud Pub/Sub.
  */
-@ApplicationScoped
 public class PubSubUtils {
   private static final String PROJECT_ID = ServiceOptions.getDefaultProjectId();
 

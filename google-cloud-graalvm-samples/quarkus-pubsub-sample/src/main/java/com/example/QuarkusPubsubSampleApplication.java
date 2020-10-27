@@ -16,7 +16,6 @@
 
 package com.example;
 
-import com.google.cloud.ServiceOptions;
 import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.Subscription;
 import com.google.pubsub.v1.Topic;
@@ -38,8 +37,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/")
 public class QuarkusPubsubSampleApplication {
 
-  private static final String PROJECT_ID = ServiceOptions.getDefaultProjectId();
-
   @Inject
   Template completed;
 
@@ -54,7 +51,7 @@ public class QuarkusPubsubSampleApplication {
       @FormParam("topicName") String topicName) throws IOException {
 
     Topic topic = PubSubUtils.createTopic(topicName);
-    String message = "Created topic: " + topic.getName() + " under project: " + PROJECT_ID;
+    String message = "Created topic: " + topic.getName();
     return completed.data("message", message);
   }
 
