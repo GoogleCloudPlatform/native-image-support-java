@@ -2,7 +2,7 @@
 
 The Quarkus Pub/Sub sample application demonstrates some common operations with Google Cloud Pub/Sub and is compatible with GraalVM compilation.
 
-This application is also built using the [Quarkus Framework](https://quarkus.io/).
+This application is built using the [Quarkus Framework](https://quarkus.io/).
 
 The application will show a simple user interface that lets you create and delete Cloud Pub/Sub resources, read messages from topics, and publish messages to topics.
 
@@ -30,6 +30,7 @@ Then visit http://localhost:8080/ to view the application.
 You can create a native executable using: `mvn package -P graal`.
 
 If you don't have GraalVM installed, you can run the native executable build in a container using: `mvn package -P graal -Dquarkus.native.container-build=true`.
+(Note that this method requires Docker to be installed).
 
 You can then execute your native executable with: `./target/quarkus-pubsub-sample-1.0.0-SNAPSHOT-runner`
 

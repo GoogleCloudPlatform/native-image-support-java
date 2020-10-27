@@ -87,7 +87,7 @@ public class PubSubUtils {
         SubscriberStubSettings.newBuilder()
             .setTransportChannelProvider(
                 SubscriberStubSettings.defaultGrpcTransportProviderBuilder()
-                    .setMaxInboundMessageSize(20 * 1024 * 1024) // 20MB (maximum message size).
+                    .setMaxInboundMessageSize(4 * 1024 * 1024) // 4MB message size.
                     .build())
             .build();
 
