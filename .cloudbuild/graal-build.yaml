@@ -1,5 +1,5 @@
 steps:
-  - name: quay.io/quarkus/ubi-quarkus-native-image:20.2.0-java11
+  - name: oracle/graalvm-ce:20.2.0-java11
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
