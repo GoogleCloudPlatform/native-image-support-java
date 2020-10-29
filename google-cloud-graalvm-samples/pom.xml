@@ -13,9 +13,9 @@
 
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
-    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-    <quarkus.platform.version>1.9.0.Final</quarkus.platform.version>
     <libraries.bom.version>13.2.0</libraries.bom.version>
+    <quarkus.platform.version>1.9.0.Final</quarkus.platform.version>
+    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
   </properties>
 
   <artifactId>google-cloud-graalvm-samples</artifactId>

@@ -20,16 +20,16 @@ You may skip the GraalVM installation step if you would like to build the execut
 You can run your application in dev mode that enables live coding using:
 
 ```
-mvn quarkus:dev
+./mvnw quarkus:dev
 ```
 
 Then visit http://localhost:8080/ to view the application.
 
 ## Creating a native executable
 
-You can create a native executable using: `mvn package -P graal`.
+You can create a native executable using: `./mvnw package -P graal`.
 
-If you don't have GraalVM installed, you can run the native executable build in a container using: `mvn package -P graal -Dquarkus.native.container-build=true`.
+If you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -P graal -Dquarkus.native.container-build=true`.
 (Note that this method requires Docker to be installed).
 
 You can then execute your native executable with: `./target/quarkus-pubsub-sample-1.0.0-SNAPSHOT-runner`
