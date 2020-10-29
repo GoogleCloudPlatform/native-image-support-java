@@ -95,9 +95,7 @@
               <buildArgs>
                 --no-fallback
                 --no-server
-                -H:+AllowIncompleteClasspath
                 -H:EnableURLProtocols=http,https
-                --report-unsupported-elements-at-runtime
                 --enable-all-security-services
                 -H:+TraceClassInitialization
                 -H:+ReportExceptionStackTraces
