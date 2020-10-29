@@ -15,6 +15,7 @@ steps:
   - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/trace-sample/target/com.example.tracesampleapplication']
 
+timeout: 1800s # 30 minutes
 options:
   # Need to specify a better machine to avoid OOM errors.
   machineType: 'N1_HIGHCPU_32'
