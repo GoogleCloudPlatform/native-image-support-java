@@ -20,20 +20,48 @@ You may skip the GraalVM installation step if you would like to build the execut
 You can run your application in dev mode that enables live coding using:
 
 ```
-./mvnw quarkus:dev
+mvn quarkus:dev
 ```
 
 Then visit http://localhost:8080/ to view the application.
 
 ## Creating a native executable
 
-You can create a native executable using: `./mvnw package -P graal`.
+### Compiling using local GraalVM installation
 
-If you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -P graal -Dquarkus.native.container-build=true`.
-(Note that this method requires Docker to be installed).
+You can create a native executable using the `graal` profile.
+
+```
+mvn package -P graal`
+```
+
+### Compiling using Docker container
+
+If you don't have GraalVM installed, you can run the native executable build in a container using the following command.
+
+```
+mvn package -P graal -Dquarkus.native.container-build=true -Dnative-image.xmx=6g
+```
+
+This method requires Docker Engine to be installed and configured to have at least 6 GB of memory.
+Look for Docker -> Preferences -> Resources -> Advanced to set the memory limit.
+You may use this method on any machine that supports Docker, but it will produce an executable that will only run on Linux.
+
+### Running the executable on Linux
 
 You can then execute your native executable with: `./target/quarkus-pubsub-sample-1.0.0-SNAPSHOT-runner`
 
 Then visit http://localhost:8080/ to view the application.
+
+### Running the executable on non-Linux (MacOS / Windows) using Docker
+
+You will need to [create](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-console) a service account key if you don't have one.
+Then you will be able to run the executable in a Linux container.
+
+```
+$ export CREDS_PATH=/PATH/TO/CREDS/DIRECTORY/
+$ export CREDS_FILE_NAME=credentials-file.json
+$ docker run -it --rm -v $PWD/target/:/target/ -v $CREDS_PATH:/creds/ --env GOOGLE_APPLICATION_CREDENTIALS=/creds/$CREDS_FILE_NAME -p 8080:8080 ubuntu ./target/quarkus-pubsub-sample-1.0.0-SNAPSHOT-runner
+```
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
