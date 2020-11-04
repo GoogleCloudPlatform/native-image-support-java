@@ -105,8 +105,6 @@
         <quarkus.package.type>native</quarkus.package.type>
         <!-- We initialize PubSubUtils at runtime since the PROJECT_ID is statically initialized there. -->
         <quarkus.native.additional-build-args>
-          -H:+AllowIncompleteClasspath,\
-          --report-unsupported-elements-at-runtime,\
           -H:+TraceClassInitialization,\
           --initialize-at-run-time=com.example.PubSubUtils
         </quarkus.native.additional-build-args>
