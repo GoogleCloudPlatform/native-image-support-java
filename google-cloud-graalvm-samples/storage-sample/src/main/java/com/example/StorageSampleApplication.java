@@ -17,9 +17,6 @@
 package com.example;
 
 import com.google.cloud.BatchResult.Callback;
-import com.google.cloud.storage.Acl;
-import com.google.cloud.storage.Acl.Role;
-import com.google.cloud.storage.Acl.User;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -79,10 +76,8 @@ public class StorageSampleApplication {
             .setLocation("us-east1")
             .build();
     storageClient.create(bucketInfo);
-
-    storageClient.createAcl(bucketName, Acl.of(User.ofAllAuthenticatedUsers(), Role.READER));
-    System.out.println(
-        "Created bucket " + bucketName + " with acls: " + storageClient.listAcls(bucketName));
+    storageClient.listAcls(bucketName);
+    System.out.println("Created bucket " + bucketName);
   }
 
   private static void createFile(Storage storageClient, String bucketName, String fileName) {
@@ -91,12 +86,8 @@ public class StorageSampleApplication {
             .setContentType("text/plain")
             .build();
     storageClient.create(blobInfo, "Hello World!".getBytes());
-
-    storageClient.createAcl(
-        blobInfo.getBlobId(), Acl.of(User.ofAllAuthenticatedUsers(), Role.READER));
-    System.out.println(
-        "Created file " + blobInfo.getName()
-            + " with acls: " + storageClient.listAcls(blobInfo.getBlobId()));
+    storageClient.listAcls(blobInfo.getBlobId());
+    System.out.println("Created file " + blobInfo.getName());
 
     Blob blob = storageClient.get(bucketName, fileName);
     String content = new String(blob.getContent());
