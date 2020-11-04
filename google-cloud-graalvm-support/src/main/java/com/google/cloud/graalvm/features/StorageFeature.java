@@ -17,7 +17,7 @@
 package com.google.cloud.graalvm.features;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
-import static com.google.cloud.graalvm.features.NativeImageUtils.registerForReflectiveInstantiation;
+import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
 import org.graalvm.nativeimage.hosted.Feature;
@@ -34,22 +34,23 @@ public class StorageFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     Class<?> storageClass = access.findClassByName(STORAGE_CLASS);
     if (storageClass != null) {
-      registerForReflectiveInstantiation(
-          access, "com.google.api.services.storage.model.Bucket$Cors");
-      registerForReflectiveInstantiation(
-          access, "com.google.api.services.storage.model.Bucket$Lifecycle$Rule");
-      registerForReflectiveInstantiation(
-          access, "com.google.api.services.storage.model.Bucket$IamConfiguration$BucketPolicyOnly");
-      registerForReflectiveInstantiation(
-          access, "com.google.api.services.storage.model.Bucket"
-              + "$IamConfiguration$UniformBucketLevelAccess");
+      registerClassHierarchyForReflection(
+          access, "com.google.api.services.storage.Storage");
+      registerClassHierarchyForReflection(
+          access, "com.google.api.services.storage.model.Bucket");
 
       registerClassForReflection(
+          access, "com.google.api.services.storage.StorageRequest");
+      registerClassForReflection(
           access, "com.google.api.services.storage.model.BucketAccessControl");
+      registerClassForReflection(
+          access, "com.google.api.services.storage.model.BucketAccessControls");
       registerClassForReflection(
           access, "com.google.api.services.storage.model.BucketAccessControl$ProjectTeam");
       registerClassForReflection(
           access, "com.google.api.services.storage.model.ObjectAccessControl");
+      registerClassForReflection(
+          access, "com.google.api.services.storage.model.ObjectAccessControls");
       registerClassForReflection(
           access, "com.google.api.services.storage.model.ObjectAccessControl$ProjectTeam");
       registerClassForReflection(
@@ -57,32 +58,6 @@ public class StorageFeature implements Feature {
       registerClassForReflection(
           access, "com.google.api.services.storage.model.StorageObject$Owner");
 
-      registerClassForReflection(
-          access, "com.google.api.services.storage.StorageRequest");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.Bucket");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.Bucket$Owner");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.Bucket$IamConfiguration");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.Bucket"
-              + "$IamConfiguration$BucketPolicyOnly");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.Bucket"
-              + "$IamConfiguration$UniformBucketLevelAccess");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.Storage$Buckets$Insert");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.Storage$Buckets$Get");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.Storage$Buckets$Delete");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.Storage$Objects$Insert");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.Storage$Objects$Get");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.Storage$Objects$Delete");
     }
   }
 }
