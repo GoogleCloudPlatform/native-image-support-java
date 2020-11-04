@@ -17,6 +17,9 @@
 package com.example;
 
 import com.google.cloud.BatchResult.Callback;
+import com.google.cloud.storage.Acl;
+import com.google.cloud.storage.Acl.Role;
+import com.google.cloud.storage.Acl.User;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -28,6 +31,9 @@ import com.google.cloud.storage.StorageOptions;
 import java.util.UUID;
 
 public class StorageSampleApplication {
+
+  private static final String TEST_USER =
+      "cloud-graalvm-support-ci@cloud-graalvm-support-ci.iam.gserviceaccount.com";
 
   /**
    * Runs the storage sample application.
@@ -76,6 +82,7 @@ public class StorageSampleApplication {
             .setLocation("us-east1")
             .build();
     storageClient.create(bucketInfo);
+    storageClient.createAcl(bucketName, Acl.of(new User(TEST_USER), Role.READER));
     storageClient.listAcls(bucketName);
     System.out.println("Created bucket " + bucketName);
   }
@@ -86,6 +93,7 @@ public class StorageSampleApplication {
             .setContentType("text/plain")
             .build();
     storageClient.create(blobInfo, "Hello World!".getBytes());
+    storageClient.createAcl(blobInfo.getBlobId(), Acl.of(new User(TEST_USER), Role.READER));
     storageClient.listAcls(blobInfo.getBlobId());
     System.out.println("Created file " + blobInfo.getName());
 
