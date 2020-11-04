@@ -53,7 +53,7 @@ public class StorageSampleApplication {
   }
 
   private static void runBatchOperations(
-      Storage storageClient, String bucketName, String fileName) throws InterruptedException {
+      Storage storageClient, String bucketName, String fileName) {
     BlobId blobId = BlobId.of(bucketName, fileName);
 
     StorageBatch batch = storageClient.batch();
