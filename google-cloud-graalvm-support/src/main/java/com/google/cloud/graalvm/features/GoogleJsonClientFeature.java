@@ -17,7 +17,6 @@
 package com.google.cloud.graalvm.features;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
-import static com.google.cloud.graalvm.features.NativeImageUtils.registerForReflectiveInstantiation;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
 import com.oracle.svm.core.configure.ResourcesRegistry;
@@ -40,6 +39,7 @@ public class GoogleJsonClientFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     loadApiClient(access);
     loadHttpClient(access);
+    loadMiscClasses(access);
   }
 
   private void loadApiClient(BeforeAnalysisAccess access) {
@@ -53,9 +53,9 @@ public class GoogleJsonClientFeature implements Feature {
           "\\Qcom/google/api/client/googleapis/google-api-client.properties\\E");
 
       // Reflection calls
-      registerForReflectiveInstantiation(
+      registerClassForReflection(
           access, "com.google.api.client.googleapis.json.GoogleJsonError");
-      registerForReflectiveInstantiation(
+      registerClassForReflection(
           access, "com.google.api.client.googleapis.json.GoogleJsonError$ErrorInfo");
       registerClassForReflection(
           access, "com.google.api.client.googleapis.services.AbstractGoogleClientRequest");
@@ -92,5 +92,12 @@ public class GoogleJsonClientFeature implements Feature {
       registerClassForReflection(
           access, "com.google.api.client.http.HttpHeaders");
     }
+  }
+
+  private void loadMiscClasses(BeforeAnalysisAccess access) {
+    registerClassForReflection(
+        access, "com.google.common.util.concurrent.AbstractFuture");
+    registerClassForReflection(
+        access, "com.google.common.util.concurrent.AbstractFuture$Waiter");
   }
 }

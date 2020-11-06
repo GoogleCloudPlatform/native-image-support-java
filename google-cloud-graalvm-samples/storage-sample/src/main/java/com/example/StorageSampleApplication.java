@@ -16,10 +16,14 @@
 
 package com.example;
 
+import com.google.cloud.BatchResult.Callback;
 import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.BucketInfo;
 import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageBatch;
+import com.google.cloud.storage.StorageException;
 import com.google.cloud.storage.StorageOptions;
 import java.util.UUID;
 
@@ -28,39 +32,63 @@ public class StorageSampleApplication {
   /**
    * Runs the storage sample application.
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     Storage storageClient = StorageOptions.getDefaultInstance().getService();
 
     String bucketName = "graalvm-sample-bucket-" + UUID.randomUUID();
     String fileName = "graalvm-sample-file-" + UUID.randomUUID();
 
     try {
-      System.out.println("Creating bucket " + bucketName);
-      BucketInfo bucketInfo =
-          BucketInfo.newBuilder(bucketName)
-              .setLocation("us-east1")
-              .build();
-      storageClient.create(bucketInfo);
-
-      System.out.println("Write file to bucket.");
-      BlobInfo blobInfo =
-          BlobInfo.newBuilder(bucketName, fileName)
-              .setContentType("text/plain")
-              .build();
-      storageClient.create(blobInfo, "Hello World!".getBytes());
-
-      System.out.println("Reading the file that was written...");
-      Blob blob = storageClient.get(bucketName, fileName);
-      String content = new String(blob.getContent());
-      System.out.println("Successfully wrote to file: " + content);
+      createBucket(storageClient, bucketName);
+      createFile(storageClient, bucketName, fileName);
+      runBatchOperations(storageClient, bucketName, fileName);
     } finally {
-      System.out.println("Cleaning up resources...");
-
-      System.out.println("Deleted file " + fileName);
+      System.out.println("Deleting resources.");
       storageClient.delete(bucketName, fileName);
-
-      System.out.println("Deleted bucket " + bucketName);
-      storageClient.delete(bucketName);
+      storageClient.delete(fileName);
     }
+  }
+
+  private static void runBatchOperations(
+      Storage storageClient, String bucketName, String fileName) {
+    BlobId blobId = BlobId.of(bucketName, fileName);
+
+    StorageBatch batch = storageClient.batch();
+    batch.update(BlobInfo.newBuilder(blobId).build())
+        .notify(new Callback<Blob, StorageException>() {
+          @Override
+          public void success(Blob blob) {
+            System.out.println("Batch update succeeded on " + fileName);
+          }
+
+          @Override
+          public void error(StorageException e) {
+            System.out.println("Batch update failed with cause: " + e);
+          }
+        });
+
+    batch.submit();
+  }
+
+  private static void createBucket(Storage storageClient, String bucketName) {
+    BucketInfo bucketInfo =
+        BucketInfo.newBuilder(bucketName)
+            .setLocation("us-east1")
+            .build();
+    storageClient.create(bucketInfo);
+    System.out.println("Created bucket " + bucketName);
+  }
+
+  private static void createFile(Storage storageClient, String bucketName, String fileName) {
+    BlobInfo blobInfo =
+        BlobInfo.newBuilder(bucketName, fileName)
+            .setContentType("text/plain")
+            .build();
+    storageClient.create(blobInfo, "Hello World!".getBytes());
+    System.out.println("Created file " + blobInfo.getName());
+
+    Blob blob = storageClient.get(bucketName, fileName);
+    String content = new String(blob.getContent());
+    System.out.println("Successfully wrote to file: " + content);
   }
 }
