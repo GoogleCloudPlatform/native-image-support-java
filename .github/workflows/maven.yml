@@ -43,18 +43,19 @@ jobs:
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
-        java -jar google-cloud-graalvm-pubsub-sample/target/google-cloud-graalvm-pubsub-sample-1.0.0-SNAPSHOT.jar
+        java -jar pubsub-sample/target/pubsub-sample-1.0.0-SNAPSHOT.jar
+        java -jar trace-sample/target/trace-sample-1.0.0-SNAPSHOT.jar
 
   graal-java-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
     - uses: actions/checkout@v2
 
     - name: Set up GraalVM Compiler
       uses: rinx/setup-graalvm-ce@v0.0.4
       with:
-        graalvm-version: "20.1.0"
+        graalvm-version: "20.2.0"
         java-version: "java11"
         native-image: "true"
 
@@ -81,4 +82,5 @@ jobs:
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
-        ./google-cloud-graalvm-pubsub-sample/target/com.example.pubsubsampleapplication
+        ./pubsub-sample/target/com.example.pubsubsampleapplication
+        ./trace-sample/target/com.example.tracesampleapplication

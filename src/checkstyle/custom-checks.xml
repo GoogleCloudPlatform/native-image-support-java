@@ -11,5 +11,5 @@
   <module name="TreeWalker">
     <module name="UnusedImports"/>
   </module>
+  <module name="NewlineAtEndOfFile"/>
 </module>
-
