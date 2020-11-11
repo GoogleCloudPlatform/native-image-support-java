@@ -35,9 +35,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author Mike Eltsufin
  */
 @SpringBootApplication(proxyBeanMethods = false)
-public class Application implements WebMvcConfigurer {
+public class TraceSampleApplication implements WebMvcConfigurer {
   public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
+    SpringApplication.run(TraceSampleApplication.class, args);
   }
 
   @Bean

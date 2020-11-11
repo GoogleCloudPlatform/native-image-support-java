@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.google.cloud.graalvm.feature.spring;
+package com.google.cloud.graalvm.features.spring;
+
+import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
 import org.graalvm.nativeimage.hosted.Feature;
-import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
 /**
  * Native Image feature configuration for the Stackdriver Trace Autoconfiguration class in
  * Spring Cloud GCP.
  */
 @AutomaticFeature
-final class StackdriverTraceAutoConfigurationFeature implements Feature {
+final class SpringTraceFeature implements Feature {
 
   private static final String TRACE_AUTOCONFIGURATION_CLASS =
       "org.springframework.cloud.gcp.autoconfigure.trace.StackdriverTraceAutoConfiguration";
@@ -34,20 +35,7 @@ final class StackdriverTraceAutoConfigurationFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     Class<?> traceAutoconfiguration = access.findClassByName(TRACE_AUTOCONFIGURATION_CLASS);
     if (traceAutoconfiguration != null) {
-
-      try {
-        // Register Reflection calls
-        registerMethod("io.grpc.ManagedChannel", "shutdownNow", access);
-      } catch (NoSuchMethodException e) {
-        throw new RuntimeException(e);
-      }
+      registerClassForReflection(access, "io.grpc.ManagedChannel");
     }
-  }
-
-  private static void registerMethod(
-      String className, String methodName, BeforeAnalysisAccess access)
-      throws NoSuchMethodException {
-    Class<?> clazz = access.findClassByName(className);
-    RuntimeReflection.register(clazz.getMethod(methodName));
   }
 }
