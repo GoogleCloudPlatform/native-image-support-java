@@ -2,15 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
   <parent>
-    <artifactId>google-cloud-graalvm-samples</artifactId>
+    <artifactId>basic</artifactId>
     <groupId>com.google.cloud</groupId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>pubsub-sample</artifactId>
+  <artifactId>storage-sample</artifactId>
 
   <dependencies>
     <dependency>
@@ -26,7 +25,7 @@
 
     <dependency>
       <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-pubsub</artifactId>
+      <artifactId>google-cloud-storage</artifactId>
     </dependency>
   </dependencies>
 
@@ -53,7 +52,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.example.PubSubSampleApplication</mainClass>
+              <mainClass>com.example.StorageSampleApplication</mainClass>
               <classpathPrefix>dependency-jars/</classpathPrefix>
             </manifest>
           </archive>
@@ -91,7 +90,7 @@
             <artifactId>native-image-maven-plugin</artifactId>
             <version>${graalvm.version}</version>
             <configuration>
-              <mainClass>com.example.PubSubSampleApplication</mainClass>
+              <mainClass>com.example.StorageSampleApplication</mainClass>
               <buildArgs>
                 --no-fallback
                 --no-server
