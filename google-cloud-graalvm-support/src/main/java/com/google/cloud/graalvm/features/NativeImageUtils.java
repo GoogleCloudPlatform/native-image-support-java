@@ -30,7 +30,7 @@ public class NativeImageUtils {
   /**
    * Registers a class for reflective construction via its default constructor.
    */
-  static void registerForReflectiveInstantiation(FeatureAccess access, String className) {
+  public static void registerForReflectiveInstantiation(FeatureAccess access, String className) {
     Class<?> clazz = access.findClassByName(className);
     if (clazz != null) {
       RuntimeReflection.register(clazz);
@@ -44,7 +44,7 @@ public class NativeImageUtils {
   /**
    * Registers an entire class for reflection use.
    */
-  static void registerClassForReflection(FeatureAccess access, String name) {
+  public static void registerClassForReflection(FeatureAccess access, String name) {
     Class<?> clazz = access.findClassByName(name);
     if (clazz != null) {
       RuntimeReflection.register(clazz);
@@ -63,7 +63,7 @@ public class NativeImageUtils {
    * <p>The transitive class hierarchy contains the class itself and its transitive set of
    * *non-private* nested subclasses.
    */
-  static void registerClassHierarchyForReflection(FeatureAccess access, String className) {
+  public static void registerClassHierarchyForReflection(FeatureAccess access, String className) {
     Class<?> clazz = access.findClassByName(className);
     if (clazz != null) {
       registerClassForReflection(access, className);
@@ -81,7 +81,7 @@ public class NativeImageUtils {
   /**
    * Registers a class for unsafe reflective field access.
    */
-  static void registerForUnsafeFieldAccess(
+  public static void registerForUnsafeFieldAccess(
       FeatureAccess access, String className, String... fields) {
     Class<?> clazz = access.findClassByName(className);
     if (clazz != null) {

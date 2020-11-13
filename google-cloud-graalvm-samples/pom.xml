@@ -15,6 +15,8 @@
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <libraries.bom.version>13.2.0</libraries.bom.version>
     <quarkus.platform.version>1.9.0.Final</quarkus.platform.version>
+    <spring-boot.version>2.4.0-M3</spring-boot.version>
+    <spring-cloud-gcp.version>1.2.6.RELEASE</spring-cloud-gcp.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
   </properties>
 
@@ -26,15 +28,36 @@
     <module>pubsub-sample</module>
     <module>storage-sample</module>
     <module>trace-sample</module>
+
+    <!-- Spring Cloud GCP Samples -->
+    <module>spring-cloud-gcp-trace-sample</module>
+
+    <!-- Quarkus Samples -->
     <module>quarkus-pubsub-sample</module>
   </modules>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-universe-bom</artifactId>
         <version>${quarkus.platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-gcp-dependencies</artifactId>
+        <version>${spring-cloud-gcp.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -65,16 +88,21 @@
             </systemPropertyVariables>
           </configuration>
         </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
-
-    <plugins>
-      <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
+
+  <repositories>
+    <repository>
+      <id>spring-milestone</id>
+      <name>Spring milestone</name>
+      <url>https://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
 </project>
