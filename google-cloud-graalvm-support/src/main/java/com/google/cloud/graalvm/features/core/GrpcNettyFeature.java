@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud.graalvm.features;
+package com.google.cloud.graalvm.features.core;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
@@ -76,6 +76,8 @@ public class GrpcNettyFeature implements Feature {
       // Epoll Libraries
       registerClassForReflection(
           access, "io.grpc.netty.shaded.io.netty.channel.epoll.Epoll");
+      registerClassForReflection(
+          access, "io.grpc.netty.shaded.io.netty.channel.epoll.EpollChannelOption");
       registerClassForReflection(
           access, "io.grpc.netty.shaded.io.netty.channel.epoll.EpollEventLoopGroup");
       registerForReflectiveInstantiation(

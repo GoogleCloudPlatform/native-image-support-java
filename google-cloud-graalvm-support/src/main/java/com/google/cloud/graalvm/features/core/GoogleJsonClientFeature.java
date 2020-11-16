@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud.graalvm.features;
+package com.google.cloud.graalvm.features.core;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
 
