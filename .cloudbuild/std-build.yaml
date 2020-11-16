@@ -5,17 +5,17 @@ steps:
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/basic/pubsub-sample/target/pubsub-sample-1.0.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-1.0.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/basic/storage-sample/target/storage-sample-1.0.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/storage-sample-1.0.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/basic/logging-sample/target/logging-sample-1.0.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/logging-sample-1.0.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/basic/trace-sample/target/trace-sample-1.0.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/trace-sample-1.0.0-SNAPSHOT.jar']
 

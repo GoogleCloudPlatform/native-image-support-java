@@ -21,9 +21,9 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>spring</module>
-    <module>quarkus</module>
-    <module>basic</module>
+    <module>graalvm-samples-client-library</module>
+    <module>graalvm-samples-spring</module>
+    <module>graalvm-samples-quarkus</module>
   </modules>
 
   <dependencyManagement>
