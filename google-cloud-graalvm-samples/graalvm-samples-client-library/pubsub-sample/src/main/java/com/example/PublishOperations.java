@@ -33,6 +33,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Sample methods for Publishing messages to a topic in Pub/Sub.
+ */
 public class PublishOperations {
 
   static void publishMessage(String projectId, String topicId)
