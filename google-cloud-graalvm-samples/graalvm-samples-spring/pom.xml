@@ -13,7 +13,7 @@
   <packaging>pom</packaging>
 
   <name>Google Cloud GraalVM - Spring Samples</name>
-  <artifactId>spring</artifactId>
+  <artifactId>graalvm-samples-spring</artifactId>
 
   <properties>
     <spring-boot.version>2.4.0-M3</spring-boot.version>
