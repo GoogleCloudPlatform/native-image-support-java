@@ -48,7 +48,8 @@ The following Google Cloud Platform client libraries are currently supported:
 
 | Google Cloud Service    | Sample Link              | 
 |-------------------------|--------------------------|
-| [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [google-cloud-graalvm-pubsub-sample](./google-cloud-graalvm-samples/google-cloud-graalvm-pubsub-sample) |
+| [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [pubsub-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample) |
+| [Cloud Storage](https://github.com/googleapis/java-storage) | [storage-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample) |
 
 Additional API compatibility is in active development.
 

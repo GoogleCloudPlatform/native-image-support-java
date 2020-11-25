@@ -16,7 +16,16 @@
 
 package com.google.cloud.graalvm.features;
 
+import java.io.IOException;
 import java.lang.reflect.Modifier;
+import java.net.JarURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.logging.Logger;
 import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature.FeatureAccess;
@@ -101,5 +110,58 @@ public class NativeImageUtils {
           "Failed to find " + className
               + " on the classpath for unsafe fields access registration.");
     }
+  }
+
+  /**
+   * Registers all the classes under the specified package for reflection.
+   */
+  public static void registerPackageForReflection(FeatureAccess access, String packageName) {
+    ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+    try {
+      String path = packageName.replace('.', '/');
+
+      Enumeration<URL> resources = classLoader.getResources(path);
+      while (resources.hasMoreElements()) {
+        URL url = resources.nextElement();
+
+        URLConnection connection = url.openConnection();
+        if (connection instanceof JarURLConnection) {
+          List<String> classes = findClassesInJar((JarURLConnection) connection, packageName);
+          for (String className : classes) {
+            registerClassHierarchyForReflection(access, className);
+          }
+        }
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to load classes under package name.", e);
+    }
+  }
+
+  private static List<String> findClassesInJar(
+      JarURLConnection urlConnection, String packageName) throws IOException {
+
+    List<String> result = new ArrayList<>();
+
+    final JarFile jarFile = urlConnection.getJarFile();
+    final Enumeration<JarEntry> entries = jarFile.entries();
+
+    while (entries.hasMoreElements()) {
+      JarEntry entry = entries.nextElement();
+      String entryName = entry.getName();
+
+      if (entryName.endsWith(".class")) {
+        String javaClassName =
+            entryName
+                .replace(".class", "")
+                .replace('/', '.');
+
+        if (javaClassName.startsWith(packageName)) {
+          result.add(javaClassName);
+        }
+      }
+    }
+
+    return result;
   }
 }
