@@ -25,7 +25,7 @@ After adding the snapshots repository, you can add the `google-cloud-graalvm-sup
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-graalvm-support</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To compile with GraalVM (native-image), ensure the client library version in you
 
 | GraalVM Support version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|:-------------------------|-----------------------------|
-| `1.0.0-SNAPSHOT`        | `>= 11.0.0`              | `>= 1.32.1`                 |
+| `0.1.0-SNAPSHOT`        | `>= 11.0.0`              | `>= 1.32.1`                 |
 
 **NOTE:** Most users typically manage their client library versions using the [Cloud Libraries Bill of Materials](https://github.com/GoogleCloudPlatform/cloud-opensource-java/wiki/The-Google-Cloud-Platform-Libraries-BOM) (`libraries-bom`).
 The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well so you don't have to manage it yourself.
