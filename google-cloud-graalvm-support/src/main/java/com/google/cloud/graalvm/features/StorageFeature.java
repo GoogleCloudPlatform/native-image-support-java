@@ -18,6 +18,7 @@ package com.google.cloud.graalvm.features;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
+import static com.google.cloud.graalvm.features.NativeImageUtils.registerPackageForReflection;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
 import org.graalvm.nativeimage.hosted.Feature;
@@ -39,25 +40,11 @@ public class StorageFeature implements Feature {
       registerClassHierarchyForReflection(
           access, "com.google.api.services.storage.model.Bucket");
 
+      registerPackageForReflection(
+          access, "com.google.api.services.storage.model");
+
       registerClassForReflection(
           access, "com.google.api.services.storage.StorageRequest");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.BucketAccessControl");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.BucketAccessControls");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.BucketAccessControl$ProjectTeam");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.ObjectAccessControl");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.ObjectAccessControls");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.ObjectAccessControl$ProjectTeam");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.StorageObject");
-      registerClassForReflection(
-          access, "com.google.api.services.storage.model.StorageObject$Owner");
-
     }
   }
 }
