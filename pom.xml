@@ -4,28 +4,27 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.google.cloud</groupId>
-  <artifactId>google-cloud-graalvm-support-parent</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-
     <graalvm.version>20.2.0</graalvm.version>
   </properties>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
+  <name>Google Cloud GraalVM Support Parent</name>
+  <description>The parent POM of the project providing Google Cloud GraalVM support.</description>
+  <url>https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support</url>
+  <packaging>pom</packaging>
+
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-graalvm-support-parent</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+
+  <scm>
+    <url>https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support</url>
+    <connection>scm:git:git://github.com/GoogleCloudPlatform/google-cloud-graalvm-support.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/GoogleCloudPlatform/google-cloud-graalvm-support.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 
   <build>
     <plugins>
@@ -108,6 +107,24 @@
 
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <doclint>none</doclint>
+                  <source>8</source>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
             <version>1.5</version>
             <executions>
@@ -135,4 +152,46 @@
       </build>
     </profile>
   </profiles>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+      <comments>
+        Copyright 2020-2020 the original author or authors.
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+        implied.
+
+        See the License for the specific language governing permissions and
+        limitations under the License.
+      </comments>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <organization>Google</organization>
+      <organizationUrl>http://cloud.google.com</organizationUrl>
+    </developer>
+  </developers>
 </project>
