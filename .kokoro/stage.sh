@@ -28,8 +28,8 @@ MAVEN_SETTINGS_FILE=$(realpath .)/settings.xml
 setup_environment_secrets
 create_settings_xml_file $MAVEN_SETTINGS_FILE
 
-# run unit tests
-./mvnw verify -B -V
+# Install and run unit tests.
+./mvnw install -B -V
 
 # change to release version
 ./mvnw versions:set -DremoveSnapshot
