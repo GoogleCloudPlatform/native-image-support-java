@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2019 Google LLC
+# Copyright 2019-2020 Google LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,7 +15,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-set -eo pipefail
+set -eov pipefail
 
 # STAGING_REPOSITORY_ID must be set
 if [ -z "${STAGING_REPOSITORY_ID}" ]; then
@@ -34,8 +34,8 @@ MAVEN_SETTINGS_FILE=$(realpath .)/settings.xml
 setup_environment_secrets
 create_settings_xml_file $MAVEN_SETTINGS_FILE
 
-./mvnw nexus-staging:drop -B \
-  --settings=settings.xml \
+./mvnw nexus-staging:release \
+  --settings ${MAVEN_SETTINGS_FILE} \
   -DstagingRepositoryId=${STAGING_REPOSITORY_ID} \
   -P release
 
