@@ -4,32 +4,21 @@
 
 This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java) to be built as [GraalVM Native Images](https://www.graalvm.org/reference-manual/native-image/).
 
-## Quick Setup
+## Setup
 
-First, add the Sonatype Snapshots repository to your project build file.
+Add the `google-cloud-graalvm-support` artifact to your project to take advantage of native image support.
 
-```
-<repositories>
-    <repository>
-        <id>snapshots-repo</id>
-        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        <releases><enabled>false</enabled></releases>
-        <snapshots><enabled>true</enabled></snapshots>
-    </repository>
-</repositories>
-```
-
-After adding the snapshots repository, you can add the `google-cloud-graalvm-support` dependency to your project.
+For example, in Maven:
 
 ```
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-graalvm-support</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 
-This dependency contains the GraalVM configurations (reflection config, native call config) to provide out-of-the-box support for native-image compilation of applications depending on the Google Java Client Libraries.
+This dependency contains the GraalVM configurations to provide out-of-the-box support for native-image compilation of applications using Google Java Client Libraries.
 
 ### Client Library Versions
 
@@ -37,10 +26,10 @@ To compile with GraalVM (native-image), ensure the client library version in you
 
 | GraalVM Support version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|:-------------------------|-----------------------------|
-| `0.1.0-SNAPSHOT`        | `>= 11.0.0`              | `>= 1.32.1`                 |
+| `0.1.0`        | `>= 11.0.0`              | `>= 1.32.1`                 |
 
 **NOTE:** Most users typically manage their client library versions using the [Cloud Libraries Bill of Materials](https://github.com/GoogleCloudPlatform/cloud-opensource-java/wiki/The-Google-Cloud-Platform-Libraries-BOM) (`libraries-bom`).
-The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well so you don't have to manage it yourself.
+The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well, so you don't have to manage the version of `grpc-netty-shaded` manually.
 
 ## Supported Libraries
 
