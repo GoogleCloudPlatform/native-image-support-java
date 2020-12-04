@@ -38,7 +38,7 @@
   </dependencyManagement>
 
   <build>
-    <!-- These plugins enable building the application to a JAR *not* using GraalVM -->
+    <!-- These plugins enable building the application with standard JVM. -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
