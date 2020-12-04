@@ -3,19 +3,29 @@ steps:
     entrypoint: bash
     args: ['./mvnw', 'clean', 'install', 'package', '-B', '-q']
 
-  - name: openjdk:11-jdk
-    entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.2.0-SNAPSHOT.jar']
+  # Start the spanner emulator
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '-d', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/storage-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/spanner-sample-0.2.0-SNAPSHOT.jar']
+    env:
+      - 'SPANNER_EMULATOR_HOST=localhost:9010'
 
-  - name: openjdk:11-jdk
-    entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/logging-sample-0.2.0-SNAPSHOT.jar']
-
-  - name: openjdk:11-jdk
-    entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/trace-sample-0.2.0-SNAPSHOT.jar']
-
+#  - name: openjdk:11-jdk
+#    entrypoint: java
+#    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.2.0-SNAPSHOT.jar']
+#
+#  - name: openjdk:11-jdk
+#    entrypoint: java
+#    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/storage-sample-0.2.0-SNAPSHOT.jar']
+#
+#  - name: openjdk:11-jdk
+#    entrypoint: java
+#    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/logging-sample-0.2.0-SNAPSHOT.jar']
+#
+#  - name: openjdk:11-jdk
+#    entrypoint: java
+#    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/trace-sample-0.2.0-SNAPSHOT.jar']
+#
