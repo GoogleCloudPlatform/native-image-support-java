@@ -4,7 +4,7 @@ This application uses the Google Cloud [Logging Client Libraries](https://github
 
 ## Setup Instructions
 
-1. Follow the [GCP Project Authentication and GraalVM Setup Instructions](../README.md).
+1. Follow the [GCP Project Authentication and GraalVM Setup Instructions](../../README.md).
 
 2. Enable the [Logging APIs](https://console.cloud.google.com/flows/enableapi?apiid=logging.googleapis.com).
 

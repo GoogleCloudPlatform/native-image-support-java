@@ -4,7 +4,7 @@ The Pub/Sub sample application demonstrates some common operations with Pub/Sub 
 
 ## Setup Instructions
 
-1. Follow the [GCP Project and GraalVM Setup Instructions](../README.md).
+1. Follow the [GCP Project and GraalVM Setup Instructions](../../README.md).
 
 2. [Enable the Pub/Sub APIs](https://console.cloud.google.com/apis/api/pubsub.googleapis.com).
 

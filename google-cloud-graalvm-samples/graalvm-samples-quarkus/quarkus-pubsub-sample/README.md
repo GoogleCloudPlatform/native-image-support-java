@@ -10,7 +10,7 @@ The application will show a simple user interface that lets you create and delet
 
 ## Setup Instructions
 
-1. Follow the [GCP Project and GraalVM Setup Instructions](../README.md).
+1. Follow the [GCP Project and GraalVM Setup Instructions](../../README.md).
 You may skip the GraalVM installation step if you would like to build the executable in a container.
 
 2. [Enable the Pub/Sub APIs](https://console.cloud.google.com/apis/api/pubsub.googleapis.com).
