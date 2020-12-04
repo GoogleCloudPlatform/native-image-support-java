@@ -16,7 +16,8 @@ steps:
 #    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
   - name: gcr.io/cloud-spanner-emulator/emulator
-    args: ['./gateway_main', '--hostname localhost', '--grpc_port 1234', '--http_port 1235']
+    entrypoint: emulator
+    args: ['-p 9010:9010', '-p 9020:9020']
 
 timeout: 1800s # 30 minutes
 options:
