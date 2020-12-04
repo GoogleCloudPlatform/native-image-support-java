@@ -15,9 +15,8 @@ steps:
 #  - name: oracle/graalvm-ce:20.2.0-java11
 #    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
-  - name: gcr.io/cloud-spanner-emulator/emulator
-    entrypoint: emulator_main
-    args: ['--host_port', 'localhost:1234']
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['gcloud', 'beta', 'emulators', 'spanner', 'start']
 
 timeout: 1800s # 30 minutes
 options:
