@@ -16,7 +16,7 @@ steps:
 #    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
   - name: gcr.io/cloud-spanner-emulator/emulator
-    args: ['run', '-p 9010:9010', '-p 9020:9020']
+    args: ['-p 9010:9010', '-p 9020:9020']
 
 timeout: 1800s # 30 minutes
 options:
