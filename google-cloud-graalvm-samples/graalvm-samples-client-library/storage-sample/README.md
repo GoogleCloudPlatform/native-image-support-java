@@ -4,7 +4,7 @@ The Storage sample application demonstrates some common operations with Google C
 
 ## Setup Instructions
 
-1. Follow the [GCP Project Authentication and GraalVM Setup Instructions](../README.md).
+1. Follow the [GCP Project Authentication and GraalVM Setup Instructions](../../README.md).
 
 2. [Enable the Cloud Storage APIs](https://console.cloud.google.com/apis/api/storage.googleapis.com).
 
