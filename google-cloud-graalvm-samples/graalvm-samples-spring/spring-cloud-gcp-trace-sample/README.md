@@ -7,7 +7,7 @@ You can learn more by viewing the [Spring Cloud GCP reference documentation](htt
 
 ## Setup & Configuration
 
-1. Create a Google Cloud Platform Project
+1. Follow the [GCP Project Authentication and GraalVM Setup Instructions](../../README.md).
 
 2. Enable the [Cloud Trace APIs](https://console.cloud.google.com/apis/api/cloudtrace.googleapis.com/overview).
 
