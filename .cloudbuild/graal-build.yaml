@@ -1,25 +1,32 @@
 steps:
+  # Build the sample images
+  - name: oracle/graalvm-ce:20.2.0-java11
+    entrypoint: bash
+    args: ['./.cloudbuild/graal-build-script.sh']
+
   # Start the spanner emulator
   - name: 'gcr.io/cloud-builders/docker'
     args: ['run', '-d', '--network=cloudbuild', '-p', '9010:9010', '-p', '9020:9020', '--name=spanner-emulator', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
   - name: jwilder/dockerize:0.6.1
-    args: ['dockerize', '-timeout=60s', '-wait=tcp://spanner-emulator:9020']
+    args: ['dockerize', '-timeout=30s', '-wait=tcp://spanner-emulator:9020']
 
-#  - name: oracle/graalvm-ce:20.2.0-java11
-#    entrypoint: bash
-#    args: ['./.cloudbuild/graal-build-script.sh']
-#
-#  - name: oracle/graalvm-ce:20.2.0-java11
-#    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication']
-#
-#  - name: oracle/graalvm-ce:20.2.0-java11
-#    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication']
-#
-#  - name: oracle/graalvm-ce:20.2.0-java11
-#    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication']
-#
-#  - name: oracle/graalvm-ce:20.2.0-java11
-#    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
+  # Run the tests
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication']
+    env:
+      - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
 
 timeout: 1800s # 30 minutes
