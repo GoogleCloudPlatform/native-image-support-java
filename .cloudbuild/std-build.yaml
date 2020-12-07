@@ -5,7 +5,7 @@ steps:
 
   # Start the spanner emulator
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '-d', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
+    args: ['run', '-d', '--network=cloudbuild', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
 
   # Run our test program which connects to the emulator
   - name: openjdk:11-jdk
