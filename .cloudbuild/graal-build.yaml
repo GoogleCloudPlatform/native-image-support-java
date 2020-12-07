@@ -8,7 +8,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['run', '-d', '--network=cloudbuild', '-p', '9010:9010', '-p', '9020:9020', '--name=spanner-emulator', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
   - name: jwilder/dockerize:0.6.1
-    args: ['dockerize', '-timeout=30s', '-wait=tcp://spanner-emulator:9020']
+    args: ['dockerize', '-timeout=30s', '-wait=tcp://spanner-emulator:9010']
 
   # Run the tests
   - name: oracle/graalvm-ce:20.2.0-java11
