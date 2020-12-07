@@ -21,7 +21,7 @@ The application creates a new Spanner instance and database, and it runs basic o
     
 ## Run with GraalVM Compilation
 
-1. Compile the application with the GraalVM compiler.
+1. Navigate to this directory and compile the application with the GraalVM compiler.
 
     ```
     mvn package -P graal
@@ -41,7 +41,7 @@ The application creates a new Spanner instance and database, and it runs basic o
     ./target/com.example.spannersampleapplication 
     ```
 
-4. The application will run through some basic operations and log some output statements.
+4. The application will run through some basic Spanner operations and log some output statements.
 
     ```
     Running the Spanner Sample.
