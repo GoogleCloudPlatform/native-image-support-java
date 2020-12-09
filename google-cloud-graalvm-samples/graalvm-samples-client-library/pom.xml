@@ -19,5 +19,6 @@
     <module>pubsub-sample</module>
     <module>trace-sample</module>
     <module>storage-sample</module>
+    <module>spanner-sample</module>
   </modules>
 </project>
