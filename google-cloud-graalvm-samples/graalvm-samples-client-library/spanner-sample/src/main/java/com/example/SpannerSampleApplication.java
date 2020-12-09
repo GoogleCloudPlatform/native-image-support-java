@@ -37,9 +37,7 @@ public class SpannerSampleApplication {
   public static void main(String[] args) {
     System.out.println("Running the Spanner Sample.");
 
-    SpannerOptions options = SpannerOptions.newBuilder()
-        .setProjectId("DUMMY_PROJECT_ID")
-        .build();
+    SpannerOptions options = SpannerOptions.newBuilder().build();
 
     try (Spanner spanner = options.getService()) {
       // Setup the Spanner environment.
