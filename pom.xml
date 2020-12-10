@@ -53,7 +53,6 @@
             </goals>
             <configuration>
               <configLocation>google_checks.xml</configLocation>
-              <suppressionsLocation>src/checkstyle/suppressions.xml</suppressionsLocation>
             </configuration>
           </execution>
           <execution>
@@ -65,7 +64,6 @@
             <configuration>
               <headerLocation>src/checkstyle/java.header</headerLocation>
               <configLocation>src/checkstyle/custom-checks.xml</configLocation>
-              <suppressionsLocation>src/checkstyle/suppressions.xml</suppressionsLocation>
             </configuration>
           </execution>
         </executions>
