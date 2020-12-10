@@ -23,11 +23,11 @@ import com.oracle.svm.core.annotate.TargetClass;
  * This file contains the GaxProperties substitution to correctly set the Java language string
  * in API call headers for GraalVM users.
  */
-class GaxPropertiesSubstitutions {
-}
-
 @TargetClass(className = "com.google.api.gax.core.GaxProperties")
-final class Target_com_google_api_gax_core_GaxProperties {
+final class GaxPropertiesSubstitutions {
+
+  private GaxPropertiesSubstitutions() {
+  }
 
   @Substitute
   private static String getRuntimeVersion() {
