@@ -21,6 +21,9 @@ steps:
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication']
 
   - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
   - name: oracle/graalvm-ce:20.2.0-java11
