@@ -15,11 +15,12 @@
   <name>Google Cloud GraalVM - Basic Samples</name>
 
   <modules>
+    <module>firestore-sample</module>
     <module>logging-sample</module>
     <module>pubsub-sample</module>
-    <module>trace-sample</module>
     <module>secretmanager-sample</module>
-    <module>storage-sample</module>
     <module>spanner-sample</module>
+    <module>storage-sample</module>
+    <module>trace-sample</module>
   </modules>
 </project>
