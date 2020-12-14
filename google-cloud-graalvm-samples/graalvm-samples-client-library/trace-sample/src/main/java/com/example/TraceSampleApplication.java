@@ -34,17 +34,16 @@ import java.util.UUID;
  */
 public class TraceSampleApplication {
 
-  private static final String PROJECT_ID = ServiceOptions.getDefaultProjectId();
-
   /**
    * Runs basic methods in the Trace client libraries.
    */
   public static void main(String[] args) throws IOException, InterruptedException {
+    String projectId = ServiceOptions.getDefaultProjectId();
     TraceServiceClient traceServiceClient = TraceServiceClient.create();
 
     // Create a trace in the current project.
     String traceId = UUID.randomUUID().toString().replaceAll("-", "");
-    PatchTracesRequest createRequest = createPatchTraceRequest(traceId);
+    PatchTracesRequest createRequest = createPatchTraceRequest(traceId, projectId);
     traceServiceClient.patchTraces(createRequest);
 
     // Wait for the trace to be populated in Cloud Trace.
@@ -55,7 +54,7 @@ public class TraceSampleApplication {
       // This checks Cloud trace for the new trace that was just created.
       GetTraceRequest getTraceRequest =
           GetTraceRequest.newBuilder()
-              .setProjectId(PROJECT_ID)
+              .setProjectId(projectId)
               .setTraceId(traceId)
               .build();
 
@@ -74,11 +73,11 @@ public class TraceSampleApplication {
     }
   }
 
-  private static PatchTracesRequest createPatchTraceRequest(String traceId) {
+  private static PatchTracesRequest createPatchTraceRequest(String traceId, String projectId) {
     long currentTime = Instant.now().toEpochMilli() / 1000;
 
     Trace trace = Trace.newBuilder()
-        .setProjectId(PROJECT_ID)
+        .setProjectId(projectId)
         .setTraceId(traceId)
         .addSpans(
             TraceSpan.newBuilder()
@@ -90,7 +89,7 @@ public class TraceSampleApplication {
 
     PatchTracesRequest request =
         PatchTracesRequest.newBuilder()
-            .setProjectId(PROJECT_ID)
+            .setProjectId(projectId)
             .setTraces(Traces.newBuilder().addTraces(trace))
             .build();
 
