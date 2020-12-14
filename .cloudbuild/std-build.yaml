@@ -37,6 +37,12 @@ steps:
 
   - name: openjdk:11-jdk
     entrypoint: java
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/firestore-sample-0.2.0-SNAPSHOT.jar']
+    env:
+      - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9030'
+
+  - name: openjdk:11-jdk
+    entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/spanner-sample-0.2.0-SNAPSHOT.jar']
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'

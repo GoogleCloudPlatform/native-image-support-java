@@ -31,6 +31,11 @@ steps:
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
   - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication']
+    env:
+      - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9030'
+
+  - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication']
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
