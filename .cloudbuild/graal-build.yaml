@@ -4,7 +4,7 @@ steps:
     args: ['run', '-d', '--network=cloudbuild', '-p', '9010:9010', '-p', '9020:9020', '--name=spanner-emulator', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
   # Start the firestore emulator
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '-d', '--rm', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9030']
+    args: ['run', '-d', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9010']
   # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
     args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9030']
@@ -12,7 +12,7 @@ steps:
   - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication']
     env:
-      - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9030'
+      - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
 timeout: 1800s # 30 minutes
 options:
