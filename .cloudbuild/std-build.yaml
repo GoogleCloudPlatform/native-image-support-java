@@ -4,11 +4,14 @@ steps:
     entrypoint: bash
     args: ['./mvnw', 'clean', 'install', 'package', '-B', '-q']
 
-  # Start the spanner emulator
+  # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '-d', '--network=cloudbuild', '-p', '9010:9010', '-p', '9020:9020', '--name=spanner-emulator', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
+    args: ['run', '-d', '--network=cloudbuild', '--name=spanner-emulator', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '-d', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9010']
+  # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
-    args: ['dockerize', '-timeout=30s', '-wait=tcp://spanner-emulator:9010']
+    args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010']
 
   # Run all the samples
   - name: openjdk:11-jdk
@@ -30,6 +33,12 @@ steps:
   - name: openjdk:11-jdk
     entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/secretmanager-sample-0.2.0-SNAPSHOT.jar']
+
+  - name: openjdk:11-jdk
+    entrypoint: java
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/firestore-sample-0.2.0-SNAPSHOT.jar']
+    env:
+      - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
   - name: openjdk:11-jdk
     entrypoint: java

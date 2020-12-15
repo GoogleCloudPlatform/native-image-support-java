@@ -4,11 +4,14 @@ steps:
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
-  # Start the spanner emulator
+  # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '-d', '--network=cloudbuild', '-p', '9010:9010', '-p', '9020:9020', '--name=spanner-emulator', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
+    args: ['run', '-d', '--network=cloudbuild', '--name=spanner-emulator', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '-d', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9010']
+  # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
-    args: ['dockerize', '-timeout=30s', '-wait=tcp://spanner-emulator:9010']
+    args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010']
 
   # Run the tests
   - name: oracle/graalvm-ce:20.2.0-java11
@@ -25,6 +28,11 @@ steps:
 
   - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication']
+    env:
+      - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
   - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication']
