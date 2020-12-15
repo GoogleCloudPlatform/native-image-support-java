@@ -32,7 +32,8 @@ public class StorageSampleApplication {
   /**
    * Runs the storage sample application.
    */
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args) {
+
     Storage storageClient = StorageOptions.getDefaultInstance().getService();
 
     String bucketName = "graalvm-sample-bucket-" + UUID.randomUUID();
@@ -45,7 +46,7 @@ public class StorageSampleApplication {
     } finally {
       System.out.println("Deleting resources.");
       storageClient.delete(bucketName, fileName);
-      storageClient.delete(fileName);
+      storageClient.delete(bucketName);
     }
   }
 
