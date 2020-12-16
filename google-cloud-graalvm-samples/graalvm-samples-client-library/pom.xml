@@ -15,6 +15,7 @@
   <name>Google Cloud GraalVM - Basic Samples</name>
 
   <modules>
+    <module>bigquery-sample</module>
     <module>firestore-sample</module>
     <module>logging-sample</module>
     <module>pubsub-sample</module>

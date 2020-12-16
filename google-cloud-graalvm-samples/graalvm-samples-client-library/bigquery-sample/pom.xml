@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>firestore-sample</artifactId>
+  <artifactId>bigquery-sample</artifactId>
 
   <dependencies>
     <dependency>
@@ -26,7 +26,7 @@
 
     <dependency>
       <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-firestore</artifactId>
+      <artifactId>google-cloud-bigquery</artifactId>
     </dependency>
   </dependencies>
 
@@ -41,7 +41,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.example.FirestoreSampleApplication</mainClass>
+              <mainClass>com.example.BigQuerySampleApplication</mainClass>
               <classpathPrefix>dependency-jars/</classpathPrefix>
             </manifest>
           </archive>
@@ -79,7 +79,7 @@
             <artifactId>native-image-maven-plugin</artifactId>
             <version>${graalvm.version}</version>
             <configuration>
-              <mainClass>com.example.FirestoreSampleApplication</mainClass>
+              <mainClass>com.example.BigQuerySampleApplication</mainClass>
               <buildArgs>
                 --no-fallback
                 --no-server
