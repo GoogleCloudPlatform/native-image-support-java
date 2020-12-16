@@ -26,6 +26,9 @@ import com.google.cloud.storage.StorageBatch;
 import com.google.cloud.storage.StorageException;
 import com.google.cloud.storage.StorageOptions;
 import java.util.UUID;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StorageSampleApplication {
 
@@ -33,6 +36,11 @@ public class StorageSampleApplication {
    * Runs the storage sample application.
    */
   public static void main(String[] args) {
+    Logger root = Logger.getLogger("");
+    root.setLevel(Level.CONFIG);
+    for (Handler handler : root.getHandlers()) {
+      handler.setLevel(Level.CONFIG);
+    }
 
     Storage storageClient = StorageOptions.getDefaultInstance().getService();
 
