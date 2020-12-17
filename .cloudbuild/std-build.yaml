@@ -24,6 +24,10 @@ steps:
 
   - name: openjdk:11-jdk
     entrypoint: java
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/bigquery-sample-0.2.0-SNAPSHOT.jar']
+
+  - name: openjdk:11-jdk
+    entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/logging-sample-0.2.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk

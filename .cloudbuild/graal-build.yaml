@@ -15,6 +15,9 @@ steps:
 
   # Run the tests
   - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication']
+
+  - name: oracle/graalvm-ce:20.2.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication']
 
   - name: oracle/graalvm-ce:20.2.0-java11
