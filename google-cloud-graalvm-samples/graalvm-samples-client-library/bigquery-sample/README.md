@@ -24,7 +24,7 @@ Navigate to this directory in a new terminal.
     ./target/com.example.bigquerysampleapplication
     ```
 
-3. The application will create a sample BigQuery dataset in your GCP project called `graalvm_test_dataset` and perform some simple operations like creating table, inserting data, and running a query.
+3. The application will create a sample BigQuery dataset in your GCP project called `graalvm_test_dataset` and perform some simple operations like creating a table, inserting data, and running a query.
 
     If you would like to delete the BigQuery dataset later, you can manage your BigQuery resources through [Google Cloud Console](https://console.cloud.google.com/bigquery) to clean up BigQuery resources under your project.
 
