@@ -9,9 +9,12 @@ steps:
     args: ['run', '-d', '--network=cloudbuild', '--name=spanner-emulator', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['run', '-d', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9010']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '-d', '--network=cloudbuild', '--name=bigtable-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators bigtable start --host-port=0.0.0.0:9010']
   # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
-    args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010']
+    args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010', '-wait=tcp://bigtable-emulator:9010']
+
 
   # Run the tests
   - name: oracle/graalvm-ce:20.2.0-java11
@@ -42,6 +45,10 @@ steps:
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
+  - name: oracle/graalvm-ce:20.2.0-java11
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication']
+    env:
+      - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
 
 timeout: 1800s # 30 minutes
 options:
