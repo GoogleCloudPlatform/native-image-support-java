@@ -83,7 +83,6 @@
                 --no-fallback
                 --no-server
                 -H:EnableURLProtocols=http,https
-                --initialize-at-build-time
               </buildArgs>
             </configuration>
             <executions>

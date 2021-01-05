@@ -36,8 +36,9 @@ import java.util.UUID;
  */
 public class BigTableSampleApplication {
 
-  private static final String INSTANCE_NAME = "graalvm-test-instance";
-  private static final String TABLE_NAME = "graalvm-test-table";
+  private static final String INSTANCE_NAME =
+      System.getProperty("bigtable.instance", "graalvm-test-instance");
+  private static final String TABLE_NAME = "graalvm-test-";
 
   private static final String COLUMN_FAMILY_NAME = "stats_summary";
 

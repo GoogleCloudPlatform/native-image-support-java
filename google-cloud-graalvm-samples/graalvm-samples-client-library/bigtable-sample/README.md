@@ -11,7 +11,7 @@ The application runs through some simple BigTable Client Library operations to d
 2.  BigTable Environment setup -
     The following sections describe how you can run the sample application against the BigTable emulator or a real BigTable instance.
   
-    1. *(Using emulator)* If you wish to run the application against the [BigTable emulator](https://cloud.google.com/bigtable/docs/emulator), make sure that you have the [Google Cloud SDK](https://cloud.google.com/sdk) installed.
+    1. *(Using emulator)* If you wish to run the application against the [BigTable emulator](https://cloud.google.com/bigtable/docs/emulator), ensure that you have the [Google Cloud SDK](https://cloud.google.com/sdk) installed.
 
        In a new terminal window, start the emulator via `gcloud`:
     
@@ -22,7 +22,9 @@ The application runs through some simple BigTable Client Library operations to d
        Leave the emulator running in this terminal for now.
        In the next section, we will run the sample application against the BigTable emulator instance.
     
-    2. *(Using real BigTable instance)* If instead you wish to run the application against a real BigTable instance, you must create a BigTable instance named `graalvm-test-instance` in your project.
+    2. *(Using real BigTable instance)* If instead you wish to run the application against a real BigTable instance, ensure you already have a BigTable instance created.
+    
+       For example, the following command creates a new BigTable instance named `graalvm-test-instance`.
 
        ```
        gcloud bigtable instances create graalvm-test-instance \
@@ -51,9 +53,10 @@ The application runs through some simple BigTable Client Library operations to d
     The BigTable Client Libraries will detect this environment variable and automatically connect to the emulator instance if this variable is set.
     
 3. Run the application.
+   Pass in the BigTable instance you wish to use via the `-Dbigtable.instance` property.
     
     ```
-    ./target/com.example.bigtablesampleapplication
+    ./target/com.example.bigtablesampleapplication -Dbigtable.instance={BIGTABLE_INSTANCE_NAME}
     ```
 
 4. The application will run through some basic BigTable operations and log some output statements.

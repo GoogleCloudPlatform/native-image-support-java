@@ -16,6 +16,7 @@
 
   <modules>
     <module>bigquery-sample</module>
+    <module>bigtable-sample</module>
     <module>firestore-sample</module>
     <module>logging-sample</module>
     <module>pubsub-sample</module>
@@ -23,6 +24,5 @@
     <module>spanner-sample</module>
     <module>storage-sample</module>
     <module>trace-sample</module>
-    <module>bigtable-sample</module>
   </modules>
 </project>
