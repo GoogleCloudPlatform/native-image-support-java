@@ -29,6 +29,10 @@
           <groupId>org.graalvm.nativeimage</groupId>
           <artifactId>svm-hosted-native-windows-amd64</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.graalvm.truffle</groupId>
+          <artifactId>truffle-nfi</artifactId>
+        </exclusion>
       </exclusions>
     </dependency>
   </dependencies>
