@@ -59,7 +59,8 @@
               <buildArgs>
                 --no-fallback
                 --no-server
-                -H:EnableURLProtocols=http,https
+                --enable-https
+                --enable-http
               </buildArgs>
             </configuration>
             <executions>

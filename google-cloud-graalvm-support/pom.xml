@@ -16,25 +16,7 @@
       <groupId>org.graalvm.nativeimage</groupId>
       <artifactId>svm</artifactId>
       <version>${graalvm.version}</version>
-      <exclusions>
-        <!-- These exclusions were added to resolve a Zip-related issue in #58 -->
-        <exclusion>
-          <groupId>org.graalvm.nativeimage</groupId>
-          <artifactId>svm-hosted-native-linux-amd64</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.graalvm.nativeimage</groupId>
-          <artifactId>svm-hosted-native-darwin-amd64</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.graalvm.nativeimage</groupId>
-          <artifactId>svm-hosted-native-windows-amd64</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.graalvm.truffle</groupId>
-          <artifactId>truffle-nfi</artifactId>
-        </exclusion>
-      </exclusions>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>
