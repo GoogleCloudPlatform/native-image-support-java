@@ -17,6 +17,7 @@
       <artifactId>svm</artifactId>
       <version>${graalvm.version}</version>
       <exclusions>
+        <!-- These exclusions were added to resolve a Zip-related issue in #58 -->
         <exclusion>
           <groupId>org.graalvm.nativeimage</groupId>
           <artifactId>svm-hosted-native-linux-amd64</artifactId>
