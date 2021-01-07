@@ -18,42 +18,42 @@ steps:
   # Run all the samples
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.3.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/storage-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/storage-sample-0.3.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/bigquery-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/bigquery-sample-0.3.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/logging-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/logging-sample-0.3.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/trace-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/trace-sample-0.3.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/secretmanager-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/secretmanager-sample-0.3.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/firestore-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/firestore-sample-0.3.0-SNAPSHOT.jar']
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/spanner-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/spanner-sample-0.3.0-SNAPSHOT.jar']
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/bigtable-sample-0.2.0-SNAPSHOT.jar']
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/bigtable-sample-0.3.0-SNAPSHOT.jar']
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
