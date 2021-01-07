@@ -54,7 +54,19 @@ GraalVM-compatible sample code using various Google Cloud libraries can be found
 Additional API compatibility is in active development.
 
 Please also consult the project [samples applications directory](./google-cloud-graalvm-samples) for the full range of code samples.
-The project is actively building samples for native image frameworks as well, such as for Quarkus and Spring.
+
+### Additional Frameworks
+
+Our project `google-cloud-graalvm-support` targets compatibility for native image frameworks as well, such as for Quarkus, Micronaut, and Spring.
+We are in the early stages of research for these frameworks and maintain some [code samples](./google-cloud-graalvm-samples).
+
+We are also interested in collaborating with other open source projects to improve framework-level compatibility.
+
+Related projects:
+
+*  [Quarkus Extension for Google Cloud Services](https://github.com/quarkiverse/quarkiverse-google-cloud-services) - Enables usage of Google Cloud libraries in Quarkus applications.
+
+Please let us know if you are interested in collaborating by contacting us via our [Issue Tracker](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/issues).
 
 ## Questions
 
