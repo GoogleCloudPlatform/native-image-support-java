@@ -20,8 +20,6 @@ For example, in Maven:
 
 This dependency contains the GraalVM configurations to provide out-of-the-box support for native-image compilation of applications using Google Java Client Libraries.
 
-You should be able to compile your application without errors.
-
 ### Client Library Versions
 
 To compile with GraalVM (native-image), ensure the client library version in your project is supported by `google-cloud-graalvm-support`.
