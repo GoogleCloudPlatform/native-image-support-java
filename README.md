@@ -14,11 +14,13 @@ For example, in Maven:
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-graalvm-support</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
 This dependency contains the GraalVM configurations to provide out-of-the-box support for native-image compilation of applications using Google Java Client Libraries.
+
+You should be able to compile your application without errors.
 
 ### Client Library Versions
 
@@ -26,23 +28,35 @@ To compile with GraalVM (native-image), ensure the client library version in you
 
 | GraalVM Support version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|:-------------------------|-----------------------------|
-| `0.1.0`        | `>= 11.0.0`              | `>= 1.32.1`                 |
+| `0.2.0`                 | `11.0.0` or later        | `1.32.1` or later           |
+
+Typically, you can just depend on the latest versions of the client libraries to get something working if you are not sure about what versions of (transitive) dependencies are being used by your project.
 
 **NOTE:** Most users typically manage their client library versions using the [Cloud Libraries Bill of Materials](https://github.com/GoogleCloudPlatform/cloud-opensource-java/wiki/The-Google-Cloud-Platform-Libraries-BOM) (`libraries-bom`).
-The `libraries-bom` manages the version of `grpc-netty-shaded` for you as well, so you don't have to manage the version of `grpc-netty-shaded` manually.
+This is an easy way to ensure that the versions of all the client libraries in your project are compatible with each other and up-to-date.
+The `libraries-bom` also manages the version of `grpc-netty-shaded` as well and ensures that it is at the latest compatible version.
 
 ## Supported Libraries
 
-The following Google Cloud Platform client libraries are currently supported:
+Most of the Java Google Client Libraries are supported for GraalVM compilation using this dependency.
+If you find an unsupported library, please make a feature request via our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/issues).
 
-| Google Cloud Service    | Sample Link              | 
+GraalVM-compatible sample code using various Google Cloud libraries can be found below:
+
+| Google Cloud Service Library  | Sample Link              | 
 |-------------------------|--------------------------|
+| [Cloud BigQuery](https://github.com/googleapis/java-bigquery) | [bigquery-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample) |
+| [Cloud BigTable](https://github.com/googleapis/java-bigtable) | [bigtable-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample) |
+| [Cloud Firestore](https://github.com/googleapis/java-firestore) | [firestore-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample) |
+| [Cloud Logging](https://github.com/googleapis/java-logging) | [logging-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample) |
 | [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [pubsub-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample) |
+| [Cloud Spanner](https://github.com/googleapis/java-spanner) | [spanner-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample) |
 | [Cloud Storage](https://github.com/googleapis/java-storage) | [storage-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample) |
 
 Additional API compatibility is in active development.
 
 Please also consult the project [samples applications directory](./google-cloud-graalvm-samples) for the full range of code samples.
+The project is actively building samples for native image frameworks as well, such as for Quarkus and Spring.
 
 ## Questions
 
