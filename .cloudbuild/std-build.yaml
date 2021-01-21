@@ -4,6 +4,7 @@ steps:
     entrypoint: bash
     args: ['./mvnw', 'clean', 'install', 'package', '-B', '-q']
 
+
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
     args: ['run', '-d', '--network=cloudbuild', '--name=spanner-emulator', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
@@ -11,9 +12,12 @@ steps:
     args: ['run', '-d', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9010']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['run', '-d', '--network=cloudbuild', '--name=bigtable-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators bigtable start --host-port=0.0.0.0:9010']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '-d', '--network=cloudbuild', '--name=datastore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators datastore start --host-port=0.0.0.0:9010']
   # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
-    args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010', '-wait=tcp://bigtable-emulator:9010']
+    args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010', '-wait=tcp://bigtable-emulator:9010', '-wait=tcp://datastore-emulator:9010']
+
 
   # Run all the samples
   - name: openjdk:11-jdk
@@ -57,3 +61,9 @@ steps:
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/bigtable-sample-0.3.0-SNAPSHOT.jar']
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
+
+  - name: openjdk:11-jdk
+    entrypoint: java
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/datastore-sample-0.3.0-SNAPSHOT.jar']
+    env:
+      - 'DATASTORE_EMULATOR_HOST=datastore-emulator:9010'

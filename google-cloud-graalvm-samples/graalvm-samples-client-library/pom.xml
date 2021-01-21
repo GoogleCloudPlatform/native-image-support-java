@@ -24,6 +24,7 @@
     <module>spanner-sample</module>
     <module>storage-sample</module>
     <module>trace-sample</module>
+    <module>datastore-sample</module>
   </modules>
 
   <build>
