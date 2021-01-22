@@ -38,7 +38,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.</mainClass>
+              <mainClass>com.example.DatastoreSampleApplication</mainClass>
             </manifest>
           </archive>
         </configuration>

@@ -1,6 +1,6 @@
 steps:
   # Build the sample images
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
@@ -25,40 +25,40 @@ steps:
 
 
   # Run the tests
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication']
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication']
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication']
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication']
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication']
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication']
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication']
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication']
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
 
-  - name: oracle/graalvm-ce:20.3.0-java11
+  - name: ghcr.io/graalvm/graalvm-ce:20.3.0-java11
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication']
     env:
       - 'DATASTORE_EMULATOR_HOST=datastore-emulator:9010'
