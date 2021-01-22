@@ -7,16 +7,25 @@ steps:
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
+    id: spanner-emulator
     args: ['run', '-d', '--network=cloudbuild', '--name=spanner-emulator', '-p', '9010:9010', '-p', '9020:9020', 'gcr.io/cloud-spanner-emulator/emulator:1.1.1']
+    waitFor: ['-']
   - name: 'gcr.io/cloud-builders/docker'
+    id: firestore-emulator
     args: ['run', '-d', '--network=cloudbuild', '--name=firestore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators firestore start --host-port=0.0.0.0:9010']
+    waitFor: ['-']
   - name: 'gcr.io/cloud-builders/docker'
+    id: bigtable-emulator
     args: ['run', '-d', '--network=cloudbuild', '--name=bigtable-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators bigtable start --host-port=0.0.0.0:9010']
+    waitFor: ['-']
   - name: 'gcr.io/cloud-builders/docker'
+    id: datastore-emulator
     args: ['run', '-d', '--network=cloudbuild', '--name=datastore-emulator', 'google/cloud-sdk', 'sh', '-c', 'gcloud beta emulators datastore start --host-port=0.0.0.0:9010']
+    waitFor: ['-']
   # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
     args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010', '-wait=tcp://bigtable-emulator:9010', '-wait=tcp://datastore-emulator:9010']
+    waitFor: [spanner-emulator, firestore-emulator, datastore-emulator, bigtable-emulator]
 
 
   # Run all the samples
