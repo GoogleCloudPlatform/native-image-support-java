@@ -8,7 +8,7 @@ This sample runs through some basic operations of creating/deleting entities, ru
 
 1. Follow the [GCP Project and GraalVM Setup Instructions](../../README.md).
 
-2. If you wish to run the application against the [Datastore emulator](https://cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore), make sure that you have the [Google Cloud SDK](https://cloud.google.com/sdk) installed.
+2. If you wish to run the application against the [Datastore emulator](https://cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore), ensure that you have the [Google Cloud SDK](https://cloud.google.com/sdk) installed.
 
     In a new terminal window, start the emulator via `gcloud`:
     
