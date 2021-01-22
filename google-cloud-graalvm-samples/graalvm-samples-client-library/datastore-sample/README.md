@@ -1,6 +1,6 @@
 # Datastore Sample Application with GraalVM
 
-This application uses the [Google Cloud Datastore client libraries](https://cloud.google.com/datastore/docs/reference/libraries) and is compatible with GraalVM compilation.
+This application uses the [Google Cloud Datastore client library](https://cloud.google.com/datastore/docs/reference/libraries) and is compatible with GraalVM compilation.
 
 This sample runs through some basic operations of creating/deleting entities, running queries, and running transaction code.
 
@@ -17,7 +17,7 @@ This sample runs through some basic operations of creating/deleting entities, ru
     ```
    
     Leave the emulator running in this terminal for now.
-    In the next section, we will run the sample application against the Datastore emulator instsance.
+    In the next section, we will run the sample application against the Datastore emulator instance.
     
 ## Run with GraalVM Compilation
 
