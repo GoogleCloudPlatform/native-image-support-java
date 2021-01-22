@@ -66,4 +66,4 @@ steps:
     entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/datastore-sample-0.3.0-SNAPSHOT.jar']
     env:
-      - 'DATASTORE_EMULATOR_HOST=tcp://datastore-emulator:9010'
+      - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
