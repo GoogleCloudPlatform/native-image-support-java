@@ -64,7 +64,7 @@ steps:
   - name: ghcr.io/graalvm/graalvm-ce:java11-20.3.0
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication']
     env:
-      - 'DATASTORE_EMULATOR_HOST=datastore-emulator:9010'
+      - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 
 timeout: 1800s # 30 minutes
 options:
