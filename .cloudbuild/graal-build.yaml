@@ -21,7 +21,6 @@ steps:
   # Wait for emulators to start
   - name: jwilder/dockerize:0.6.1
     args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010', '-wait=tcp://bigtable-emulator:9010', '-wait=tcp://datastore-emulator:9010']
-    waitFor: ['-']
 
 
   # Run the tests
