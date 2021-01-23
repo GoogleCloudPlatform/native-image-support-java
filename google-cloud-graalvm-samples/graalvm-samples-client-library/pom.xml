@@ -17,6 +17,7 @@
   <modules>
     <module>bigquery-sample</module>
     <module>bigtable-sample</module>
+    <module>datastore-sample</module>
     <module>firestore-sample</module>
     <module>logging-sample</module>
     <module>pubsub-sample</module>
