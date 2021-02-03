@@ -16,6 +16,8 @@
 
 package com.example;
 
+import com.google.api.gax.rpc.HeaderProvider;
+import com.google.cloud.pubsub.v1.stub.PublisherStubSettings;
 import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.Subscription;
 import com.google.pubsub.v1.Topic;
@@ -26,6 +28,7 @@ import java.io.IOException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -128,5 +131,30 @@ public class QuarkusPubsubSampleApplication {
         PubSubUtils.deleteSubscription(subscription);
     return completed.data(
         "message", "Deleted subscription: " + subscriptionName.getSubscription());
+  }
+
+  /**
+   * Returns the GRPC headers provided by the Pub/Sub API client.
+   */
+  @GET
+  @Path("/headers")
+  public String getHeaders() throws IOException {
+    StubSettingsDelegate settingsDelegate =
+        new StubSettingsDelegate(PublisherStubSettings.newBuilder());
+    return settingsDelegate.getInternalHeaders().getHeaders().get("x-goog-api-client");
+  }
+
+  /**
+   * A delegate class to {@link PublisherStubSettings} which allows us to access
+   * protected {@link PublisherStubSettings#getInternalHeaderProvider()}.
+   */
+  private static class StubSettingsDelegate extends PublisherStubSettings {
+    protected StubSettingsDelegate(Builder settingsBuilder) throws IOException {
+      super(settingsBuilder);
+    }
+
+    public HeaderProvider getInternalHeaders() {
+      return this.getInternalHeaderProvider();
+    }
   }
 }
