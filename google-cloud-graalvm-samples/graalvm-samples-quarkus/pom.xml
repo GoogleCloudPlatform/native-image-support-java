@@ -20,6 +20,7 @@
 
   <modules>
     <module>quarkus-pubsub-sample</module>
+    <module>quarkus-integration-test</module>
   </modules>
 
   <dependencyManagement>

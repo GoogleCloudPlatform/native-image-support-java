@@ -132,29 +132,4 @@ public class QuarkusPubsubSampleApplication {
     return completed.data(
         "message", "Deleted subscription: " + subscriptionName.getSubscription());
   }
-
-  /**
-   * Returns the GRPC headers provided by the Pub/Sub API client.
-   */
-  @GET
-  @Path("/headers")
-  public String getHeaders() throws IOException {
-    StubSettingsDelegate settingsDelegate =
-        new StubSettingsDelegate(PublisherStubSettings.newBuilder());
-    return settingsDelegate.getInternalHeaders().getHeaders().get("x-goog-api-client");
-  }
-
-  /**
-   * A delegate class to {@link PublisherStubSettings} which allows us to access
-   * protected {@link PublisherStubSettings#getInternalHeaderProvider()}.
-   */
-  private static class StubSettingsDelegate extends PublisherStubSettings {
-    protected StubSettingsDelegate(Builder settingsBuilder) throws IOException {
-      super(settingsBuilder);
-    }
-
-    public HeaderProvider getInternalHeaders() {
-      return this.getInternalHeaderProvider();
-    }
-  }
 }

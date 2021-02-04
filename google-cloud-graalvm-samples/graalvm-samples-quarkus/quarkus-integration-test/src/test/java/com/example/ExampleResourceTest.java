@@ -17,16 +17,18 @@
 package com.example;
 
 import static io.restassured.RestAssured.given;
-import static org.assertj.core.api.Assertions.assertThat;
 
-import io.quarkus.test.junit.NativeImageTest;
-import java.io.IOException;
+import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
-/**
- * This executes the same tests in {@link QuarkusPubsubSampleApplicationTest} but in native image
- * mode.
- */
-@NativeImageTest
-public class NativeQuarkusPubsubSampleApplicationIT extends QuarkusPubsubSampleApplicationTest {
+@QuarkusTest
+public class ExampleResourceTest {
+
+  @Test
+  public void testHelloEndpoint() {
+    given()
+        .when().get("/headers")
+        .then()
+        .statusCode(200);
+  }
 }
