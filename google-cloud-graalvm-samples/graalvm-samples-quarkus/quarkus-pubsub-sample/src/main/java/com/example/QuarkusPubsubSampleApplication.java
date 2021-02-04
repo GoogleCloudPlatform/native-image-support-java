@@ -16,8 +16,6 @@
 
 package com.example;
 
-import com.google.api.gax.rpc.HeaderProvider;
-import com.google.cloud.pubsub.v1.stub.PublisherStubSettings;
 import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.Subscription;
 import com.google.pubsub.v1.Topic;
@@ -28,7 +26,6 @@ import java.io.IOException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

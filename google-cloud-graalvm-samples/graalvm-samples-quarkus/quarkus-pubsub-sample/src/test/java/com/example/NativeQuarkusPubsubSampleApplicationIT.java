@@ -16,12 +16,7 @@
 
 package com.example;
 
-import static io.restassured.RestAssured.given;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.quarkus.test.junit.NativeImageTest;
-import java.io.IOException;
-import org.junit.jupiter.api.Test;
 
 /**
  * This executes the same tests in {@link QuarkusPubsubSampleApplicationTest} but in native image
