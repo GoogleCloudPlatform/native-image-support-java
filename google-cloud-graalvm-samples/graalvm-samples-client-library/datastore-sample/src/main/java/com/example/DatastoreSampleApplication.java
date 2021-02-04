@@ -96,7 +96,10 @@ public class DatastoreSampleApplication {
               .build();
       Thread.sleep(1000);
       QueryResults<Entity> results = datastore.run(query);
-      System.out.println("Found entity: " + results.next());
+
+      while (results.hasNext()) {
+        System.out.println("Found entity: " + results.next());
+      }
 
       datastore.delete(key);
       return null;
