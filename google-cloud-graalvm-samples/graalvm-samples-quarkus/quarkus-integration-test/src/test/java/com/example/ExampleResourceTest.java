@@ -16,12 +16,19 @@
 
 package com.example;
 
-import io.quarkus.test.junit.NativeImageTest;
+import static io.restassured.RestAssured.given;
 
-/**
- * This executes the same tests in {@link QuarkusPubsubSampleApplicationTest} but in native image
- * mode.
- */
-@NativeImageTest
-public class NativeQuarkusPubsubSampleApplicationIT extends QuarkusPubsubSampleApplicationTest {
+import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Test;
+
+@QuarkusTest
+public class ExampleResourceTest {
+
+  @Test
+  public void testHelloEndpoint() {
+    given()
+        .when().get("/headers")
+        .then()
+        .statusCode(200);
+  }
 }
