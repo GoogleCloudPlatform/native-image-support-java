@@ -94,9 +94,8 @@ public class DatastoreSampleApplication {
               .setNamespace(TEST_NAMESPACE)
               .setKind(TEST_KIND)
               .build();
-      Thread.sleep(1000);
-      QueryResults<Entity> results = datastore.run(query);
 
+      QueryResults<Entity> results = datastore.run(query);
       while (results.hasNext()) {
         System.out.println("Found entity: " + results.next());
       }
