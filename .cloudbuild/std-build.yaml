@@ -2,7 +2,7 @@ steps:
   # Build the samples
   - name: openjdk:11-jdk
     entrypoint: bash
-    args: ['./mvnw', 'clean', 'install', 'package', '-B', '-q']
+    args: ['./mvnw', 'clean', 'install', '--batch-mode', '--quiet']
 
 
   # Start emulators
