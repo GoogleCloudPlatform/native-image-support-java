@@ -43,8 +43,8 @@ jobs:
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
-        java -jar graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.3.0-SNAPSHOT.jar
-        java -jar graalvm-samples-client-library/trace-sample/target/trace-sample-0.3.0-SNAPSHOT.jar
+        java -jar graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.4.0-SNAPSHOT.jar
+        java -jar graalvm-samples-client-library/trace-sample/target/trace-sample-0.4.0-SNAPSHOT.jar
 
   graal-java-build:
     runs-on: ubuntu-latest
