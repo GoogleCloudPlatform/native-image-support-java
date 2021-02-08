@@ -16,12 +16,26 @@
 
 package com.example;
 
-import io.quarkus.test.junit.NativeImageTest;
+import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * This executes the same tests in {@link QuarkusPubsubSampleApplicationTest} but in native image
- * mode.
- */
+import io.quarkus.test.junit.NativeImageTest;
+import java.io.IOException;
+import org.junit.jupiter.api.Test;
+
 @NativeImageTest
-public class NativeQuarkusPubsubSampleApplicationIT extends QuarkusPubsubSampleApplicationTest {
+public class NativeExampleResourceIT extends ExampleResourceTest {
+
+  @Test
+  public void validateHeaders() throws IOException {
+    String headers =
+        given()
+            .when().get("/headers")
+            .body().print();
+
+    String[] headerTokens = headers.split(" ");
+    assertThat(headerTokens).hasSizeGreaterThan(0);
+    assertThat(headerTokens[0]).startsWith("gl-java");
+    assertThat(headerTokens[0]).endsWith("-graalvm");
+  }
 }

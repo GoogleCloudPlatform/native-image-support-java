@@ -16,7 +16,9 @@
 
 package com.google.cloud.graalvm.features.substitutions;
 
-import com.oracle.svm.core.annotate.Substitute;
+import com.oracle.svm.core.annotate.Alias;
+import com.oracle.svm.core.annotate.RecomputeFieldValue;
+import com.oracle.svm.core.annotate.RecomputeFieldValue.Kind;
 import com.oracle.svm.core.annotate.TargetClass;
 
 /**
@@ -26,12 +28,11 @@ import com.oracle.svm.core.annotate.TargetClass;
 @TargetClass(className = "com.google.api.gax.core.GaxProperties")
 final class GaxPropertiesSubstitutions {
 
-  private GaxPropertiesSubstitutions() {
-  }
+  @Alias
+  @RecomputeFieldValue(kind = Kind.FromAlias)
+  private static String JAVA_VERSION = System.getProperty("java.version") + "-graalvm";
 
-  @Substitute
-  private static String getRuntimeVersion() {
-    return System.getProperty("java.version") + "-graalvm";
+  private GaxPropertiesSubstitutions() {
   }
 }
 

@@ -10,7 +10,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>quarkus-pubsub-sample</artifactId>
+  <artifactId>quarkus-integration-test</artifactId>
 
   <dependencies>
     <dependency>
@@ -27,11 +27,6 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-pubsub</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-core</artifactId>
     </dependency>
 
     <dependency>
@@ -63,12 +58,13 @@
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
         <version>${quarkus.platform.version}</version>
+        <extensions>true</extensions>
         <executions>
           <execution>
             <goals>
+              <goal>build</goal>
               <goal>generate-code</goal>
               <goal>generate-code-tests</goal>
-              <goal>build</goal>
             </goals>
           </execution>
         </executions>
@@ -108,10 +104,6 @@
       </build>
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
-        <!-- We initialize PubSubUtils at runtime since the PROJECT_ID is statically initialized there. -->
-        <quarkus.native.additional-build-args>
-          --initialize-at-run-time=com.example.PubSubUtils
-        </quarkus.native.additional-build-args>
       </properties>
     </profile>
   </profiles>
