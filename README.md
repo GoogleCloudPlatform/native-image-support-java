@@ -14,7 +14,7 @@ For example, in Maven:
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-graalvm-support</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
@@ -26,7 +26,7 @@ To compile with GraalVM (native-image), ensure the client library version in you
 
 | GraalVM Support version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|:-------------------------|-----------------------------|
-| `0.2.0`                 | `11.0.0` or later        | `1.32.1` or later           |
+| `0.3.0`                 | `11.0.0` or later        | `1.32.1` or later           |
 
 Typically, you can just depend on the latest versions of the client libraries to get something working if you are not sure about what versions of (transitive) dependencies are being used by your project.
 
@@ -45,6 +45,7 @@ GraalVM-compatible sample code using various Google Cloud libraries can be found
 |-------------------------|--------------------------|
 | [Cloud BigQuery](https://github.com/googleapis/java-bigquery) | [bigquery-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample) |
 | [Cloud BigTable](https://github.com/googleapis/java-bigtable) | [bigtable-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample) |
+| [Cloud Datastore](https://github.com/googleapis/java-datastore) | [datastore-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample) |
 | [Cloud Firestore](https://github.com/googleapis/java-firestore) | [firestore-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample) |
 | [Cloud Logging](https://github.com/googleapis/java-logging) | [logging-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample) |
 | [Cloud Pub/Sub](https://github.com/googleapis/java-pubsub) | [pubsub-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample) |
