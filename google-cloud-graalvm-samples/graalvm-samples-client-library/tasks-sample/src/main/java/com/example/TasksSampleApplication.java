@@ -19,8 +19,15 @@ package com.example;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.ServiceOptions;
-import com.google.cloud.tasks.v2.*;
-
+import com.google.cloud.tasks.v2.CloudTasksClient;
+import com.google.cloud.tasks.v2.CreateQueueRequest;
+import com.google.cloud.tasks.v2.HttpMethod;
+import com.google.cloud.tasks.v2.HttpRequest;
+import com.google.cloud.tasks.v2.LocationName;
+import com.google.cloud.tasks.v2.Queue;
+import com.google.cloud.tasks.v2.QueueName;
+import com.google.cloud.tasks.v2.RateLimits;
+import com.google.cloud.tasks.v2.Task;
 import java.io.IOException;
 import java.util.Random;
 
@@ -30,10 +37,10 @@ import java.util.Random;
 public class TasksSampleApplication {
   /**
    * Queue name randomness added to avoid
-   * FAILED_PRECONDITION: The queue cannot be created because a queue with this name existed too recently.
+   * FAILED_PRECONDITION: The queue cannot be created because a queue with this name existed
+   * too recently.
    */
-  private static final String GRAALVM_TEST_QUEUE_NAME = "graal-test-queue-" +
-          new Random().ints(0, 10_000).findAny().getAsInt();
+  private static final String GRAALVM_TEST_QUEUE_NAME = "graal-test-queue-";
 
   /**
    * Runs the Cloud Tasks sample application.
@@ -41,10 +48,11 @@ public class TasksSampleApplication {
   public static void main(String[] args) throws IOException {
     String projectId = ServiceOptions.getDefaultProjectId();
     LocationName parent = LocationName.of(projectId, "us-central1");
-    QueueName queueName = QueueName
-            .of(parent.getProject(), parent.getLocation(), GRAALVM_TEST_QUEUE_NAME);
+    QueueName queueName = QueueName.of(parent.getProject(), parent.getLocation(),
+                    GRAALVM_TEST_QUEUE_NAME + getRandomInt());
 
     try (CloudTasksClient client = CloudTasksClient.create()) {
+      // Create queue
       Queue queue = Queue.newBuilder()
               .setName(queueName.toString())
               .setRateLimits(RateLimits.newBuilder().setMaxConcurrentDispatches(1).build())
@@ -55,15 +63,7 @@ public class TasksSampleApplication {
               .setQueue(queue)
               .build();
 
-      Queue createdQueue = null;
-      try {
-        createdQueue = client.createQueue(createQueueRequest);
-      } catch (ApiException e) {
-        // If the queue already exists, swallow exception and proceed
-        if(!e.getStatusCode().equals(StatusCode.Code.ALREADY_EXISTS)) {
-          throw e;
-        }
-      }
+      Queue createdQueue = client.createQueue(createQueueRequest);
       System.out.println("Test queue ready: " + createdQueue);
 
       // Create task
@@ -78,7 +78,7 @@ public class TasksSampleApplication {
       Task task = client.createTask(queueName, taskRequest);
       System.out.println("Created task: " + task);
 
-      // Cleanup after test
+      // Cleanup
       client.purgeQueue(queueName);
       System.out.println("Queue purged");
 
@@ -87,4 +87,9 @@ public class TasksSampleApplication {
     }
   }
 
+  static int getRandomInt() {
+    return new Random()
+            .ints(0, 10_000)
+            .findAny().getAsInt();
+  }
 }
