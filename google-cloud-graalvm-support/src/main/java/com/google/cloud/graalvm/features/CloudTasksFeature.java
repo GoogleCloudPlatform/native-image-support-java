@@ -33,7 +33,6 @@ public class CloudTasksFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     Class<?> cloudTasksClass = access.findClassByName(CLOUD_TASKS_CLASS);
     if (cloudTasksClass != null) {
-      // Without this, the toString() model methods don't work
       registerPackageForReflection(
             access, "com.google.cloud.tasks.v2"
       );
