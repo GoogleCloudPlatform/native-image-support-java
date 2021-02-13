@@ -16,8 +16,6 @@
 
 package com.example;
 
-import com.google.api.gax.rpc.ApiException;
-import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.ServiceOptions;
 import com.google.cloud.tasks.v2.CloudTasksClient;
 import com.google.cloud.tasks.v2.CreateQueueRequest;
