@@ -22,6 +22,7 @@
     <module>logging-sample</module>
     <module>pubsub-sample</module>
     <module>secretmanager-sample</module>
+    <module>tasks-sample</module>
     <module>spanner-sample</module>
     <module>storage-sample</module>
     <module>trace-sample</module>
