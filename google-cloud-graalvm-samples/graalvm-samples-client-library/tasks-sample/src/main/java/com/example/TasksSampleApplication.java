@@ -27,7 +27,7 @@ import com.google.cloud.tasks.v2.QueueName;
 import com.google.cloud.tasks.v2.RateLimits;
 import com.google.cloud.tasks.v2.Task;
 import java.io.IOException;
-import java.util.Random;
+import java.util.UUID;
 
 /**
  * Sample application demonstrating GraalVM compatibility with Google Cloud Tasks APIs.
@@ -45,9 +45,12 @@ public class TasksSampleApplication {
    */
   public static void main(String[] args) throws IOException {
     String projectId = ServiceOptions.getDefaultProjectId();
-    LocationName parent = LocationName.of(projectId, "us-central1");
-    QueueName queueName = QueueName.of(parent.getProject(), parent.getLocation(),
-                    GRAALVM_TEST_QUEUE_NAME + getRandomInt());
+    LocationName parent = LocationName.of(projectId, "us-east1");
+    QueueName queueName =
+        QueueName.of(
+            parent.getProject(),
+            parent.getLocation(),
+            GRAALVM_TEST_QUEUE_NAME + UUID.randomUUID().toString());
 
     try (CloudTasksClient client = CloudTasksClient.create()) {
       // Create queue
@@ -83,11 +86,5 @@ public class TasksSampleApplication {
       client.deleteQueue(queueName);
       System.out.println("Queue deleted");
     }
-  }
-
-  static int getRandomInt() {
-    return new Random()
-            .ints(0, 10_000)
-            .findAny().getAsInt();
   }
 }

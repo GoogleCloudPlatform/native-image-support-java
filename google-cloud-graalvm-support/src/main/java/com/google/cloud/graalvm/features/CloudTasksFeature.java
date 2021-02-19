@@ -33,9 +33,7 @@ public class CloudTasksFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     Class<?> cloudTasksClass = access.findClassByName(CLOUD_TASKS_CLASS);
     if (cloudTasksClass != null) {
-      registerPackageForReflection(
-            access, "com.google.cloud.tasks.v2"
-      );
+      registerPackageForReflection(access, "com.google.cloud.tasks.v2");
     }
   }
 }

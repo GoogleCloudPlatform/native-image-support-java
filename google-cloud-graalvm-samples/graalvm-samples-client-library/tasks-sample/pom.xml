@@ -39,7 +39,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.SecretManagerSampleApplication</mainClass>
+              <mainClass>com.example.TasksSampleApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
