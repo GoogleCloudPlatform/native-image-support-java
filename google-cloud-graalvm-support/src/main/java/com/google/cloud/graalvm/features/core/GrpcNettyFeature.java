@@ -61,7 +61,8 @@ public class GrpcNettyFeature implements Feature {
       // Misc. Google classes
       registerClassHierarchyForReflection(
           access, "com.google.protobuf.DescriptorProtos");
-      registerClassForReflection(access, "com.google.protobuf.Duration");
+      registerClassHierarchyForReflection(access, "com.google.protobuf.Duration");
+      registerClassHierarchyForReflection(access, "com.google.protobuf.Timestamp");
       registerClassForReflection(access, "com.google.api.FieldBehavior");
 
       // Misc. classes used by grpc-netty-shaded

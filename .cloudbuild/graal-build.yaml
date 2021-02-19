@@ -44,6 +44,9 @@ steps:
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
+    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/com.example.taskssampleapplication']
+
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
     args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
@@ -66,7 +69,7 @@ steps:
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 
-timeout: 1800s # 30 minutes
+timeout: 3600s # 60 minutes
 options:
   # Need to specify a better machine to avoid OOM errors.
   machineType: 'N1_HIGHCPU_32'

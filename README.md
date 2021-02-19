@@ -52,6 +52,7 @@ GraalVM-compatible sample code using various Google Cloud libraries can be found
 | [Cloud Secret Manager](https://github.com/googleapis/java-secretmanager) | [secretmanager-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample) |
 | [Cloud Spanner](https://github.com/googleapis/java-spanner) | [spanner-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample) |
 | [Cloud Storage](https://github.com/googleapis/java-storage) | [storage-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample) |
+| [Cloud Tasks](https://github.com/googleapis/java-tasks) | [tasks-sample](./google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample) |
 
 Additional API compatibility is in active development.
 

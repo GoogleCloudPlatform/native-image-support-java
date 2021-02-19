@@ -55,6 +55,10 @@ steps:
 
   - name: openjdk:11-jdk
     entrypoint: java
+    args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/tasks-sample-0.4.0-SNAPSHOT.jar']
+
+  - name: openjdk:11-jdk
+    entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/firestore-sample-0.4.0-SNAPSHOT.jar']
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
