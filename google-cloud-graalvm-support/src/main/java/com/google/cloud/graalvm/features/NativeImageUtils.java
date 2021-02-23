@@ -17,6 +17,7 @@
 package com.google.cloud.graalvm.features;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.JarURLConnection;
 import java.net.URL;
@@ -35,6 +36,19 @@ import org.graalvm.nativeimage.impl.RuntimeReflectionSupport;
 public class NativeImageUtils {
 
   private static final Logger LOGGER = Logger.getLogger(NativeImageUtils.class.getName());
+
+  /**
+   * Returns the method of a class or fails if it is not present.
+   */
+  public static Method getMethodOrFail(
+      Class<?> clazz, String methodName, Class<?>... params) {
+    try {
+      return clazz.getDeclaredMethod(methodName, params);
+    } catch (NoSuchMethodException e) {
+      throw new RuntimeException(
+          "Failed to find method " + methodName + " for class " + clazz.getName(), e);
+    }
+  }
 
   /**
    * Registers a class for reflective construction via its default constructor.
