@@ -58,13 +58,6 @@ public class GrpcNettyFeature implements Feature {
     // For io.grpc:grpc-netty-shaded
     Class<?> nettyShadedClass = access.findClassByName(GRPC_NETTY_SHADED_CLASS);
     if (nettyShadedClass != null) {
-      // Misc. Google classes
-      registerClassHierarchyForReflection(
-          access, "com.google.protobuf.DescriptorProtos");
-      registerClassHierarchyForReflection(access, "com.google.protobuf.Duration");
-      registerClassHierarchyForReflection(access, "com.google.protobuf.Timestamp");
-      registerClassForReflection(access, "com.google.api.FieldBehavior");
-
       // Misc. classes used by grpc-netty-shaded
       registerForReflectiveInstantiation(
           access, "io.grpc.netty.shaded.io.netty.channel.socket.nio.NioSocketChannel");
