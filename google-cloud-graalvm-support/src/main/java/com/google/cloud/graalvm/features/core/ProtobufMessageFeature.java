@@ -56,7 +56,7 @@ public class ProtobufMessageFeature implements Feature {
 
     Class<?> protoEnumClass = access.findClassByName(PROTO_ENUM_CLASS);
     if (PROTO_ENUM_CLASS != null) {
-      // Finds every reachable proto enum class and registers the "valueOf()" method for reflection
+      // Finds every reachable proto enum class and registers specific methods for reflection.
       access.registerSubtypeReachabilityHandler(
           (duringAccess, subtypeClass) -> {
             if (!PROTO_ENUM_CLASS.equals(subtypeClass.getName())) {
