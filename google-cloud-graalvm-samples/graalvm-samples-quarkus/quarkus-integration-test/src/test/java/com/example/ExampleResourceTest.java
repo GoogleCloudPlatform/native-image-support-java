@@ -25,9 +25,9 @@ import org.junit.jupiter.api.Test;
 public class ExampleResourceTest {
 
   @Test
-  public void testHelloEndpoint() {
+  public void healthCheckTest() {
     given()
-        .when().get("/headers")
+        .when().get("/headersGrpc")
         .then()
         .statusCode(200);
   }

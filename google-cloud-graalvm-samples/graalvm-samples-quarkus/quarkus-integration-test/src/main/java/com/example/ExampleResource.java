@@ -19,9 +19,13 @@ package com.example;
 import com.google.api.gax.rpc.HeaderProvider;
 import com.google.cloud.pubsub.v1.stub.PublisherStubSettings;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
+/**
+ * This is a sample application used to test that client headers are set correctly.
+ */
 @Path("/")
 public class ExampleResource {
 
@@ -29,11 +33,29 @@ public class ExampleResource {
    * Returns the GRPC headers provided by the Pub/Sub API client.
    */
   @GET
-  @Path("/headers")
-  public String getHeaders() throws IOException {
+  @Path("/headersGrpc")
+  public String getHeadersGrpc() throws IOException {
     StubSettingsDelegate settingsDelegate =
         new StubSettingsDelegate(PublisherStubSettings.newBuilder());
     return settingsDelegate.getInternalHeaders().getHeaders().get("x-goog-api-client");
+  }
+
+  /**
+   * Returns the GRPC headers provided by the Pub/Sub API client.
+   */
+  @GET
+  @Path("/headersApiary")
+  public String getHeadersApiary() throws Exception {
+    // Access the JSON
+    Class<?> apiVersionClass =
+        Class.forName("com.google.api.client.googleapis.services."
+            + "AbstractGoogleClientRequest$ApiClientVersion");
+    Constructor<?> constructor = apiVersionClass.getDeclaredConstructor();
+    constructor.setAccessible(true);
+
+    // Return the headers as string.
+    Object versionObject = constructor.newInstance();
+    return versionObject.toString();
   }
 
   /**
