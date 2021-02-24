@@ -40,10 +40,10 @@ public class NativeExampleResourceIT extends ExampleResourceTest {
   }
 
   @Test
-  public void validateHeaders_apiary() throws IOException {
+  public void validateHeaders_Json() throws IOException {
     String headers =
         given()
-            .when().get("/headersApiary")
+            .when().get("/headersJson")
             .body().print();
 
     String[] headerTokens = headers.split(" ");

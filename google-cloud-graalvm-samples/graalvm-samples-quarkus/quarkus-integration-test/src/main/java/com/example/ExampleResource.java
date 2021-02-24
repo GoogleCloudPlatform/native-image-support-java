@@ -41,11 +41,11 @@ public class ExampleResource {
   }
 
   /**
-   * Returns the Apiary headers used by Storage, BigQuery, BigTable clients.
+   * Returns the JSON headers used by Storage, BigQuery, BigTable clients.
    */
   @GET
-  @Path("/headersApiary")
-  public String getHeadersApiary() throws Exception {
+  @Path("/headersJson")
+  public String getHeadersJson() throws Exception {
     // Access the JSON
     Class<?> apiVersionClass =
         Class.forName("com.google.api.client.googleapis.services."
