@@ -40,7 +40,7 @@ public class NativeExampleResourceIT extends ExampleResourceTest {
   }
 
   @Test
-  public void validateHeaders_Json() throws IOException {
+  public void validateHeaders_json() throws IOException {
     String headers =
         given()
             .when().get("/headersJson")
