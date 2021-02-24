@@ -20,7 +20,6 @@ import com.oracle.svm.core.annotate.Alias;
 import com.oracle.svm.core.annotate.RecomputeFieldValue;
 import com.oracle.svm.core.annotate.RecomputeFieldValue.CustomFieldValueTransformer;
 import com.oracle.svm.core.annotate.RecomputeFieldValue.Kind;
-import com.oracle.svm.core.annotate.Substitute;
 import com.oracle.svm.core.annotate.TargetClass;
 
 /**
@@ -35,11 +34,6 @@ final class ApiClientVersionSubstitutions {
   private static String DEFAULT_VERSION;
 
   private ApiClientVersionSubstitutions() {
-  }
-
-  @Substitute
-  public String toString() {
-    return DEFAULT_VERSION;
   }
 
   static class ApiVersionTransformer implements CustomFieldValueTransformer {

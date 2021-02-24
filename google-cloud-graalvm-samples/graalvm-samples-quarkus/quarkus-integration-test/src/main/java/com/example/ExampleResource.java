@@ -19,7 +19,7 @@ package com.example;
 import com.google.api.gax.rpc.HeaderProvider;
 import com.google.cloud.pubsub.v1.stub.PublisherStubSettings;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
@@ -41,7 +41,7 @@ public class ExampleResource {
   }
 
   /**
-   * Returns the GRPC headers provided by the Pub/Sub API client.
+   * Returns the Apiary headers used by Storage, BigQuery, BigTable clients.
    */
   @GET
   @Path("/headersApiary")
@@ -50,12 +50,11 @@ public class ExampleResource {
     Class<?> apiVersionClass =
         Class.forName("com.google.api.client.googleapis.services."
             + "AbstractGoogleClientRequest$ApiClientVersion");
-    Constructor<?> constructor = apiVersionClass.getDeclaredConstructor();
-    constructor.setAccessible(true);
 
-    // Return the headers as string.
-    Object versionObject = constructor.newInstance();
-    return versionObject.toString();
+    // Read the value of the headers in the static field.
+    Field headerField = apiVersionClass.getDeclaredField("DEFAULT_VERSION");
+    headerField.setAccessible(true);
+    return (String) headerField.get(null);
   }
 
   /**
