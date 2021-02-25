@@ -21,12 +21,15 @@ import com.oracle.svm.core.annotate.RecomputeFieldValue;
 import com.oracle.svm.core.annotate.RecomputeFieldValue.CustomFieldValueTransformer;
 import com.oracle.svm.core.annotate.RecomputeFieldValue.Kind;
 import com.oracle.svm.core.annotate.TargetClass;
+import java.util.function.BooleanSupplier;
 
 /**
  * Substitution for setting Java version correctly in the Google Java Http Client.
  */
-@TargetClass(className =
-    "com.google.api.client.googleapis.services.AbstractGoogleClientRequest$ApiClientVersion")
+@TargetClass(
+    className =
+        "com.google.api.client.googleapis.services.AbstractGoogleClientRequest$ApiClientVersion",
+    onlyWith = ApiClientVersionSubstitutions.OnlyIfInClassPath.class)
 final class ApiClientVersionSubstitutions {
 
   @Alias
@@ -53,6 +56,20 @@ final class ApiClientVersionSubstitutions {
         return String.join(" ", tokens);
       } else {
         return originalValue;
+      }
+    }
+  }
+
+  static class OnlyIfInClassPath implements BooleanSupplier {
+
+    @Override
+    public boolean getAsBoolean() {
+      try {
+        Class.forName("com.google.api.client.googleapis.services."
+            + "AbstractGoogleClientRequest$ApiClientVersion");
+        return true;
+      } catch (ClassNotFoundException e) {
+        return false;
       }
     }
   }

@@ -20,12 +20,15 @@ import com.oracle.svm.core.annotate.Alias;
 import com.oracle.svm.core.annotate.RecomputeFieldValue;
 import com.oracle.svm.core.annotate.RecomputeFieldValue.Kind;
 import com.oracle.svm.core.annotate.TargetClass;
+import java.util.function.BooleanSupplier;
 
 /**
  * This file contains the GaxProperties substitution to correctly set the Java language string
  * in API call headers for GraalVM users.
  */
-@TargetClass(className = "com.google.api.gax.core.GaxProperties")
+@TargetClass(
+    className = "com.google.api.gax.core.GaxProperties",
+    onlyWith = GaxPropertiesSubstitutions.OnlyIfInClassPath.class)
 final class GaxPropertiesSubstitutions {
 
   @Alias
@@ -33,6 +36,19 @@ final class GaxPropertiesSubstitutions {
   private static String JAVA_VERSION = System.getProperty("java.version") + "-graalvm";
 
   private GaxPropertiesSubstitutions() {
+  }
+
+  static class OnlyIfInClassPath implements BooleanSupplier {
+
+    @Override
+    public boolean getAsBoolean() {
+      try {
+        Class.forName("com.google.api.gax.core.GaxProperties");
+        return true;
+      } catch (ClassNotFoundException e) {
+        return false;
+      }
+    }
   }
 }
 

@@ -2,7 +2,7 @@
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java) to be built as [GraalVM Native Images](https://www.graalvm.org/reference-manual/native-image/).
+This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java#supported-apis) to be built as [GraalVM Native Images](https://www.graalvm.org/reference-manual/native-image/).
 
 ## Setup
 
@@ -36,7 +36,9 @@ The `libraries-bom` also manages the version of `grpc-netty-shaded` as well and 
 
 ## Supported Libraries
 
-Most of the Java Google Client Libraries are supported for GraalVM compilation using this dependency.
+Most of the Java Google Client Libraries [listed here](https://github.com/googleapis/google-cloud-java#supported-apis) are supported for GraalVM compilation using this dependency.
+These libraries are all listed under the `com.google.cloud` group ID.
+
 If you find an unsupported library, please make a feature request via our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/issues).
 
 GraalVM-compatible sample code using various Google Cloud libraries can be found below:
