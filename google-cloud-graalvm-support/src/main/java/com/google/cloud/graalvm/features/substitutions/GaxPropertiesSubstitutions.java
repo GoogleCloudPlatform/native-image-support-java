@@ -43,7 +43,11 @@ final class GaxPropertiesSubstitutions {
     @Override
     public boolean getAsBoolean() {
       try {
-        Class.forName("com.google.api.gax.core.GaxProperties");
+        // Note: Set initialize = false to avoid initializing the class when looking it up.
+        Class.forName(
+            "com.google.api.gax.core.GaxProperties",
+            false,
+            Thread.currentThread().getContextClassLoader());
         return true;
       } catch (ClassNotFoundException e) {
         return false;

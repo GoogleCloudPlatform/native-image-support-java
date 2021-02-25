@@ -65,8 +65,12 @@ final class ApiClientVersionSubstitutions {
     @Override
     public boolean getAsBoolean() {
       try {
-        Class.forName("com.google.api.client.googleapis.services."
-            + "AbstractGoogleClientRequest$ApiClientVersion");
+        // Note: Set initialize = false to avoid initializing the class when looking it up.
+        Class.forName(
+            "com.google.api.client.googleapis.services."
+                + "AbstractGoogleClientRequest$ApiClientVersion",
+            false,
+            Thread.currentThread().getContextClassLoader());
         return true;
       } catch (ClassNotFoundException e) {
         return false;
