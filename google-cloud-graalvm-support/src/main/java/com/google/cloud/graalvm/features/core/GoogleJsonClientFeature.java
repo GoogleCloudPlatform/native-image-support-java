@@ -30,9 +30,12 @@ import org.graalvm.nativeimage.hosted.Feature;
 public class GoogleJsonClientFeature implements Feature {
 
   private static final String GOOGLE_API_CLIENT_CLASS =
-      "com.google.api.client.googleapis.GoogleUtils";
+      "com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient";
 
-  private static final String GOOGLE_HTTP_CLIENT_CLASS =
+  private static final String GOOGLE_API_CLIENT_REQUEST_CLASS =
+      "com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest";
+
+  private static final String GENERIC_JSON_CLASS =
       "com.google.api.client.json.GenericJson";
 
   @Override
@@ -44,35 +47,38 @@ public class GoogleJsonClientFeature implements Feature {
 
   private void loadApiClient(BeforeAnalysisAccess access) {
     // For com.google.api-client:google-api-client
-    Class<?> googleApiClass = access.findClassByName(GOOGLE_API_CLIENT_CLASS);
+    Class<?> googleApiClientClass = access.findClassByName(GOOGLE_API_CLIENT_CLASS);
 
-    if (googleApiClass != null) {
+    if (googleApiClientClass != null) {
+      // All reachable instances of the AbstractGoogleJsonClient must be registered.
+      access.registerSubtypeReachabilityHandler(
+          (duringAccess, subtype) -> registerClassForReflection(access, subtype.getName()),
+          googleApiClientClass);
+
+      // All reachable instances of the AbstractGoogleJsonClientRequest must be registered.
+      access.registerSubtypeReachabilityHandler(
+          (duringAccess, subtype) -> registerClassForReflection(access, subtype.getName()),
+          access.findClassByName(GOOGLE_API_CLIENT_REQUEST_CLASS));
+
       // Resources
       ResourcesRegistry resourcesRegistry = ImageSingletons.lookup(ResourcesRegistry.class);
       resourcesRegistry.addResources(
           "\\Qcom/google/api/client/googleapis/google-api-client.properties\\E");
-
-      // Reflection calls
-      registerClassForReflection(
-          access, "com.google.api.client.googleapis.json.GoogleJsonError");
-      registerClassForReflection(
-          access, "com.google.api.client.googleapis.json.GoogleJsonError$ErrorInfo");
-      registerClassForReflection(
-          access, "com.google.api.client.googleapis.services.AbstractGoogleClientRequest");
-      registerClassForReflection(
-          access, "com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest");
     }
   }
 
   private void loadHttpClient(BeforeAnalysisAccess access) {
     // For com.google.http-client:google-http-client
-    Class<?> googleHttpClientClass = access.findClassByName(GOOGLE_HTTP_CLIENT_CLASS);
+    Class<?> genericJsonClass = access.findClassByName(GENERIC_JSON_CLASS);
 
-    if (googleHttpClientClass != null) {
+    if (genericJsonClass != null) {
+      // All reachable instances of GenericJson must be registered.
+      access.registerSubtypeReachabilityHandler(
+          (duringAccess, subtype) -> registerClassForReflection(access, subtype.getName()),
+          genericJsonClass);
+
       registerClassForReflection(
           access, "com.google.api.client.util.GenericData");
-      registerClassForReflection(
-          access, "com.google.api.client.json.GenericJson");
       registerClassForReflection(
           access, "com.google.api.client.json.webtoken.JsonWebToken");
       registerClassForReflection(
