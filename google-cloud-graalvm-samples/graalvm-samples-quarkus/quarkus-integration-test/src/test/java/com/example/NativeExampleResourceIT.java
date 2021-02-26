@@ -27,10 +27,23 @@ import org.junit.jupiter.api.Test;
 public class NativeExampleResourceIT extends ExampleResourceTest {
 
   @Test
-  public void validateHeaders() throws IOException {
+  public void validateHeaders_grpc() throws IOException {
     String headers =
         given()
-            .when().get("/headers")
+            .when().get("/headersGrpc")
+            .body().print();
+
+    String[] headerTokens = headers.split(" ");
+    assertThat(headerTokens).hasSizeGreaterThan(0);
+    assertThat(headerTokens[0]).startsWith("gl-java");
+    assertThat(headerTokens[0]).endsWith("-graalvm");
+  }
+
+  @Test
+  public void validateHeaders_json() throws IOException {
+    String headers =
+        given()
+            .when().get("/headersJson")
             .body().print();
 
     String[] headerTokens = headers.split(" ");

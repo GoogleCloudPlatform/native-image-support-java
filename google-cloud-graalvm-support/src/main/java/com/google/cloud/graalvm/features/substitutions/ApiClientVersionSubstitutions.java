@@ -18,24 +18,46 @@ package com.google.cloud.graalvm.features.substitutions;
 
 import com.oracle.svm.core.annotate.Alias;
 import com.oracle.svm.core.annotate.RecomputeFieldValue;
+import com.oracle.svm.core.annotate.RecomputeFieldValue.CustomFieldValueTransformer;
 import com.oracle.svm.core.annotate.RecomputeFieldValue.Kind;
 import com.oracle.svm.core.annotate.TargetClass;
 import java.util.function.BooleanSupplier;
 
 /**
- * This file contains the GaxProperties substitution to correctly set the Java language string
- * in API call headers for GraalVM users.
+ * Substitution for setting Java version correctly in the Google Java Http Client.
  */
 @TargetClass(
-    className = "com.google.api.gax.core.GaxProperties",
-    onlyWith = GaxPropertiesSubstitutions.OnlyIfInClassPath.class)
-final class GaxPropertiesSubstitutions {
+    className =
+        "com.google.api.client.googleapis.services.AbstractGoogleClientRequest$ApiClientVersion",
+    onlyWith = ApiClientVersionSubstitutions.OnlyIfInClassPath.class)
+final class ApiClientVersionSubstitutions {
 
   @Alias
-  @RecomputeFieldValue(kind = Kind.FromAlias)
-  private static String JAVA_VERSION = System.getProperty("java.version") + "-graalvm";
+  @RecomputeFieldValue(kind = Kind.Custom, declClass = ApiVersionTransformer.class)
+  private static String DEFAULT_VERSION;
 
-  private GaxPropertiesSubstitutions() {
+  private ApiClientVersionSubstitutions() {
+  }
+
+  static class ApiVersionTransformer implements CustomFieldValueTransformer {
+
+    @Override
+    public Object transform(
+        jdk.vm.ci.meta.MetaAccessProvider metaAccess,
+        jdk.vm.ci.meta.ResolvedJavaField original,
+        jdk.vm.ci.meta.ResolvedJavaField annotated,
+        Object receiver,
+        Object originalValue) {
+      String originalHeader = (String) originalValue;
+      String[] tokens = originalHeader.split(" ");
+
+      if (tokens.length > 0 && tokens[0].startsWith("gl-java")) {
+        tokens[0] += "-graalvm";
+        return String.join(" ", tokens);
+      } else {
+        return originalValue;
+      }
+    }
   }
 
   static class OnlyIfInClassPath implements BooleanSupplier {
@@ -45,7 +67,8 @@ final class GaxPropertiesSubstitutions {
       try {
         // Note: Set initialize = false to avoid initializing the class when looking it up.
         Class.forName(
-            "com.google.api.gax.core.GaxProperties",
+            "com.google.api.client.googleapis.services."
+                + "AbstractGoogleClientRequest$ApiClientVersion",
             false,
             Thread.currentThread().getContextClassLoader());
         return true;
@@ -55,4 +78,3 @@ final class GaxPropertiesSubstitutions {
     }
   }
 }
-
