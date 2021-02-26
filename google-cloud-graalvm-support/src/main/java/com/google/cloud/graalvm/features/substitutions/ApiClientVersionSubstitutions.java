@@ -17,9 +17,7 @@
 package com.google.cloud.graalvm.features.substitutions;
 
 import com.oracle.svm.core.annotate.Alias;
-import com.oracle.svm.core.annotate.RecomputeFieldValue;
-import com.oracle.svm.core.annotate.RecomputeFieldValue.CustomFieldValueTransformer;
-import com.oracle.svm.core.annotate.RecomputeFieldValue.Kind;
+import com.oracle.svm.core.annotate.Substitute;
 import com.oracle.svm.core.annotate.TargetClass;
 import java.util.function.BooleanSupplier;
 
@@ -33,31 +31,21 @@ import java.util.function.BooleanSupplier;
 final class ApiClientVersionSubstitutions {
 
   @Alias
-  @RecomputeFieldValue(kind = Kind.Custom, declClass = ApiVersionTransformer.class)
-  private static String DEFAULT_VERSION;
+  private String versionString;
 
-  private ApiClientVersionSubstitutions() {
+  @Substitute
+  public String toString() {
+    String[] tokens = versionString.split(" ");
+
+    if (tokens.length > 0 && tokens[0].startsWith("gl-java")) {
+      tokens[0] += "-graalvm";
+      return String.join(" ", tokens);
+    } else {
+      return versionString;
+    }
   }
 
-  static class ApiVersionTransformer implements CustomFieldValueTransformer {
-
-    @Override
-    public Object transform(
-        jdk.vm.ci.meta.MetaAccessProvider metaAccess,
-        jdk.vm.ci.meta.ResolvedJavaField original,
-        jdk.vm.ci.meta.ResolvedJavaField annotated,
-        Object receiver,
-        Object originalValue) {
-      String originalHeader = (String) originalValue;
-      String[] tokens = originalHeader.split(" ");
-
-      if (tokens.length > 0 && tokens[0].startsWith("gl-java")) {
-        tokens[0] += "-graalvm";
-        return String.join(" ", tokens);
-      } else {
-        return originalValue;
-      }
-    }
+  private ApiClientVersionSubstitutions() {
   }
 
   static class OnlyIfInClassPath implements BooleanSupplier {
