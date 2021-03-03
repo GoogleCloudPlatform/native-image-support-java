@@ -64,7 +64,7 @@ The resulting image is outputted to the `target/` directory.
     You can run the examples by invoking the same command:
     
     ```
-    ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.PubSubHttpFunction`
+    ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.PubSubHttpFunction
     ```
     
 ### Notes
