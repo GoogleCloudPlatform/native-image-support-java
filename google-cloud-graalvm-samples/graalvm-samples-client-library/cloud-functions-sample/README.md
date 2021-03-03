@@ -80,10 +80,11 @@ Some comments about this solution:
     Also used in 2 instances of the Function Framework to load the user-specified function.
   
   * I tried to be clever and detect `HttpFunction`s and `BackgroundFunction`s on the classpath to register these since these are instantiated and invoked reflectively by the framework.
+    But there are many different approaches one could take to solve the problem.
   
     * Also registered the type `T` in subclasses of `Background<T>` since these the `T` type is serialized into JSON, which uses reflection.
     
-  * The code for this is in `CloudFunctionFeature`.
+  * The code for this is in [`CloudFunctionFeature`](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/blob/cloud-functions-example/google-cloud-graalvm-support/src/main/java/com/google/cloud/graalvm/features/cloudfunctions/CloudFunctionsFeature.java).
     
 * Some resources needed to be registered.
   These are found in `resources/META-INF/native-image/resource-config.json`.

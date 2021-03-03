@@ -64,12 +64,11 @@ public class CloudFunctionsFeature implements Feature {
 
       // Jetty libraries
       registerClassForReflection(access, "org.eclipse.jetty.http.HttpTokens");
+      registerClassForReflection(access, "org.eclipse.jetty.util.TypeUtil");
 
       // Cloud Functions core
       registerClassForReflection(
           access, "com.google.cloud.functions.invoker.runner.Invoker$Options");
-      registerClassForReflection(
-          access, "org.eclipse.jetty.util.TypeUtil");
 
       List<Class<?>> functionClasses =
           FUNCTIONS_CLASSES.stream()
