@@ -1,0 +1,13 @@
+{
+  "resources":{
+  "includes":[
+    {"pattern":"\\QMETA-INF/services/org.eclipse.jetty.http.HttpFieldPreEncoder\\E"}, 
+    {"pattern":"\\Qorg/eclipse/jetty/http/encoding.properties\\E"}, 
+    {"pattern":"\\Qorg/eclipse/jetty/http/mime.properties\\E"}, 
+    {"pattern":"\\Qorg/eclipse/jetty/version/build.properties\\E"}
+  ]},
+  "bundles":[
+    {"name":"javax.servlet.LocalStrings"}, 
+    {"name":"javax.servlet.http.LocalStrings"}
+  ]
+}
