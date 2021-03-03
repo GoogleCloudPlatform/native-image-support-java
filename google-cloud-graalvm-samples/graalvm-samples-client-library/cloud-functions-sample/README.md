@@ -29,7 +29,6 @@ Once installed, run `gu install native-image`.
 
 2. Run `mvn package -P graal` in this directory.
 This triggers the native image build.
-This builds 
 The resulting image is outputted to the `target/` directory.
 
 3. Try running the functions.
