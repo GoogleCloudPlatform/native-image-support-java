@@ -67,6 +67,9 @@ The resulting image is outputted to the `target/` directory.
     ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.PubSubHttpFunction
     ```
     
+    Once it's running, visit `localhost:8080` to verify it works.
+    The `PubSubHttpFunction` will publish a message to a topic named `test-topic` once invoked, so you should create the topic in your GCP project if you want to try it out.
+    
 ### Notes
 
 Some comments about this solution:
