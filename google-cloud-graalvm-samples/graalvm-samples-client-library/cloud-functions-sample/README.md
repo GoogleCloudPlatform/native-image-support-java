@@ -75,8 +75,7 @@ The resulting image is outputted to the `target/` directory.
 Some comments about this solution:
 
 * The Cloud Function Invoker's `--classpath` argument is not used since all sources must be known ahead-of-time in GraalVM compilation.
-  Can't dynamically specify a classpath to load a :w
-  function from.
+  Can't dynamically specify a classpath to load a function from.
 
 * There wasn't too much reflection configuration needed.
 
@@ -85,7 +84,7 @@ Some comments about this solution:
   
   * I decided to scan for all subclasses of `HttpFunction`s and `BackgroundFunction`s on the classpath to register these since these can be instantiated and invoked reflectively by the framework when passed in the `--target` argument.
   
-    * Also registered the type `T` in subclasses of `Background<T>` since these the `T` type is serialized into JSON, which uses reflection.
+    * Also registered the type `T` in subclasses of `BackgroundFunction<T>` since these the `T` type is serialized into JSON, which uses reflection.
     
   * The code for this is in [`CloudFunctionFeature`](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/blob/cloud-functions-example/google-cloud-graalvm-support/src/main/java/com/google/cloud/graalvm/features/cloudfunctions/CloudFunctionsFeature.java).
     
