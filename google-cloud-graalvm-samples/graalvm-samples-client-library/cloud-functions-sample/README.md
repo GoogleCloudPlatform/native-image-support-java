@@ -74,16 +74,16 @@ The resulting image is outputted to the `target/` directory.
 
 Some comments about this solution:
 
-* The Invoker's `--classpath` argument is not used in GraalVM since all sources must be known ahead-of-time in GraalVM.
-  Can't dynamically specify a classpath to load function from.
+* The Cloud Function Invoker's `--classpath` argument is not used since all sources must be known ahead-of-time in GraalVM compilation.
+  Can't dynamically specify a classpath to load a :w
+  function from.
 
 * There wasn't too much reflection configuration needed.
 
   * Only needed some for classes in `Jetty` and `JCommander` libraries.
     Also used in 2 instances of the Function Framework to load the user-specified function.
   
-  * I tried to be clever and detect `HttpFunction`s and `BackgroundFunction`s on the classpath to register these since these are instantiated and invoked reflectively by the framework.
-    But there are many different approaches one could take to solve the problem.
+  * I decided to scan for all subclasses of `HttpFunction`s and `BackgroundFunction`s on the classpath to register these since these can be instantiated and invoked reflectively by the framework when passed in the `--target` argument.
   
     * Also registered the type `T` in subclasses of `Background<T>` since these the `T` type is serialized into JSON, which uses reflection.
     
