@@ -60,7 +60,8 @@ The resulting image is outputted to the `target/` directory.
       * `com.example.function.ErrorHttpFunction` - Responds with error code 500.
       * `com.example.PubSubHttpFunction` - Sends a Pub/Sub message to topic `test-topic` when invoked.
       
-    You can run the examples by invoking the same command:
+    You can run the examples by invoking the same command.
+    Just change the function to run with `--target`:
     
     ```
     ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.PubSubHttpFunction
