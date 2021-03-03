@@ -1,4 +1,4 @@
-# Cloud Functions POC
+# Cloud Functions Proof of concept
 
 Simple application demonstrating running Cloud Functions with GraalVM.
 
