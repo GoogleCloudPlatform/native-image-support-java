@@ -150,3 +150,5 @@ options:
   volumes:
     - name: 'm2-cache'
       path: /root/.m2
+    - name: 'installed-programs'
+      path: /opt
