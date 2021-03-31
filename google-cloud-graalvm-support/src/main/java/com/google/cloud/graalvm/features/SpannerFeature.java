@@ -17,6 +17,7 @@
 package com.google.cloud.graalvm.features;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassForReflection;
+import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
 import org.graalvm.nativeimage.hosted.Feature;
@@ -33,6 +34,10 @@ public class SpannerFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     Class<?> spannerClass = access.findClassByName(SPANNER_CLASS);
     if (spannerClass != null) {
+      registerClassHierarchyForReflection(
+          access, "com.google.spanner.admin.database.v1.Database");
+      registerClassHierarchyForReflection(
+          access, "com.google.spanner.admin.instance.v1.Instance");
       registerClassForReflection(
           access, "com.google.spanner.admin.database.v1.RestoreInfo");
     }
