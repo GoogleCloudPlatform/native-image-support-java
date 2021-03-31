@@ -17,7 +17,6 @@
 package com.google.cloud.graalvm.features;
 
 import static com.google.cloud.graalvm.features.NativeImageUtils.getMethodOrFail;
-import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -52,9 +51,6 @@ public class ProtobufMessageFeature implements Feature {
   public void beforeAnalysis(BeforeAnalysisAccess access) {
     Class<?> protoMessageClass = access.findClassByName(PROTO_MESSAGE_CLASS);
     if (protoMessageClass != null) {
-      registerClassHierarchyForReflection(
-          access, "com.google.protobuf.DescriptorProtos");
-
       Method internalAccessorMethod =
           getMethodOrFail(protoMessageClass, "internalGetFieldAccessorTable");
 
