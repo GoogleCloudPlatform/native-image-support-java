@@ -135,11 +135,11 @@ steps:
 #    waitFor: ['mvn-install']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-quarkus']
+    args: ['./mvnw', 'verify', '-P', 'graal', '-f', 'google-cloud-graalvm-samples/graalvm-samples-quarkus']
     waitFor: ['mvn-install']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-spring']
+    args: ['./mvnw', 'verify', '-P', 'graal', '-f', 'google-cloud-graalvm-samples/graalvm-samples-spring']
     waitFor: ['mvn-install']
 
 timeout: 3600s # 60 minutes
