@@ -4,6 +4,8 @@ steps:
     id: mvn-install
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
+    env:
+      - MAVEN_OPTS=-Dmaven.repo.local=/cache/.m2
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
@@ -35,6 +37,8 @@ steps:
       - |
         ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication
+    env:
+      - MAVEN_OPTS=-Dmaven.repo.local=/cache/.m2
     waitFor: ['mvn-install']
 
 #  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
@@ -134,13 +138,13 @@ steps:
 #      - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 #    waitFor: ['mvn-install']
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./mvnw', 'verify', '-P', 'graal', '-f', 'google-cloud-graalvm-samples/graalvm-samples-quarkus']
-    waitFor: ['mvn-install']
-
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./mvnw', 'verify', '-P', 'graal', '-f', 'google-cloud-graalvm-samples/graalvm-samples-spring']
-    waitFor: ['mvn-install']
+#  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
+#    args: ['./mvnw', 'verify', '-P', 'graal', '-f', 'google-cloud-graalvm-samples/graalvm-samples-quarkus']
+#    waitFor: ['mvn-install']
+#
+#  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
+#    args: ['./mvnw', 'verify', '-P', 'graal', '-f', 'google-cloud-graalvm-samples/graalvm-samples-spring']
+#    waitFor: ['mvn-install']
 
 timeout: 3600s # 60 minutes
 options:
