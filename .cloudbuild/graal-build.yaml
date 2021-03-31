@@ -32,7 +32,7 @@ steps:
     args:
       - '-c'
       - |
-        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication
     waitFor: ['-']
 
@@ -127,18 +127,18 @@ steps:
 #    args:
 #      - '-c'
 #      - |
-#        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/pom.xml \
+#        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample \
 #        && ./google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication
 #    env:
 #      - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 #    waitFor: ['-']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-quarkus/pom.xml']
+    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-quarkus']
     waitFor: ['-']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-spring/pom.xml']
+    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-spring']
     waitFor: ['-']
 
 timeout: 3600s # 60 minutes
