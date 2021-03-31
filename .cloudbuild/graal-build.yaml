@@ -35,7 +35,7 @@ steps:
       - |
         ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication
-    waitFor: ['-']
+    waitFor: ['mvn-install']
 
 #  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
 #    entrypoint: 'bash'
