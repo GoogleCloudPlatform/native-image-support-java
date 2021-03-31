@@ -147,5 +147,6 @@ timeout: 3600s # 60 minutes
 options:
   # Need to specify a better machine to avoid OOM errors.
   machineType: 'N1_HIGHCPU_32'
-  env:
-    - 'MAVEN_OPTS=-Dmaven.repo.local=/workspace/.m2'
+  volumes:
+    - name: 'm2-cache'
+      path: /root/.m2
