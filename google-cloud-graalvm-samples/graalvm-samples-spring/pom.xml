@@ -16,7 +16,7 @@
   <artifactId>graalvm-samples-spring</artifactId>
 
   <properties>
-    <spring-boot.version>2.4.4</spring-boot.version>
+    <spring-boot.version>2.4.0-M3</spring-boot.version>
     <spring-cloud-gcp.version>1.2.7.RELEASE</spring-cloud-gcp.version>
   </properties>
 
