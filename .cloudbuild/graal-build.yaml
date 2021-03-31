@@ -32,7 +32,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication
     waitFor: ['-']
 
@@ -41,7 +41,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication
     waitFor: ['-']
 
@@ -50,7 +50,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication
     waitFor: ['-']
 
@@ -59,7 +59,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication
     waitFor: ['-']
 
@@ -68,7 +68,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication
     waitFor: ['-']
 
@@ -77,7 +77,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/com.example.taskssampleapplication
     waitFor: ['-']
 
@@ -86,7 +86,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication
     waitFor: ['-']
 
@@ -95,7 +95,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
@@ -106,7 +106,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
@@ -117,7 +117,7 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
@@ -127,18 +127,18 @@ steps:
     args:
       - '-c'
       - |
-        mvn package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/pom.xml \
+        ./mvnw package -P graal -f google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/pom.xml \
         && ./google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
     waitFor: ['-']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['mvn verify -P graal -f google-cloud-graalvm-samples/graalvm-samples-quarkus/pom.xml']
+    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-quarkus/pom.xml']
     waitFor: ['-']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['mvn verify -P graal -f google-cloud-graalvm-samples/graalvm-samples-spring/pom.xml']
+    args: ['./mvnw', 'verify', '-P graal', '-f google-cloud-graalvm-samples/graalvm-samples-spring/pom.xml']
     waitFor: ['-']
 
 timeout: 3600s # 60 minutes
