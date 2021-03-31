@@ -1,4 +1,4 @@
 #!/bin/sh
 
 gu install native-image
-./mvnw clean install -B
+./mvnw clean install -B -q
