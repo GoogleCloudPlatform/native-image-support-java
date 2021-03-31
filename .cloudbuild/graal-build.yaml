@@ -126,6 +126,7 @@ steps:
     waitFor: ['mvn-install']
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
+    entrypoint: 'bash'
     args:
       - '-c'
       - |
