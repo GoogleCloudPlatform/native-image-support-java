@@ -16,7 +16,7 @@
 
 package com.example;
 
-public interface WorkService {
+interface WorkService {
 
   void visitMeetEndpoint(String meetUrl);
 

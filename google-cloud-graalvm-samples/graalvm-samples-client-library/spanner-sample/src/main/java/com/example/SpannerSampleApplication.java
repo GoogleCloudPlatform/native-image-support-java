@@ -24,6 +24,9 @@ import com.google.cloud.spanner.ResultSet;
 import com.google.cloud.spanner.Spanner;
 import com.google.cloud.spanner.SpannerOptions;
 
+/**
+ * Sample Spanner application compiled with GraalVM.
+ */
 public class SpannerSampleApplication {
 
   private static final String TEST_INSTANCE_ID = "graalvm-sample-test-instance";
