@@ -77,10 +77,9 @@ jobs:
     - name: Native Image Compile
       run: |
         mvn clean install -B -q
-        mvn package -P graal -B --file google-cloud-graalvm-samples/
+        mvn package -P graal -B --file google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample
 
     - name: Run Samples
       run: |
         cd google-cloud-graalvm-samples
         ./graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication
-        ./graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication
