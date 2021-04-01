@@ -85,10 +85,6 @@ steps:
     args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication' ]
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
-      -
-substitutions:
-  # Google Cloud Bucket containing the Maven cache.
-  M2_CACHE: 'graalvm-build-cache'
 
 timeout: 3600s # 60 minutes
 options:
@@ -97,3 +93,8 @@ options:
   volumes:
     - name: 'm2-cache'
       path: /root/.m2
+
+substitutions:
+  # Google Cloud Bucket containing the Maven cache.
+  M2_CACHE: 'graalvm-build-cache'
+
