@@ -98,6 +98,7 @@ steps:
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 
+timeout: 1800s # 30 minutes
 options:
   volumes:
     - name: 'm2-cache'
