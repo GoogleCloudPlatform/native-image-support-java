@@ -1,9 +1,26 @@
 steps:
+  # Download maven cache
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - 'gs://${_M2_CACHE}/.m2/'
+      - '/root/.m2'
+
   # Build the samples
   - name: openjdk:11-jdk
     entrypoint: bash
     args: ['./mvnw', 'clean', 'install', '--batch-mode', '--quiet']
 
+  # Reupload maven cache to bucket
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '/root/.m2'
+      - 'gs://${_M2_CACHE}/.m2/'
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
@@ -80,3 +97,12 @@ steps:
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/datastore-sample-0.4.0-SNAPSHOT.jar']
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
+
+options:
+  volumes:
+    - name: 'm2-cache'
+      path: /root/.m2
+
+substitutions:
+  # Google Cloud Bucket containing the Maven cache.
+  _M2_CACHE: 'graalvm-build-cache'

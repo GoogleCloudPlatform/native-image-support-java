@@ -7,7 +7,7 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <graalvm.version>21.0.0</graalvm.version>
+    <graalvm.version>21.0.0.2</graalvm.version>
   </properties>
 
   <name>Google Cloud GraalVM Support Parent</name>
@@ -41,7 +41,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.29</version>
+            <version>8.41.1</version>
           </dependency>
         </dependencies>
         <executions>
@@ -53,6 +53,7 @@
             </goals>
             <configuration>
               <configLocation>google_checks.xml</configLocation>
+              <suppressionsLocation>checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
             </configuration>
           </execution>
           <execution>

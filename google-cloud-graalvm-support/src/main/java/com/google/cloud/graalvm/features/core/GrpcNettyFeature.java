@@ -118,9 +118,12 @@ public class GrpcNettyFeature implements Feature {
    * Miscellaneous classes that need to be registered coming from various JARs.
    */
   private static void loadMiscClasses(BeforeAnalysisAccess access) {
+    registerClassHierarchyForReflection(
+        access, "com.google.protobuf.DescriptorProtos");
+    registerClassForReflection(access, "com.google.api.FieldBehavior");
+
     registerForUnsafeFieldAccess(
         access, "javax.net.ssl.SSLContext", "contextSpi");
-
     registerClassForReflection(
         access, "java.lang.management.ManagementFactory");
     registerClassForReflection(

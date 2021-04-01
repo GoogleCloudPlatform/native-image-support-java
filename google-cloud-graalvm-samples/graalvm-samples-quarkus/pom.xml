@@ -15,7 +15,7 @@
   <artifactId>graalvm-samples-quarkus</artifactId>
 
   <properties>
-    <quarkus.platform.version>1.10.5.Final</quarkus.platform.version>
+    <quarkus.platform.version>1.13.0.Final</quarkus.platform.version>
   </properties>
 
   <modules>

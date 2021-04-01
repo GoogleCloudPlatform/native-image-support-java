@@ -27,6 +27,9 @@ import com.google.cloud.storage.StorageException;
 import com.google.cloud.storage.StorageOptions;
 import java.util.UUID;
 
+/**
+ * Sample Storage application compiled with GraalVM.
+ */
 public class StorageSampleApplication {
 
   /**

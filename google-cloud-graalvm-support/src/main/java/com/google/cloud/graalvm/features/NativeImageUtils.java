@@ -33,6 +33,9 @@ import org.graalvm.nativeimage.hosted.Feature.FeatureAccess;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 import org.graalvm.nativeimage.impl.RuntimeReflectionSupport;
 
+/**
+ * Internal class offering helper methods for registering methods/classes for reflection.
+ */
 public class NativeImageUtils {
 
   private static final Logger LOGGER = Logger.getLogger(NativeImageUtils.class.getName());
