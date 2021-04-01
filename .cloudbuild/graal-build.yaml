@@ -5,7 +5,7 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'gs://${_M2_CACHE}/.m2'
+      - 'gs://${_M2_CACHE}/.m2/'
       - '/root/.m2'
 
   # Build the sample images
@@ -20,7 +20,7 @@ steps:
       - 'rsync'
       - '-r'
       - '/root/.m2'
-      - 'gs://${_M2_CACHE}/.m2'
+      - 'gs://${_M2_CACHE}/.m2/'
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
