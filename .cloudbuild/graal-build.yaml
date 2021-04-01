@@ -1,9 +1,26 @@
 steps:
+  # Download maven cache
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - 'gs://${_M2_CACHE}/.m2/'
+      - '/root/.m2'
+
   # Build the sample images
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
+  # Reupload maven cache to bucket
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '/root/.m2'
+      - 'gs://${_M2_CACHE}/.m2/'
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
@@ -28,48 +45,56 @@ steps:
     waitFor: [spanner-emulator, firestore-emulator, datastore-emulator, bigtable-emulator]
 
   # Run the tests
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/com.example.taskssampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/com.example.taskssampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication' ]
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication' ]
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication' ]
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
 
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0
-    args: ['./google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication']
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication' ]
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 
 timeout: 3600s # 60 minutes
 options:
   # Need to specify a better machine to avoid OOM errors.
-  machineType: 'N1_HIGHCPU_32'
+  machineType: 'E2_HIGHCPU_32'
+  volumes:
+    - name: 'm2-cache'
+      path: /root/.m2
+
+substitutions:
+  # Google Cloud Bucket containing the Maven cache.
+  _M2_CACHE: 'graalvm-build-cache'
+
