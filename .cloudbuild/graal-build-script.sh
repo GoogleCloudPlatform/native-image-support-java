@@ -1,5 +1,8 @@
 #!/bin/sh
 
 gu install native-image
-./mvnw clean install -B -q
-./mvnw verify -T 4 -P graal -B --file google-cloud-graalvm-samples
+./mvnw clean install --batch-mode --quiet
+./mvnw verify --threads 3 -X \
+    --activate-profiles graal \
+    --batch-mode \
+    --file google-cloud-graalvm-samples
