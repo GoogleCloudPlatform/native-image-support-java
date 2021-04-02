@@ -20,6 +20,7 @@ import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassFo
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
+import com.oracle.svm.core.configure.ResourcesRegistry;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -32,6 +33,7 @@ import java.util.function.Consumer;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
+import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
@@ -70,12 +72,22 @@ public class CloudFunctionsFeature implements Feature {
       registerClassForReflection(
           access, "com.google.cloud.functions.invoker.runner.Invoker$Options");
 
+      // Register Jetty Resources.
+      ResourcesRegistry resourcesRegistry = ImageSingletons.lookup(ResourcesRegistry.class);
+      resourcesRegistry.addResources(
+          "\\QMETA-INF/services/org.eclipse.jetty.http.HttpFieldPreEncoder\\E");
+      resourcesRegistry.addResources("\\Qorg/eclipse/jetty/http/encoding.properties\\E");
+      resourcesRegistry.addResources("\\Qorg/eclipse/jetty/http/mime.properties\\E");
+      resourcesRegistry.addResources("\\Qorg/eclipse/jetty/version/build.properties\\E");
+      resourcesRegistry.addResourceBundles("javax.servlet.LocalStrings");
+      resourcesRegistry.addResourceBundles("javax.servlet.http.LocalStrings");
+
+      // Register user-implemented Function classes
       List<Class<?>> functionClasses =
           FUNCTIONS_CLASSES.stream()
               .map(name -> access.findClassByName(name))
               .collect(Collectors.toList());
 
-      // Scan classpath for GCF function classes
       scanJarClasspath(access, clazz -> {
         boolean isFunctionSubtype = functionClasses.stream()
             .anyMatch(function ->
