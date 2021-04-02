@@ -51,8 +51,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Pub/Sub sample application compiled with GraalVM.
+ */
 public class PubSubSampleApplication {
-
 
   /**
    * Driver for the Pub/Sub Sample application which publishes a message to a specified topic.

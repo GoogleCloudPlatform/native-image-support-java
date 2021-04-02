@@ -34,6 +34,24 @@ Typically, you can just depend on the latest versions of the client libraries to
 This is an easy way to ensure that the versions of all the client libraries in your project are compatible with each other and up-to-date.
 The `libraries-bom` also manages the version of `grpc-netty-shaded` as well and ensures that it is at the latest compatible version.
 
+### GraalVM Features
+
+This project offers [GraalVM features](https://www.graalvm.org/sdk/javadoc/index.html?org/graalvm/nativeimage/hosted/Feature.html) which provides optional reflection configurations for specific use-cases.
+These features should only be used when necessary because they increase the size of the container image and increase compilation times.
+
+* `com.google.cloud.graalvm.features.ProtobufMessageFeature`: Adds reflection metadata for request objects of the Google Cloud APIs that your application uses.
+This is typically only needed if you need to print/log requests objects or access them reflectively.
+
+Add the features as an additional build argument to the native-image compiler via the `--features` flag.
+
+Command line Example:
+
+```
+native-image -cp <other settings> --features=com.google.cloud.graalvm.features.ProtobufMessageFeature
+```
+
+The [Cloud Tasks code sample](google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/pom.xml) demonstrates how to use this setting.
+
 ## Supported Libraries
 
 Most of the Java Google Client Libraries [listed here](https://github.com/googleapis/google-cloud-java#supported-apis) are supported for GraalVM compilation using this dependency.
