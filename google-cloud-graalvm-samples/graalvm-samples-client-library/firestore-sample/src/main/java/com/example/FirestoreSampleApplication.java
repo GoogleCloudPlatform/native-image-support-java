@@ -17,6 +17,7 @@
 package com.example;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.FieldPath;
 import com.google.cloud.firestore.Firestore;
@@ -45,6 +46,7 @@ public class FirestoreSampleApplication {
 
     deleteCollection(db);
     createUserDocument(db);
+    createUserDocumentPojo(db);
     readDocuments(db);
     runSampleQueries(db);
   }
@@ -54,18 +56,28 @@ public class FirestoreSampleApplication {
     for (DocumentReference doc : documents) {
       doc.delete().get();
     }
-
   }
 
   private static void createUserDocument(Firestore db) throws Exception {
     DocumentReference docRef = db.collection(USERS_COLLECTION).document("alovelace");
     Map<String, Object> data = new HashMap<>();
+    data.put("id", "10");
     data.put("first", "Ada");
     data.put("last", "Lovelace");
     data.put("born", 1815);
 
     WriteResult result = docRef.set(data).get();
     System.out.println("Created user " + docRef.getId() + ". Timestamp: " + result.getUpdateTime());
+  }
+
+  private static void createUserDocumentPojo(Firestore db) throws Exception {
+    CollectionReference collectionReference = db.collection(USERS_COLLECTION);
+    WriteResult result =
+        collectionReference.document()
+            .set(new Person("Alan", "Turing", 1912))
+            .get();
+
+    System.out.println("Created user by POJO. Timestamp: " + result.getUpdateTime());
   }
 
   private static void readDocuments(Firestore db) throws Exception {
