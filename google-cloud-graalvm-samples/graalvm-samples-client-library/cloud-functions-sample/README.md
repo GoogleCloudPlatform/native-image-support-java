@@ -58,13 +58,13 @@ The resulting image is outputted to the `target/` directory.
         
       * `com.example.function.BasicHttpFunction` - Responds with a basic message.
       * `com.example.function.ErrorHttpFunction` - Responds with error code 500.
-      * `com.example.PubSubHttpFunction` - Sends a Pub/Sub message to topic `test-topic` when invoked.
+      * `com.example.function.PubSubHttpFunction` - Sends a Pub/Sub message to topic `test-topic` when invoked.
       
     You can run the examples by invoking the same command.
     Just change the function to run with `--target`:
     
     ```
-    ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.PubSubHttpFunction
+    ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.function.PubSubHttpFunction
     ```
     
     Once it's running, visit `localhost:8080` to verify it works.
