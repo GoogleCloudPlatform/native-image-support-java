@@ -36,7 +36,7 @@ import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
 /**
- * A feature which registers reflective usages of the GRPC Protobuf libraries.
+ * A feature which registers reflective usages of the Cloud Functions library.
  */
 @AutomaticFeature
 public class CloudFunctionsFeature implements Feature {

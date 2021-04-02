@@ -69,27 +69,3 @@ The resulting image is outputted to the `target/` directory.
     
     Once it's running, visit `localhost:8080` to verify it works.
     The `PubSubHttpFunction` will publish a message to a topic named `test-topic` once invoked, so you should create the topic in your GCP project if you want to try it out.
-    
-### Notes
-
-Some comments about this solution:
-
-* The Cloud Function Invoker's `--classpath` argument is not used since all sources must be known ahead-of-time in GraalVM compilation.
-  Can't dynamically specify a classpath to load a function from.
-
-* There wasn't too much reflection configuration needed.
-
-  * Only needed some for classes in `Jetty` and `JCommander` libraries.
-    Also used in 2 instances of the Function Framework to load the user-specified function.
-  
-  * I decided to scan for all subclasses of `HttpFunction`s and `BackgroundFunction`s on the classpath to register these since these can be instantiated and invoked reflectively by the framework when passed in the `--target` argument.
-  
-    * Also registered the type `T` in subclasses of `BackgroundFunction<T>` since these the `T` type is serialized into JSON, which uses reflection.
-    
-  * The code for this is in [`CloudFunctionFeature`](https://github.com/GoogleCloudPlatform/google-cloud-graalvm-support/blob/cloud-functions-example/google-cloud-graalvm-support/src/main/java/com/google/cloud/graalvm/features/cloudfunctions/CloudFunctionsFeature.java).
-    
-* Some resources needed to be registered.
-  These are found in `resources/META-INF/native-image/resource-config.json`.
-
-
-    
