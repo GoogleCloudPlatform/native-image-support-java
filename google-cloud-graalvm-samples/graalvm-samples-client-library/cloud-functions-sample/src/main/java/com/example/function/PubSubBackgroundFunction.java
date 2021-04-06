@@ -14,10 +14,18 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.example.function;
 
-interface WorkService {
+import com.example.pojos.PubSubMessage;
+import com.google.cloud.functions.BackgroundFunction;
+import com.google.cloud.functions.Context;
 
-  void visitMeetEndpoint(String meetUrl);
+public class PubSubBackgroundFunction implements BackgroundFunction<PubSubMessage> {
 
+  @Override
+  public void accept(PubSubMessage payload, Context context) {
+    System.out.println("Background function run.");
+    System.out.println("Received payload:");
+    System.out.println(payload);
+  }
 }

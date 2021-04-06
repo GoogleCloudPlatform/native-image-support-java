@@ -14,10 +14,35 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.example.pojos;
 
-interface WorkService {
+import java.util.Map;
 
-  void visitMeetEndpoint(String meetUrl);
+public class PubSubMessage {
+  private String data;
+  private Map<String, String> attributes;
 
+  public String getData() {
+    return data;
+  }
+
+  public void setData(String data) {
+    this.data = data;
+  }
+
+  public Map<String, String> getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(Map<String, String> attributes) {
+    this.attributes = attributes;
+  }
+
+  @Override
+  public String toString() {
+    return "PubSubMessage{"
+        + "data='" + data + '\''
+        + ", attributes=" + attributes
+        + '}';
+  }
 }

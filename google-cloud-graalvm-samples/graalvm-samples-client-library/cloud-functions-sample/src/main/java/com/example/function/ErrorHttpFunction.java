@@ -14,10 +14,17 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.example.function;
 
-interface WorkService {
+import com.google.cloud.functions.HttpFunction;
+import com.google.cloud.functions.HttpRequest;
+import com.google.cloud.functions.HttpResponse;
 
-  void visitMeetEndpoint(String meetUrl);
+public class ErrorHttpFunction implements HttpFunction {
 
+  @Override
+  public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws Exception {
+    httpResponse.getWriter().write("error");
+    httpResponse.setStatusCode(500);
+  }
 }

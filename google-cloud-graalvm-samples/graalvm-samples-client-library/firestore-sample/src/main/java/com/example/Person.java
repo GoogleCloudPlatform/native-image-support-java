@@ -16,8 +16,25 @@
 
 package com.example;
 
-interface WorkService {
+import com.google.cloud.firestore.annotation.DocumentId;
 
-  void visitMeetEndpoint(String meetUrl);
+/**
+ * Simple document object to load into Firestore.
+ */
+public class Person {
 
+  @DocumentId
+  public String id;
+
+  public String first;
+
+  public String last;
+
+  public int born;
+
+  Person(String first, String last, int born) {
+    this.first = first;
+    this.last = last;
+    this.born = born;
+  }
 }
