@@ -7,7 +7,7 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <graalvm.version>21.0.0.2</graalvm.version>
+    <graalvm.version>21.1.0</graalvm.version>
   </properties>
 
   <name>Google Cloud GraalVM Support Parent</name>
