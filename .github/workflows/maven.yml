@@ -5,12 +5,12 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches-ignore:
+      - 'dependabot/**'
 
 jobs:
   std-java-build:
+    if: github.repository == 'GoogleCloudPlatform/google-cloud-graalvm-support'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -47,6 +47,7 @@ jobs:
         java -jar graalvm-samples-client-library/trace-sample/target/trace-sample-0.5.0-SNAPSHOT.jar
 
   graal-java-build:
+    if: github.repository == 'GoogleCloudPlatform/google-cloud-graalvm-support'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
