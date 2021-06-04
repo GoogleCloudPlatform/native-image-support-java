@@ -68,6 +68,20 @@ public class NativeImageUtils {
   }
 
   /**
+   * Registers all constructors of a class for reflection.
+   */
+  public static void registerConstructorsForReflection(FeatureAccess access, String name) {
+    Class<?> clazz = access.findClassByName(name);
+    if (clazz != null) {
+      RuntimeReflection.register(clazz);
+      RuntimeReflection.register(clazz.getDeclaredConstructors());
+    } else {
+      LOGGER.warning(
+          "Failed to find " + name + " on the classpath for reflection.");
+    }
+  }
+
+  /**
    * Registers an entire class for reflection use.
    */
   public static void registerClassForReflection(FeatureAccess access, String name) {
