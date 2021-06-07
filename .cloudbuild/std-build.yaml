@@ -78,8 +78,8 @@ steps:
     args: [
         '-jar',
         '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
-        '-Dpassword=root'
-        'google-cloud-graalvm-samples/graalvm-samples-client-library/cloud-sql-sample/target/cloud-sql-sample-0.5.0-SNAPSHOT.jar',
+        '-Dpassword=root',
+        'google-cloud-graalvm-samples/graalvm-samples-client-library/cloud-sql-sample/target/cloud-sql-sample-0.5.0-SNAPSHOT.jar'
     ]
 
   - name: openjdk:11-jdk
