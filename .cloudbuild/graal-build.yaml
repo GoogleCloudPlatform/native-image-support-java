@@ -49,6 +49,13 @@ steps:
     args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
+    args: [
+        './google-cloud-graalvm-samples/graalvm-samples-client-library/cloud-sql-sample/target/com.example.cloudsqlsampleapplication',
+        '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
+        '-Dpassword=root'
+    ]
+
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
     args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2

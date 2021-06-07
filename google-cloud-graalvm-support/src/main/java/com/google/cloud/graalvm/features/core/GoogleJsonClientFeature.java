@@ -64,6 +64,10 @@ public class GoogleJsonClientFeature implements Feature {
       ResourcesRegistry resourcesRegistry = ImageSingletons.lookup(ResourcesRegistry.class);
       resourcesRegistry.addResources(
           "\\Qcom/google/api/client/googleapis/google-api-client.properties\\E");
+      resourcesRegistry.addResources(
+          "\\Qcom/google/api/client/googleapis/google.p12\\E");
+      resourcesRegistry.addResources(
+          "\\Qcom/google/api/client/http/google-http-client.properties\\E");
     }
   }
 

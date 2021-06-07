@@ -44,7 +44,6 @@ steps:
     args: ['dockerize', '-timeout=40s', '-wait=tcp://spanner-emulator:9010', '-wait=tcp://firestore-emulator:9010', '-wait=tcp://bigtable-emulator:9010', '-wait=tcp://datastore-emulator:9010']
     waitFor: [spanner-emulator, firestore-emulator, datastore-emulator, bigtable-emulator]
 
-
   # Run all the samples
   - name: openjdk:11-jdk
     entrypoint: java
@@ -73,6 +72,15 @@ steps:
   - name: openjdk:11-jdk
     entrypoint: java
     args: ['-jar', 'google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/tasks-sample-0.5.0-SNAPSHOT.jar']
+
+  - name: openjdk:11-jdk
+    entrypoint: java
+    args: [
+        '-jar',
+        '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
+        '-Dpassword=root',
+        'google-cloud-graalvm-samples/graalvm-samples-client-library/cloud-sql-sample/target/cloud-sql-sample-0.5.0-SNAPSHOT.jar'
+    ]
 
   - name: openjdk:11-jdk
     entrypoint: java
