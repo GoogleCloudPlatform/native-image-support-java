@@ -60,3 +60,11 @@ The application runs some simple Cloud SQL queries to demonstrate compatibility.
     Books in database:
     a965870d-c148-4159-9280-81ea507af1f8, The Book
     ```
+   
+## Additional Notes
+
+The Cloud SQL connector library uses the CP1252 charset when logging error messages from the server.
+
+Therefore, you will need to pass `-H:+AddAllCharsets` to the GraalVM compiler.
+
+This is specified in the `buildArgs` section of the `native-image-maven-plugin` in the pom.xml of this sample.
