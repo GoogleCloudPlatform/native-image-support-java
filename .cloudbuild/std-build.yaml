@@ -23,7 +23,7 @@ steps:
     args:
       - '-c'
       - |
-        tar -C /root/.m2 -cvf maven-std.tar /root/.m2
+        tar -cvf maven-std.tar -C /root/.m2 .
         gsutil cp maven-std.tar gs://$_M2_CACHE
 
   # Start emulators
