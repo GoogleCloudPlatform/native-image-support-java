@@ -5,12 +5,12 @@ steps:
     args:
       - '-c'
       - |
-        gsutil cp gs://$_M2_CACHE/maven.tar . \
-        if [ -f "maven.tar" ]; then \
-            echo "Extracting archive" \
-            tar -xf maven.tar -C /root/.m2 \
-            rm maven.tar \
-            ls \
+        gsutil cp gs://$_M2_CACHE/maven.tar .
+        if [ -f "maven.tar" ]; then
+            echo "Extracting archive"
+            tar -xf maven.tar -C /root/.m2
+            rm maven.tar
+            ls
         fi
 
   # Build the samples
@@ -24,7 +24,7 @@ steps:
     args:
       - '-c'
       - |
-        tar --directory /root/.m2 -cf maven.tar . \
+        tar --directory /root/.m2 -cf maven.tar .
         gsutil cp maven.tar gs://$_M2_CACHE
 
   # Start emulators
