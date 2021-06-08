@@ -5,11 +5,10 @@ steps:
     args:
       - '-c'
       - |
-        gsutil cp gs://$_M2_CACHE/maven.tar .
-        if [ -f "maven.tar" ]; then
-            echo "Extracting archive"
-            tar -xf maven.tar -C /root/.m2
-            rm maven.tar
+        gsutil cp gs://$_M2_CACHE/maven-std.tar .
+        if [ -f "maven-std.tar" ]; then
+            tar -xf maven-std.tar -C /root/.m2
+            rm maven-std.tar
             ls
         fi
 
@@ -24,8 +23,8 @@ steps:
     args:
       - '-c'
       - |
-        tar --directory /root/.m2 -cf maven.tar .
-        gsutil cp maven.tar gs://$_M2_CACHE
+        tar -cvf maven-std.tar /root/.m2
+        gsutil cp maven-std.tar gs://$_M2_CACHE
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
