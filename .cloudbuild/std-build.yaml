@@ -17,7 +17,7 @@ steps:
     entrypoint: bash
     args: ['./mvnw', 'clean', 'install', '--batch-mode']
 
-  # Reupload maven cache to the bucket
+  # Reupload maven cache to bucket
   - name: 'gcr.io/cloud-builders/gsutil'
     entrypoint: bash
     args:
