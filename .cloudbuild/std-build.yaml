@@ -9,7 +9,6 @@ steps:
         if [ -f "maven-std.tar" ]; then
             tar -xf maven-std.tar -C /root/.m2
             rm maven-std.tar
-            ls
         fi
 
   # Build the samples
@@ -23,7 +22,7 @@ steps:
     args:
       - '-c'
       - |
-        tar -cvf maven-std.tar -C /root/.m2 .
+        tar -cf maven-std.tar -C /root/.m2 .
         gsutil cp maven-std.tar gs://$_M2_CACHE
 
   # Start emulators
