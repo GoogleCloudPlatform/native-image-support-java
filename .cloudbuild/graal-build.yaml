@@ -1,12 +1,15 @@
 steps:
   # Download maven cache
   - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: bash
     args:
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - 'gs://${_M2_CACHE}/.m2-graal/'
-      - '/root/.m2'
+      - '-c'
+      - |
+        gsutil cp gs://$_M2_CACHE/maven-graalvm.tar .
+        if [ -f "maven-graalvm.tar" ]; then
+            tar -xf maven-graalvm.tar -C /root/.m2
+            rm maven-graalvm.tar
+        fi
 
   # Build the sample images
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.0.0.2
@@ -15,12 +18,12 @@ steps:
 
   # Reupload maven cache to bucket
   - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: bash
     args:
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - '/root/.m2'
-      - 'gs://${_M2_CACHE}/.m2-graal/'
+      - '-c'
+      - |
+        tar -cf maven-graalvm.tar -C /root/.m2 .
+        gsutil cp maven-graalvm.tar gs://$_M2_CACHE
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'

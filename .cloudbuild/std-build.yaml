@@ -1,26 +1,29 @@
 steps:
   # Download maven cache
   - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: bash
     args:
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - 'gs://${_M2_CACHE}/.m2-std/'
-      - '/root/.m2'
+      - '-c'
+      - |
+        gsutil cp gs://$_M2_CACHE/maven-std.tar .
+        if [ -f "maven-std.tar" ]; then
+            tar -xf maven-std.tar -C /root/.m2
+            rm maven-std.tar
+        fi
 
   # Build the samples
   - name: openjdk:11-jdk
     entrypoint: bash
-    args: ['./mvnw', 'clean', 'install', '--batch-mode', '--quiet']
+    args: ['./mvnw', 'clean', 'install', '--batch-mode']
 
   # Reupload maven cache to bucket
   - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: bash
     args:
-      - '-m'
-      - 'rsync'
-      - '-r'
-      - '/root/.m2'
-      - 'gs://${_M2_CACHE}/.m2-std/'
+      - '-c'
+      - |
+        tar -cf maven-std.tar -C /root/.m2 .
+        gsutil cp maven-std.tar gs://$_M2_CACHE
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
