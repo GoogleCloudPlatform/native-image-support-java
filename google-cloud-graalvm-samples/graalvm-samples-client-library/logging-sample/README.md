@@ -15,7 +15,7 @@ Navigate to this directory in a new terminal.
 1. Compile the application using the GraalVM Compiler. This step may take a few minutes.
 
    ```
-   mvn package -P graal
+   mvn package -P native
    ```
 
 2. Run the application:

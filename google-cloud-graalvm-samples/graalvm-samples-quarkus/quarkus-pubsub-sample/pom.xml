@@ -78,7 +78,7 @@
 
   <profiles>
     <profile>
-      <id>graal</id>
+      <id>native</id>
       <activation>
         <property>
           <name>graal</name>

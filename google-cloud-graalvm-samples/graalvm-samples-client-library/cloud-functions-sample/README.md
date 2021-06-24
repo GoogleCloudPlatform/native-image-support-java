@@ -27,7 +27,7 @@ Once installed, run `gu install native-image`.
     OpenJDK 64-Bit Server VM GraalVM CE 21.0.0 (build 11.0.10+8-jvmci-21.0-b06, mixed mode, sharing)
     ```
 
-2. Run `mvn package -P graal` in this directory.
+2. Run `mvn package -P native` in this directory.
 This triggers the native image build.
 The resulting image is outputted to the `target/` directory.
 

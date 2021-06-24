@@ -27,7 +27,7 @@ You will need to follow these prerequisite steps in order to run these samples:
     gu install native-image
     ```
    
-    Once you finish following the instructions, verify that the default version of Java is set to the Graal version by running `java -version` in a terminal.
+    Once you finish following the instructions, verify that the default version of Java is set to the GraalVM version by running `java -version` in a terminal.
     
     You will see something similar to the below output:
     

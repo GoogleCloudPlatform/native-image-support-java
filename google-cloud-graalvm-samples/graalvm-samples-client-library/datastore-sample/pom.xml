@@ -48,7 +48,7 @@
 
   <profiles>
     <profile>
-      <id>graal</id>
+      <id>native</id>
       <build>
         <plugins>
           <plugin>
