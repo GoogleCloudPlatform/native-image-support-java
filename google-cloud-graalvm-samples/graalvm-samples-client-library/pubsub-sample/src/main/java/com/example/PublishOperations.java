@@ -47,7 +47,7 @@ public class PublishOperations {
             .build();
 
     try {
-      String message = "Pub/Sub Graal Test published message at timestamp: " + Instant.now();
+      String message = "Pub/Sub GraalVM Test published message at timestamp: " + Instant.now();
       ByteString data = ByteString.copyFromUtf8(message);
       PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
 

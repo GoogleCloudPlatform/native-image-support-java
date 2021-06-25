@@ -32,7 +32,7 @@ Then visit http://localhost:8080/ to view the application.
 You can create a native executable using the `graal` profile.
 
 ```
-mvn package -P graal`
+mvn package -P native`
 ```
 
 ### Compiling using Docker container
@@ -40,7 +40,7 @@ mvn package -P graal`
 If you don't have GraalVM installed, you can run the native executable build in a container using the following command.
 
 ```
-mvn package -P graal -Dquarkus.native.container-build=true -Dnative-image.xmx=6g
+mvn package -P native -Dquarkus.native.container-build=true -Dnative-image.xmx=6g
 ```
 
 This method requires Docker Engine to be installed and configured to have at least 6 GB of memory.

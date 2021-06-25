@@ -24,7 +24,7 @@ This sample runs through basic operations of creating a new document, running qu
 1. Navigate to this directory and compile the application with the GraalVM compiler.
 
     ```
-    mvn package -P graal
+    mvn package -P native
     ```
 
 2. **(Optional)** If you're using the emulator, export the `FIRESTORE_EMULATOR_HOST` as an environment variable in your terminal.

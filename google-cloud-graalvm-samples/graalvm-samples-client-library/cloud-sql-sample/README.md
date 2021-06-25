@@ -30,7 +30,7 @@ The application runs some simple Cloud SQL queries to demonstrate compatibility.
 1. Navigate to this directory and compile the application with the GraalVM compiler.
 
     ```
-    mvn package -P graal
+    mvn package -P native
     ```
 
 2. Run the application. Set the `-Dinstance` property to the instance connection name referenced above.
