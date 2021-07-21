@@ -27,7 +27,7 @@ import org.graalvm.nativeimage.hosted.Feature;
 @AutomaticFeature
 public class OpenCensusFeature implements Feature {
 
-  private static final String OPEN_CENSUS_CLASS = "io.opencensus.tags.Tags";
+  private static final String OPEN_CENSUS_CLASS = "io.opencensus.impl.tags.TagsComponentImpl";
 
   @Override
   public void beforeAnalysis(BeforeAnalysisAccess access) {
