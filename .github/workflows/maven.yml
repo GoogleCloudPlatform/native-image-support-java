@@ -56,7 +56,7 @@ jobs:
     - name: Set up GraalVM Compiler
       uses: rinx/setup-graalvm-ce@v0.0.5
       with:
-        graalvm-version: "21.0.0.2"
+        graalvm-version: "21.2.0"
         java-version: "java11"
         native-image: "true"
 
