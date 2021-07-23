@@ -22,8 +22,8 @@
 
     <dependency>
       <groupId>org.springframework.experimental</groupId>
-      <artifactId>spring-graalvm-native</artifactId>
-      <version>0.8.5</version>
+      <artifactId>spring-native</artifactId>
+      <version>0.10.1</version>
     </dependency>
 
     <dependency>
@@ -53,26 +53,56 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.graalvm.nativeimage</groupId>
-            <artifactId>native-image-maven-plugin</artifactId>
-            <version>${graalvm.version}</version>
-            <configuration>
-              <mainClass>com.example.TraceSampleApplication</mainClass>
-              <buildArgs>
-                --no-fallback
-                --no-server
-                --enable-https
-                --enable-http
-              </buildArgs>
-            </configuration>
+            <groupId>org.springframework.experimental</groupId>
+            <artifactId>spring-aot-maven-plugin</artifactId>
+            <version>0.10.1</version>
             <executions>
               <execution>
+                <id>test-generate</id>
                 <goals>
-                  <goal>native-image</goal>
+                  <goal>test-generate</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>generate</id>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>0.9.0</version>
+            <executions>
+              <execution>
+                <id>build-native</id>
+                <goals>
+                  <goal>build</goal>
                 </goals>
                 <phase>package</phase>
               </execution>
             </executions>
+            <configuration>
+              <buildArgs>
+                <buildArg>--no-fallback</buildArg>
+                <buildArg>--no-server</buildArg>
+                <buildArg>--enable-https</buildArg>
+                <buildArg>--enable-http</buildArg>
+                <buildArg>--trace-class-initialization=org.springframework.util.unit.DataSize</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>2.5.2</version>
+            <configuration>
+              <classifier>exec</classifier>
+            </configuration>
           </plugin>
         </plugins>
       </build>
