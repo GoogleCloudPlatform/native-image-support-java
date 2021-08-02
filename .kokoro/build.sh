@@ -17,6 +17,11 @@
 
 set -eo pipefail
 
+# Use Java 11.
+export JAVA_HOME=${KOKORO_GFILE_DIR}
+export PATH="$JAVA_HOME/bin:$PATH"
+$JAVA_HOME/bin/javac -version
+
 dir=$(dirname "$0")
 
 pushd $dir/../
