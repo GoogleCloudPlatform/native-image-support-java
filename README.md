@@ -14,7 +14,7 @@ For example, in Maven:
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-graalvm-support</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
