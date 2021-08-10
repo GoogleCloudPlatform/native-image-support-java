@@ -5,7 +5,7 @@
   <parent>
     <artifactId>graalvm-samples-client-library</artifactId>
     <groupId>com.google.cloud</groupId>
-    <version>0.5.0-SNAPSHOT</version>
+    <version>0.6.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -21,7 +21,7 @@
     <dependency>
       <groupId>com.google.cloud.sql</groupId>
       <artifactId>mysql-socket-factory-connector-j-8</artifactId>
-      <version>1.3.1</version>
+      <version>1.3.2</version>
     </dependency>
 
     <dependency>

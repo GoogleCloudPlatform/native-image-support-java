@@ -29,7 +29,7 @@ setup_environment_secrets
 create_settings_xml_file $MAVEN_SETTINGS_FILE
 
 # change to release version
-./mvnw versions:set -DremoveSnapshot
+./mvnw versions:set -DremoveSnapshot -P release
 
 # stage release
 ./mvnw clean deploy -B \

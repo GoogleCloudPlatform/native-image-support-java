@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright 2020-2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,8 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
-import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature.FeatureAccess;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
-import org.graalvm.nativeimage.impl.RuntimeReflectionSupport;
 
 /**
  * Internal class offering helper methods for registering methods/classes for reflection.
@@ -125,12 +123,10 @@ public class NativeImageUtils {
       FeatureAccess access, String className, String... fields) {
     Class<?> clazz = access.findClassByName(className);
     if (clazz != null) {
-      RuntimeReflectionSupport reflectionSupport =
-          ImageSingletons.lookup(RuntimeReflectionSupport.class);
       RuntimeReflection.register(clazz);
       for (String fieldName : fields) {
         try {
-          reflectionSupport.register(false, true, clazz.getDeclaredField(fieldName));
+          RuntimeReflection.register(clazz.getDeclaredField(fieldName));
         } catch (NoSuchFieldException ex) {
           LOGGER.warning("Failed to register field " + fieldName + " for class " + className);
           LOGGER.warning(ex.getMessage());
