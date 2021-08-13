@@ -60,8 +60,6 @@
               <buildArgs>
                 --no-fallback
                 --no-server
-                --enable-https
-                --enable-http
                 --initialize-at-build-time
               </buildArgs>
             </configuration>

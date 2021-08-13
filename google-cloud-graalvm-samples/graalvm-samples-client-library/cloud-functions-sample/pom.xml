@@ -84,8 +84,6 @@
               <buildArgs>
                 --no-fallback
                 --no-server
-                --enable-https
-                --enable-http
               </buildArgs>
             </configuration>
             <executions>
