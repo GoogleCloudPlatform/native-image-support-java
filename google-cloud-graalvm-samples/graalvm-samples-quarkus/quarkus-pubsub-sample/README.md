@@ -49,7 +49,7 @@ You may use this method on any machine that supports Docker, but it will produce
 
 ### Running the executable on Linux
 
-You can then execute your native executable with: `./target/quarkus-pubsub-sample-0.6.0-SNAPSHOT-runner`
+You can then execute your native executable with: `./target/quarkus-pubsub-sample-0.7.0-SNAPSHOT-runner`
 
 Then visit http://localhost:8080/ to view the application.
 
@@ -61,7 +61,7 @@ Then you will be able to run the executable in a Linux container.
 ```
 $ export CREDS_PATH=/PATH/TO/CREDS/DIRECTORY/
 $ export CREDS_FILE_NAME=credentials-file.json
-$ docker run -it --rm -v $PWD/target/:/target/ -v $CREDS_PATH:/creds/ --env GOOGLE_APPLICATION_CREDENTIALS=/creds/$CREDS_FILE_NAME -p 8080:8080 ubuntu ./target/quarkus-pubsub-sample-0.6.0-SNAPSHOT-runner
+$ docker run -it --rm -v $PWD/target/:/target/ -v $CREDS_PATH:/creds/ --env GOOGLE_APPLICATION_CREDENTIALS=/creds/$CREDS_FILE_NAME -p 8080:8080 ubuntu ./target/quarkus-pubsub-sample-0.7.0-SNAPSHOT-runner
 ```
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
