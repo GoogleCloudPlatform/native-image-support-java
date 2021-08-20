@@ -62,8 +62,6 @@
                 --no-fallback
                 --no-server
                 --initialize-at-build-time
-                --enable-https
-                --enable-http
                 --features=com.google.cloud.graalvm.features.ProtobufMessageFeature
               </buildArgs>
             </configuration>

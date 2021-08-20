@@ -73,8 +73,6 @@
               <buildArgs>
                 --no-fallback
                 --no-server
-                --enable-https
-                --enable-http
                 <!-- Additional charsets is needed for error logging -->
                 -H:+AddAllCharsets
               </buildArgs>

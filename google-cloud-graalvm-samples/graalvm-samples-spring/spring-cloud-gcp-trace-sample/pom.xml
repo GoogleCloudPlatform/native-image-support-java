@@ -89,8 +89,6 @@
               <buildArgs>
                 <buildArg>--no-fallback</buildArg>
                 <buildArg>--no-server</buildArg>
-                <buildArg>--enable-https</buildArg>
-                <buildArg>--enable-http</buildArg>
                 <buildArg>--trace-class-initialization=org.springframework.util.unit.DataSize</buildArg>
               </buildArgs>
             </configuration>
