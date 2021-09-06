@@ -20,6 +20,8 @@ import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassFo
 import static com.google.cloud.graalvm.features.NativeImageUtils.registerClassHierarchyForReflection;
 
 import com.oracle.svm.core.annotate.AutomaticFeature;
+import com.oracle.svm.core.configure.ResourcesRegistry;
+import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature;
 
 /**
@@ -40,6 +42,13 @@ public class SpannerFeature implements Feature {
           access, "com.google.spanner.admin.instance.v1.Instance");
       registerClassForReflection(
           access, "com.google.spanner.admin.database.v1.RestoreInfo");
+
+      // Resources
+      ResourcesRegistry resourcesRegistry = ImageSingletons.lookup(ResourcesRegistry.class);
+      resourcesRegistry.addResources(
+          "\\Qcom/google/cloud/spanner/connection/ClientSideStatements.json\\E");
+      resourcesRegistry.addResources(
+          "\\Qcom/google/cloud/spanner/spi/v1/grpc-gcp-apiconfig.json\\E");
     }
   }
 }
