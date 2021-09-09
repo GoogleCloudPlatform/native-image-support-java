@@ -54,11 +54,11 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Set up GraalVM Compiler
-      uses: rinx/setup-graalvm-ce@v0.0.5
+    - uses: DeLaGuardo/setup-graalvm@4.0
       with:
-        graalvm-version: "21.2.0"
-        java-version: "java11"
-        native-image: "true"
+        graalvm: '21.2.0'
+        java: 'java11'
+        arch: 'amd64'
 
     - uses: actions/cache@v1
       with:
@@ -77,6 +77,7 @@ jobs:
 
     - name: Native Image Compile
       run: |
+        gu install native-image
         mvn clean install -B -q
         mvn package -P native -B --file google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample
 
