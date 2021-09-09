@@ -54,7 +54,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Set up GraalVM Compiler
-    - uses: DeLaGuardo/setup-graalvm@4.0
+      uses: DeLaGuardo/setup-graalvm@4.0
       with:
         graalvm: '21.2.0'
         java: 'java11'
