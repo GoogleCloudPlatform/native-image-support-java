@@ -10,7 +10,7 @@ on:
 
 jobs:
   std-java-build:
-    if: github.repository == 'GoogleCloudPlatform/java-native-image-support'
+    if: github.repository_owner == 'GoogleCloudPlatform'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
         java -jar native-image-samples-client-library/trace-sample/target/trace-sample-0.8.0-SNAPSHOT.jar
 
   graal-java-build:
-    if: github.repository == 'GoogleCloudPlatform/java-native-image-support'
+    if: github.repository_owner == 'GoogleCloudPlatform'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
