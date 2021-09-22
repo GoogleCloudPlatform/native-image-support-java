@@ -43,8 +43,8 @@ jobs:
     - name: Run Samples
       run: |
         cd java-native-image-samples
-        java -jar native-image-samples-client-library/pubsub-sample/target/pubsub-sample-0.7.0-SNAPSHOT.jar
-        java -jar native-image-samples-client-library/trace-sample/target/trace-sample-0.7.0-SNAPSHOT.jar
+        java -jar native-image-samples-client-library/pubsub-sample/target/pubsub-sample-0.8.0-SNAPSHOT.jar
+        java -jar native-image-samples-client-library/trace-sample/target/trace-sample-0.8.0-SNAPSHOT.jar
 
   graal-java-build:
     if: github.repository == 'GoogleCloudPlatform/java-native-image-support'
