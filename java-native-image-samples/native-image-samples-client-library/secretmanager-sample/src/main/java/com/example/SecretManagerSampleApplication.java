@@ -30,7 +30,8 @@ import com.google.protobuf.ByteString;
 import java.io.IOException;
 
 /**
- * Sample application demonstrating Native Image compatibility with Google Cloud Secret Manager APIs.
+ * Sample application demonstrating Native Image compatibility with
+ * Google Cloud Secret Manager APIs.
  */
 public class SecretManagerSampleApplication {
 
