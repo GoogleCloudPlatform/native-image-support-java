@@ -17,7 +17,7 @@ A commit to the master branch will automatically trigger the `prod:cloud-java-fr
     The {STAGING_ID} in this case is comgooglecloud-1416.
     ```
 
-2. Verify staged artifacts by going to `https://oss.sonatype.org/content/repositories/{STAGING_ID}/com/google/cloud/`
+2. Verify staged artifacts by going to `https://google.oss.sonatype.org/content/repositories/{STAGING_ID}/com/google/cloud/`
 
     **Note:** You can also view all staged artifacts at http://oss.sonatype.org.
     
