@@ -5,10 +5,10 @@ steps:
     args:
       - '-c'
       - |
-        gsutil cp gs://$_M2_CACHE/maven-graalvm.tar .
-        if [ -f "maven-graalvm.tar" ]; then
-            tar -xf maven-graalvm.tar -C /root/.m2
-            rm maven-graalvm.tar
+        gsutil cp gs://$_M2_CACHE/maven-native-image.tar .
+        if [ -f "maven-native-image.tar" ]; then
+            tar -xf maven-native-image.tar -C /root/.m2
+            rm maven-native-image.tar
         fi
 
   # Build the sample images
@@ -22,8 +22,8 @@ steps:
     args:
       - '-c'
       - |
-        tar -cf maven-graalvm.tar -C /root/.m2 .
-        gsutil cp maven-graalvm.tar gs://$_M2_CACHE
+        tar -cf maven-native-image.tar -C /root/.m2 .
+        gsutil cp maven-native-image.tar gs://$_M2_CACHE
 
   # Start emulators
   - name: 'gcr.io/cloud-builders/docker'
@@ -49,50 +49,50 @@ steps:
 
   # Run the tests
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
     args: [
-        './google-cloud-graalvm-samples/graalvm-samples-client-library/cloud-sql-sample/target/com.example.cloudsqlsampleapplication',
+        './java-native-image-samples/native-image-samples-client-library/cloud-sql-sample/target/com.example.cloudsqlsampleapplication',
         '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
         '-Dpassword=root'
     ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/storage-sample/target/com.example.storagesampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/storage-sample/target/com.example.storagesampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/logging-sample/target/com.example.loggingsampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/logging-sample/target/com.example.loggingsampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/tasks-sample/target/com.example.taskssampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/tasks-sample/target/com.example.taskssampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/trace-sample/target/com.example.tracesampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/trace-sample/target/com.example.tracesampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication' ]
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/spanner-sample/target/com.example.spannersampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/spanner-sample/target/com.example.spannersampleapplication' ]
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication' ]
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './google-cloud-graalvm-samples/graalvm-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication' ]
+    args: [ './java-native-image-samples/native-image-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication' ]
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 

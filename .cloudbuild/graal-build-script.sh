@@ -7,4 +7,4 @@ gu install native-image
     --batch-mode \
     --quiet \
     --projects \!com.example:cloud-functions-sample \
-    --file google-cloud-graalvm-samples
+    --file java-native-image-samples
