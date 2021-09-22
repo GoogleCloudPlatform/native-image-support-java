@@ -29,8 +29,8 @@ import com.google.cloud.spanner.SpannerOptions;
  */
 public class SpannerSampleApplication {
 
-  private static final String TEST_INSTANCE_ID = "native-image-sample-test-instance";
-  private static final String TEST_DATABASE_ID = "native-image-sample-test-database";
+  private static final String TEST_INSTANCE_ID = "test-instance";
+  private static final String TEST_DATABASE_ID = "test-database";
 
   /**
    * Runs the Spanner sample application.
