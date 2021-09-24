@@ -49,7 +49,8 @@ public class ExampleResource {
     // Access the JSON
     Class<?> apiVersionClass =
         Class.forName(
-            "com.google.api.client.googleapis.services.AbstractGoogleClientRequest$ApiClientVersion");
+            "com.google.api.client.googleapis.services."
+                + "AbstractGoogleClientRequest$ApiClientVersion");
 
     // Read the value of the headers in the static field.
     Field headerField = apiVersionClass.getDeclaredField("DEFAULT_VERSION");
