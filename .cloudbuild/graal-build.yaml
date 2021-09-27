@@ -49,50 +49,50 @@ steps:
 
   # Run the tests
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/bigquery-sample/target/com.example.bigquerysampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
     args: [
-        './java-native-image-samples/native-image-samples-client-library/cloud-sql-sample/target/com.example.cloudsqlsampleapplication',
+        './native-image-samples/native-image-samples-client-library/cloud-sql-sample/target/com.example.cloudsqlsampleapplication',
         '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
         '-Dpassword=root'
     ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/storage-sample/target/com.example.storagesampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/storage-sample/target/com.example.storagesampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/logging-sample/target/com.example.loggingsampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/logging-sample/target/com.example.loggingsampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/secretmanager-sample/target/com.example.secretmanagersampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/tasks-sample/target/com.example.taskssampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/tasks-sample/target/com.example.taskssampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/trace-sample/target/com.example.tracesampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/trace-sample/target/com.example.tracesampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/firestore-sample/target/com.example.firestoresampleapplication' ]
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/spanner-sample/target/com.example.spannersampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/spanner-sample/target/com.example.spannersampleapplication' ]
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/bigtable-sample/target/com.example.bigtablesampleapplication' ]
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.2.0
-    args: [ './java-native-image-samples/native-image-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication' ]
+    args: [ './native-image-samples/native-image-samples-client-library/datastore-sample/target/com.example.datastoresampleapplication' ]
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 

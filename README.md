@@ -6,14 +6,14 @@ This repository provides support for applications using the [Google Java Client 
 
 ## Setup
 
-Add the `java-native-image-support` artifact to your project to take advantage of native image support.
+Add the `native-image-support` artifact to your project to take advantage of native image support.
 
 For example, in Maven:
 
 ```
 <dependency>
     <groupId>com.google.cloud</groupId>
-    <artifactId>java-native-image-support</artifactId>
+    <artifactId>native-image-support</artifactId>
     <version>0.7.0</version>
 </dependency>
 ```
@@ -22,7 +22,7 @@ This dependency contains the GraalVM configurations to provide out-of-the-box su
 
 ### Client Library Versions
 
-To compile with GraalVM (native-image), ensure the client library version in your project is supported by `java-native-image-support`.
+To compile with GraalVM (native-image), ensure the client library version in your project is supported by `native-image-support`.
 
 | GraalVM Support version | GraalVM Compiler Version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|--------------------------|:-------------------------|-----------------------------|
@@ -58,7 +58,7 @@ The [Cloud Tasks code sample](java-native-image-samples/native-image-samples-cli
 Most of the Java Google Client Libraries [listed here](https://github.com/googleapis/google-cloud-java#supported-apis) are supported for GraalVM compilation using this dependency.
 These libraries are all listed under the `com.google.cloud` group ID.
 
-If you find an unsupported library, please make a feature request via our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/java-native-image-support/issues).
+If you find an unsupported library, please make a feature request via our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/native-image-support-java/issues).
 
 GraalVM-compatible sample code using various Google Cloud libraries can be found below:
 
@@ -82,7 +82,7 @@ Please also consult the project [samples applications directory](./java-native-i
 
 ### Additional Frameworks
 
-Our project `java-native-image-support` targets compatibility for native image frameworks as well, such as for Quarkus, Micronaut, and Spring.
+Our project targets compatibility for native image frameworks as well, such as for Quarkus, Micronaut, and Spring.
 We are in the early stages of research for these frameworks and maintain some [code samples](./java-native-image-samples).
 
 We are also interested in collaborating with other open source projects to improve framework-level compatibility.
@@ -91,8 +91,8 @@ Related projects:
 
 *  [Quarkus Extension for Google Cloud Services](https://github.com/quarkiverse/quarkiverse-google-cloud-services) - Enables usage of Google Cloud libraries in Quarkus applications.
 
-Please let us know if you are interested in collaborating by contacting us via our [Issue Tracker](https://github.com/GoogleCloudPlatform/java-native-image-support/issues).
+Please let us know if you are interested in collaborating by contacting us via our [Issue Tracker](https://github.com/GoogleCloudPlatform/native-image-support-java/issues).
 
 ## Questions
 
-Please report any issues and questions to our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/java-native-image-support/issues).
+Please report any issues and questions to our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/native-image-support-java/issues).
