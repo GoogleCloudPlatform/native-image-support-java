@@ -1,4 +1,4 @@
-# Google Cloud GraalVM Support
+# Google Cloud Native Image Support
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
@@ -6,14 +6,14 @@ This repository provides support for applications using the [Google Java Client 
 
 ## Setup
 
-Add the `java-native-image-support` artifact to your project to take advantage of native image support.
+Add the `google-cloud-native-image-support` artifact to your project to take advantage of native image support.
 
 For example, in Maven:
 
 ```
 <dependency>
     <groupId>com.google.cloud</groupId>
-    <artifactId>java-native-image-support</artifactId>
+    <artifactId>google-cloud-native-image-support</artifactId>
     <version>0.7.0</version>
 </dependency>
 ```
@@ -22,9 +22,9 @@ This dependency contains the GraalVM configurations to provide out-of-the-box su
 
 ### Client Library Versions
 
-To compile with GraalVM (native-image), ensure the client library version in your project is supported by `java-native-image-support`.
+To compile with native image, ensure the client library version in your project is supported by `google-cloud-native-image-support`.
 
-| GraalVM Support version | GraalVM Compiler Version | *`libraries-bom` version | `grpc-netty-shaded` version |
+| Native Image Support version | GraalVM Compiler Version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|--------------------------|:-------------------------|-----------------------------|
 | `0.5.0` - `0.7.0`       | `>= 21.2.0`              | `20.8.0` or later        | `1.39.0` or later           |
 | `0.4.0`                 | `>= 21.0.0`              | `11.0.0` or later        | `1.32.1` or later           |
@@ -40,7 +40,7 @@ The `libraries-bom` also manages the version of `grpc-netty-shaded` as well and 
 This project offers [GraalVM features](https://www.graalvm.org/sdk/javadoc/index.html?org/graalvm/nativeimage/hosted/Feature.html) which provides optional reflection configurations for specific use-cases.
 These features should only be used when necessary because they increase the size of the container image and increase compilation times.
 
-* `ProtobufMessageFeature`: Adds reflection metadata for request objects of the Google Cloud APIs that your application uses.
+* `ProtobufMessageFeature`: Adds reflection metadata for proto request classes of the Google Cloud APIs that your application uses.
 This is typically only needed if you need to print/log requests objects or access them reflectively.
 
 Add the features as an additional build argument to the native-image compiler via the `--features` flag.
@@ -82,7 +82,7 @@ Please also consult the project [samples applications directory](./java-native-i
 
 ### Additional Frameworks
 
-Our project `java-native-image-support` targets compatibility for native image frameworks as well, such as for Quarkus, Micronaut, and Spring.
+Our project targets compatibility for native image frameworks as well, such as for Quarkus, Micronaut, and Spring.
 We are in the early stages of research for these frameworks and maintain some [code samples](./java-native-image-samples).
 
 We are also interested in collaborating with other open source projects to improve framework-level compatibility.

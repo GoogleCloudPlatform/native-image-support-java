@@ -16,7 +16,7 @@
   <dependencies>
     <dependency>
       <groupId>com.google.cloud</groupId>
-      <artifactId>java-native-image-support</artifactId>
+      <artifactId>google-cloud-native-image-support</artifactId>
       <version>${project.version}</version>
     </dependency>
 
