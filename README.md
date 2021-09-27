@@ -6,14 +6,14 @@ This repository provides support for applications using the [Google Java Client 
 
 ## Setup
 
-Add the `google-cloud-native-image-support` artifact to your project to take advantage of native image support.
+Add the `native-image-support` artifact to your project to take advantage of native image support.
 
 For example, in Maven:
 
 ```
 <dependency>
     <groupId>com.google.cloud</groupId>
-    <artifactId>google-cloud-native-image-support</artifactId>
+    <artifactId>native-image-support</artifactId>
     <version>0.7.0</version>
 </dependency>
 ```
@@ -22,7 +22,7 @@ This dependency contains the GraalVM configurations to provide out-of-the-box su
 
 ### Client Library Versions
 
-To compile with native image, ensure the client library version in your project is supported by `google-cloud-native-image-support`.
+To compile with native image, ensure the client library version in your project is supported by `native-image-support`.
 
 | Native Image Support version | GraalVM Compiler Version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|--------------------------|:-------------------------|-----------------------------|
@@ -58,7 +58,7 @@ The [Cloud Tasks code sample](java-native-image-samples/native-image-samples-cli
 Most of the Java Google Client Libraries [listed here](https://github.com/googleapis/google-cloud-java#supported-apis) are supported for GraalVM compilation using this dependency.
 These libraries are all listed under the `com.google.cloud` group ID.
 
-If you find an unsupported library, please make a feature request via our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/java-native-image-support/issues).
+If you find an unsupported library, please make a feature request via our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/native-image-support/issues).
 
 GraalVM-compatible sample code using various Google Cloud libraries can be found below:
 
@@ -91,8 +91,8 @@ Related projects:
 
 *  [Quarkus Extension for Google Cloud Services](https://github.com/quarkiverse/quarkiverse-google-cloud-services) - Enables usage of Google Cloud libraries in Quarkus applications.
 
-Please let us know if you are interested in collaborating by contacting us via our [Issue Tracker](https://github.com/GoogleCloudPlatform/java-native-image-support/issues).
+Please let us know if you are interested in collaborating by contacting us via our [Issue Tracker](https://github.com/GoogleCloudPlatform/native-image-support/issues).
 
 ## Questions
 
-Please report any issues and questions to our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/java-native-image-support/issues).
+Please report any issues and questions to our [Github Issue Tracker](https://github.com/GoogleCloudPlatform/native-image-support/issues).

@@ -13,17 +13,17 @@
 
   <name>Google Cloud GraalVM Support Parent</name>
   <description>The parent POM of the project providing Google Cloud GraalVM support.</description>
-  <url>https://github.com/GoogleCloudPlatform/java-native-image-support</url>
+  <url>https://github.com/GoogleCloudPlatform/native-image-support</url>
   <packaging>pom</packaging>
 
   <groupId>com.google.cloud</groupId>
-  <artifactId>google-cloud-native-image-support-parent</artifactId>
+  <artifactId>native-image-support-parent</artifactId>
   <version>0.8.0-SNAPSHOT</version>
 
   <scm>
-    <url>https://github.com/GoogleCloudPlatform/java-native-image-support</url>
-    <connection>scm:git:git://github.com/GoogleCloudPlatform/java-native-image-support.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/GoogleCloudPlatform/java-native-image-support.git</developerConnection>
+    <url>https://github.com/GoogleCloudPlatform/native-image-support</url>
+    <connection>scm:git:git://github.com/GoogleCloudPlatform/native-image-support.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/GoogleCloudPlatform/native-image-support.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -80,7 +80,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <modules>
-        <module>java-native-image-support</module>
+        <module>native-image-support</module>
         <module>java-native-image-samples</module>
       </modules>
     </profile>
@@ -88,7 +88,7 @@
     <profile>
       <id>release</id>
       <modules>
-        <module>java-native-image-support</module>
+        <module>native-image-support</module>
       </modules>
 
       <build>

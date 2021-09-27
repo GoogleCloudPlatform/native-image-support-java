@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <parent>
-    <artifactId>google-cloud-native-image-support-parent</artifactId>
+    <artifactId>native-image-support-parent</artifactId>
     <groupId>com.google.cloud</groupId>
     <version>0.8.0-SNAPSHOT</version>
   </parent>
