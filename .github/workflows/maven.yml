@@ -10,7 +10,7 @@ on:
 
 jobs:
   std-java-build:
-    if: github.repository == 'GoogleCloudPlatform/google-cloud-graalvm-support'
+    if: github.repository_owner == 'GoogleCloudPlatform'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -38,16 +38,16 @@ jobs:
     - name: Build with Maven
       run: |
         mvn clean install -B -q
-        mvn package -B --file google-cloud-graalvm-samples/
+        mvn package -B --file java-native-image-samples/
 
     - name: Run Samples
       run: |
-        cd google-cloud-graalvm-samples
-        java -jar graalvm-samples-client-library/pubsub-sample/target/pubsub-sample-0.8.0-SNAPSHOT.jar
-        java -jar graalvm-samples-client-library/trace-sample/target/trace-sample-0.8.0-SNAPSHOT.jar
+        cd java-native-image-samples
+        java -jar native-image-samples-client-library/pubsub-sample/target/pubsub-sample-0.8.0-SNAPSHOT.jar
+        java -jar native-image-samples-client-library/trace-sample/target/trace-sample-0.8.0-SNAPSHOT.jar
 
   graal-java-build:
-    if: github.repository == 'GoogleCloudPlatform/google-cloud-graalvm-support'
+    if: github.repository_owner == 'GoogleCloudPlatform'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -79,9 +79,9 @@ jobs:
       run: |
         gu install native-image
         mvn clean install -B -q
-        mvn package -P native -B --file google-cloud-graalvm-samples/graalvm-samples-client-library/pubsub-sample
+        mvn package -P native -B --file java-native-image-samples/native-image-samples-client-library/pubsub-sample
 
     - name: Run Samples
       run: |
-        cd google-cloud-graalvm-samples
-        ./graalvm-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication
+        cd java-native-image-samples
+        ./native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication
