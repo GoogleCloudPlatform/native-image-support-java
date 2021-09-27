@@ -88,7 +88,7 @@
     <profile>
       <id>release</id>
       <modules>
-        <module>java-native-image-support</module>
+        <module>native-image-support</module>
       </modules>
 
       <build>
