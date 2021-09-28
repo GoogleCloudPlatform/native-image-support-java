@@ -38,11 +38,11 @@ jobs:
     - name: Build with Maven
       run: |
         mvn clean install -B -q
-        mvn package -B --file java-native-image-samples/
+        mvn package -B --file native-image-samples/
 
     - name: Run Samples
       run: |
-        cd java-native-image-samples
+        cd native-image-samples
         java -jar native-image-samples-client-library/pubsub-sample/target/pubsub-sample-0.8.0-SNAPSHOT.jar
         java -jar native-image-samples-client-library/trace-sample/target/trace-sample-0.8.0-SNAPSHOT.jar
 
@@ -79,9 +79,9 @@ jobs:
       run: |
         gu install native-image
         mvn clean install -B -q
-        mvn package -P native -B --file java-native-image-samples/native-image-samples-client-library/pubsub-sample
+        mvn package -P native -B --file native-image-samples/native-image-samples-client-library/pubsub-sample
 
     - name: Run Samples
       run: |
-        cd java-native-image-samples
+        cd native-image-samples
         ./native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication

@@ -5,5 +5,5 @@
 
 <suppressions>
   <suppress checks="AbbreviationAsWordInName" files=".*IT.java" />
-  <suppress checks="MissingJavadocType" files="[\\/]java-native-image-samples[\\/]" />
+  <suppress checks="MissingJavadocType" files="[\\/]native-image-samples[\\/]" />
 </suppressions>
