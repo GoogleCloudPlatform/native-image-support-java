@@ -14,7 +14,7 @@ For example, in Maven:
 <dependency>
     <groupId>com.google.cloud</groupId>
     <artifactId>native-image-support</artifactId>
-    <version>0.7.0</version>
+    <version>0.8.0</version>
 </dependency>
 ```
 
@@ -26,8 +26,7 @@ To compile with native image, ensure the client library version in your project 
 
 | Native Image Support version | GraalVM Compiler Version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|--------------------------|:-------------------------|-----------------------------|
-| `0.5.0` - `0.7.0`       | `>= 21.2.0`              | `20.8.0` or later        | `1.39.0` or later           |
-| `0.4.0`                 | `>= 21.0.0`              | `11.0.0` or later        | `1.32.1` or later           |
+| `0.8.0`                 | `>= 21.2.0`              | `23.0.0` or later        | `1.41.0` or later           |
 
 Typically, you can just depend on the latest versions of the client libraries to get something working if you are not sure about what versions of (transitive) dependencies are being used by your project.
 
