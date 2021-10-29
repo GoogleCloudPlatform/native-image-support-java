@@ -28,7 +28,7 @@ import org.graalvm.nativeimage.hosted.Feature;
  * Configures Native Image settings for the grpc-netty-shaded dependency.
  */
 @AutomaticFeature
-public class GrpcNettyFeature implements Feature {
+final class GrpcNettyFeature implements Feature {
 
   private static final String GRPC_NETTY_SHADED_CLASS =
       "io.grpc.netty.shaded.io.grpc.netty.NettyServer";

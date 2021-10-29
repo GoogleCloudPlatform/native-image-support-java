@@ -27,7 +27,7 @@ import org.graalvm.nativeimage.hosted.Feature;
  * Configures Native Image settings for the Google JSON Client.
  */
 @AutomaticFeature
-public class GoogleJsonClientFeature implements Feature {
+final class GoogleJsonClientFeature implements Feature {
 
   private static final String GOOGLE_API_CLIENT_CLASS =
       "com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient";
