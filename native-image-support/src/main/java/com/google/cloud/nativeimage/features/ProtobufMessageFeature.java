@@ -32,7 +32,7 @@ import org.graalvm.nativeimage.hosted.RuntimeReflection;
  * "--feature com.google.cloud.nativeimage.features.ProtobufMessageFeature"
  * to your GraalVM configuration.
  */
-public class ProtobufMessageFeature implements Feature {
+final class ProtobufMessageFeature implements Feature {
 
   // Proto classes to check on the classpath.
   private static final String PROTO_MESSAGE_CLASS = "com.google.protobuf.GeneratedMessageV3";

@@ -41,7 +41,7 @@ import org.graalvm.nativeimage.hosted.RuntimeReflection;
  * A feature which registers reflective usages of the Cloud Functions library.
  */
 @AutomaticFeature
-public class CloudFunctionsFeature implements Feature {
+final class CloudFunctionsFeature implements Feature {
 
   private static final String FUNCTION_INVOKER_CLASS =
       "com.google.cloud.functions.invoker.runner.Invoker";

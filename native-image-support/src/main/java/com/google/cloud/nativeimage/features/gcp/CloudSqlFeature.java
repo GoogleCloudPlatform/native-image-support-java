@@ -28,7 +28,7 @@ import org.graalvm.nativeimage.hosted.RuntimeReflection;
  * Registers GraalVM configuration for the Cloud SQL libraries.
  */
 @AutomaticFeature
-public class CloudSqlFeature implements Feature {
+final class CloudSqlFeature implements Feature {
 
   private static final String CLOUD_SQL_SOCKET_CLASS =
       "com.google.cloud.sql.core.CoreSocketFactory";

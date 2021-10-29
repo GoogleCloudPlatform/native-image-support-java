@@ -25,7 +25,7 @@ import org.graalvm.nativeimage.hosted.Feature;
  * Registers Spanner library classes for reflection.
  */
 @AutomaticFeature
-public class SpannerFeature implements Feature {
+final class SpannerFeature implements Feature {
 
   private static final String SPANNER_CLASS = "com.google.spanner.v1.SpannerGrpc";
 

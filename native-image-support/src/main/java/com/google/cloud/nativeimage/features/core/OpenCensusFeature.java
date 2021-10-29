@@ -25,7 +25,7 @@ import org.graalvm.nativeimage.hosted.Feature;
  * Registers reflection usage in OpenCensus libraries.
  */
 @AutomaticFeature
-public class OpenCensusFeature implements Feature {
+final class OpenCensusFeature implements Feature {
 
   private static final String OPEN_CENSUS_CLASS = "io.opencensus.impl.tags.TagsComponentImpl";
 
