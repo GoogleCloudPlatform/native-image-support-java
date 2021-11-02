@@ -69,8 +69,10 @@ final class CloudSqlFeature implements Feature {
 
     // Register PostgreSQL driver config.
     if (access.findClassByName(POSTGRES_SOCKET_CLASS) != null) {
-      NativeImageUtils.registerClassForReflection(access, "com.google.cloud.sql.postgres.SocketFactory");
-      NativeImageUtils.registerClassForReflection(access, "org.postgresql.PGProperty");
+      NativeImageUtils.registerClassForReflection(
+          access, "com.google.cloud.sql.postgres.SocketFactory");
+      NativeImageUtils.registerClassForReflection(
+          access, "org.postgresql.PGProperty");
     }
 
     // Register MySQL driver config.
