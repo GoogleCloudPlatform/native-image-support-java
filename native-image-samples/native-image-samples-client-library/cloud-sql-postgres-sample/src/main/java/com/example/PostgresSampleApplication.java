@@ -36,17 +36,17 @@ public class PostgresSampleApplication {
    */
   public static void main(String[] args) throws Exception {
 
-    String user = System.getProperty("user", "root");
-    String password = System.getProperty("password", "");
+    String user = System.getProperty("user", "postgres");
+    String password = System.getProperty("password", "postgres");
     String instanceName = System.getProperty("instance");
     String databaseName = System.getProperty("database", "test_db");
 
     HikariConfig config = new HikariConfig();
 
-    config.setJdbcUrl(String.format("jdbc:mysql:///%s", databaseName));
+    config.setJdbcUrl(String.format("jdbc:postgresql:///%s", databaseName));
     config.addDataSourceProperty("user", user);
     config.addDataSourceProperty("password", password);
-    config.addDataSourceProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory");
+    config.addDataSourceProperty("socketFactory", "com.google.cloud.sql.postgres.SocketFactory");
     config.addDataSourceProperty("cloudSqlInstance", instanceName);
 
     HikariDataSource connectionPool = new HikariDataSource(config);

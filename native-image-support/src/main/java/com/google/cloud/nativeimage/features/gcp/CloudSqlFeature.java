@@ -25,13 +25,16 @@ import org.graalvm.nativeimage.hosted.RuntimeClassInitialization;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
 /**
- * Registers GraalVM configuration for the Cloud SQL libraries.
+ * Registers GraalVM configuration for the Cloud SQL libraries for MySQL.
  */
 @AutomaticFeature
 final class CloudSqlFeature implements Feature {
 
   private static final String CLOUD_SQL_SOCKET_CLASS =
       "com.google.cloud.sql.core.CoreSocketFactory";
+
+  private static final String POSTGRES_SOCKET_CLASS =
+      "com.google.cloud.sql.postgres.SocketFactory";
 
   private static final String MYSQL_SOCKET_CLASS =
       "com.google.cloud.sql.mysql.SocketFactory";
@@ -62,6 +65,12 @@ final class CloudSqlFeature implements Feature {
       RuntimeReflection.register(
           access.findClassByName("[Ljava.sql.Statement;")
       );
+    }
+
+    // Register PostgreSQL driver config.
+    if (access.findClassByName(POSTGRES_SOCKET_CLASS) != null) {
+      NativeImageUtils.registerClassForReflection(access, "com.google.cloud.sql.postgres.SocketFactory");
+      NativeImageUtils.registerClassForReflection(access, "org.postgresql.PGProperty");
     }
 
     // Register MySQL driver config.
