@@ -25,7 +25,7 @@ import org.graalvm.nativeimage.hosted.RuntimeClassInitialization;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
 /**
- * Registers GraalVM configuration for the Cloud SQL libraries for MySQL.
+ * Registers GraalVM configuration for the Cloud SQL libraries for MySQL and Postgres.
  */
 @AutomaticFeature
 final class CloudSqlFeature implements Feature {
