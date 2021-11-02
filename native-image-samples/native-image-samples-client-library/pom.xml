@@ -19,6 +19,7 @@
     <module>bigtable-sample</module>
     <module>cloud-functions-sample</module>
     <module>cloud-sql-sample</module>
+    <module>cloud-sql-postgres-sample</module>
     <module>datastore-sample</module>
     <module>firestore-sample</module>
     <module>logging-sample</module>
