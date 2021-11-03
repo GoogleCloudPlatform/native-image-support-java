@@ -13,9 +13,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.graalvm.buildtools</groupId>
+      <groupId>org.graalvm.nativeimage</groupId>
       <artifactId>svm</artifactId>
-      <version>${native.maven.plugin.version}</version>
+      <version>${graalvm.version}</version>
       <scope>provided</scope>
     </dependency>
 
