@@ -87,6 +87,14 @@ steps:
 
   - name: openjdk:11-jdk
     entrypoint: java
+    args: [
+        '-jar',
+        '-Dinstance=cloud-graalvm-support-ci:us-central1:test-postgres',
+        'native-image-samples/native-image-samples-client-library/cloud-sql-postgres-sample/target/cloud-sql-postgres-sample-0.9.0-SNAPSHOT.jar'
+    ]
+
+  - name: openjdk:11-jdk
+    entrypoint: java
     args: ['-jar', 'native-image-samples/native-image-samples-client-library/firestore-sample/target/firestore-sample-0.9.0-SNAPSHOT.jar']
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
