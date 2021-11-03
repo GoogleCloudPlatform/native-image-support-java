@@ -59,6 +59,12 @@ steps:
     ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.3.0
+    args: [
+        './native-image-samples/native-image-samples-client-library/cloud-sql-postgres-sample/target/com.example.postgressampleapplication',
+        '-Dinstance=cloud-graalvm-support-ci:us-central1:test-postgres',
+    ]
+
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.3.0
     args: [ './native-image-samples/native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:java11-21.3.0
