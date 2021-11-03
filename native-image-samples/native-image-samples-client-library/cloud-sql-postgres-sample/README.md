@@ -10,7 +10,7 @@ The application runs some simple Cloud SQL queries to demonstrate compatibility.
 
 2.  Cloud SQL database setup:
 
-    1. Follow [these instructions](https://cloud.google.com/sql/docs/mysql/create-instance) to create a Cloud SQL instance.
+    1. Follow [these instructions](https://cloud.google.com/sql/docs/postgres/create-instance) to create a Cloud SQL instance.
        Choose **PostgreSQL** as the database provider because this sample is designed for Cloud SQL with Postgres.
 
     2. Navigate to your Cloud SQL instance from the [instances view page](https://console.cloud.google.com/sql/instances) and find the instance connection name.
