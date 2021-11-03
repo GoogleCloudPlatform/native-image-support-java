@@ -56,7 +56,7 @@ The application runs through some simple BigTable Client Library operations to d
    Pass in the BigTable instance you wish to use via the `-Dbigtable.instance` property.
     
     ```
-    ./target/com.example.bigtablesampleapplication -Dbigtable.instance={BIGTABLE_INSTANCE_NAME}
+    ./target/bigtable-sample -Dbigtable.instance={BIGTABLE_INSTANCE_NAME}
     ```
 
 4. The application will run through some basic BigTable operations and log some output statements.

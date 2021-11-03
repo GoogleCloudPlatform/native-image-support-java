@@ -38,7 +38,7 @@ This sample runs through some basic operations of creating/deleting entities, ru
 3. Run the application.
     
     ```
-    ./target/com.example.datastoresampleapplication
+    ./target/datastore-sample
     ```
 
 4. The application will run through some basic Datastore operations and log some output statements.

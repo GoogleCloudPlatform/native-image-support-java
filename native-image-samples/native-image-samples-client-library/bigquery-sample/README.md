@@ -21,7 +21,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
     ```
-    ./target/com.example.bigquerysampleapplication
+    ./target/bigquery-sample
     ```
 
 3. The application will create a sample BigQuery dataset in your GCP project called `nativeimage_test_dataset` and perform some simple operations like creating a table, inserting data, and running a query.

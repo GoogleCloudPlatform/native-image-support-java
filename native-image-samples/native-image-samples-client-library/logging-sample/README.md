@@ -21,7 +21,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
    ```
-   ./target/com.example.loggingsampleapplication
+   ./target/logging-sample
    ```
 
 3. The application will log a message to your local terminal and to Google Cloud Console.

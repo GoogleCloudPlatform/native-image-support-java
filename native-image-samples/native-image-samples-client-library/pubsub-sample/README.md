@@ -21,7 +21,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
     ```
-    ./target/com.example.pubsubsampleapplication
+    ./target/pubsub-sample
     ```
 
 3. The application will create a new Pub/Sub topic, send and receive a message from it, and then delete the topic.

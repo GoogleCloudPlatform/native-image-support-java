@@ -84,4 +84,4 @@ jobs:
     - name: Run Samples
       run: |
         cd native-image-samples
-        ./native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication
+        ./native-image-samples-client-library/pubsub-sample/target/pubsub-sample
