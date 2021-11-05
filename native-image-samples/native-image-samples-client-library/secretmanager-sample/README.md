@@ -24,7 +24,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
     ```
-    ./target/com.example.secretmanagersampleapplication
+    ./target/secretmanager-sample
     ```
 
 3. The application runs through some basic Secret Manager operations (create, update, read) and then prints some results of the operations.

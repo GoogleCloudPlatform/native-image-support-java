@@ -22,7 +22,7 @@ You can learn more by viewing the [Spring Cloud GCP reference documentation](htt
 2. Run the application:
 
     ```
-    ./target/com.example.tracesampleapplication
+    ./target/spring-cloud-gcp-trace-sample
     ```
 
 3. Open a web browser and visit https://localhost:8080/.

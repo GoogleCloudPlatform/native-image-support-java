@@ -23,7 +23,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
    ```
-   ./target/com.example.tracesampleapplication
+   ./target/trace-sample
    ```
 
 3. The application will generate a new trace and send the data to Cloud Trace where it will be viewable in the [Google Cloud Console Traces Viewer](https://console.cloud.google.com/traces/traces).

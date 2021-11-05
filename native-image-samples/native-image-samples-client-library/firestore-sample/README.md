@@ -38,7 +38,7 @@ This sample runs through basic operations of creating a new document, running qu
 3. Run the application.
     
     ```
-    ./target/com.example.firestoresampleapplication
+    ./target/firestore-sample
     ```
 
 4. The application will run through some basic Firestore operations and log some output statements.

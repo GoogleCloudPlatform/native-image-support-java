@@ -56,7 +56,7 @@ jobs:
     - name: Set up GraalVM Compiler
       uses: DeLaGuardo/setup-graalvm@4.0
       with:
-        graalvm: '21.2.0'
+        graalvm: '21.3.0'
         java: 'java11'
         arch: 'amd64'
 
@@ -84,4 +84,4 @@ jobs:
     - name: Run Samples
       run: |
         cd native-image-samples
-        ./native-image-samples-client-library/pubsub-sample/target/com.example.pubsubsampleapplication
+        ./native-image-samples-client-library/pubsub-sample/target/pubsub-sample

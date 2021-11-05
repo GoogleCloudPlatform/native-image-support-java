@@ -21,7 +21,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
     ```
-    ./target/com.example.storagesampleapplication
+    ./target/storage-sample
     ```
 
 3. The application will run through basic Cloud Storage operations of creating, reading, and deleting Cloud Storage resources.

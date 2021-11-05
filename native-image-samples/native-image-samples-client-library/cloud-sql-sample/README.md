@@ -36,7 +36,7 @@ The application runs some simple Cloud SQL queries to demonstrate compatibility.
 2. Run the application. Set the `-Dinstance` property to the instance connection name referenced above.
 
    ```
-   ./target/com.example.cloudsqlsampleapplication -Dinstance=<INSTANCE_CONNECTION_NAME>
+   ./target/cloud-sql-sample -Dinstance=<INSTANCE_CONNECTION_NAME>
    ```
    
    **Additional Properties**
@@ -67,4 +67,4 @@ The Cloud SQL connector library uses the CP1252 charset when logging error messa
 
 Therefore, you will need to pass `-H:+AddAllCharsets` to the Native Image compiler.
 
-This is specified in the `buildArgs` section of the `native-image-maven-plugin` in the pom.xml of this sample.
+This is specified in the `buildArgs` section of the `native-maven-plugin` in the pom.xml of this sample.

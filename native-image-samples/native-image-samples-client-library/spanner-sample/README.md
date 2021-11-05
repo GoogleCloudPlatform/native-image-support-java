@@ -38,7 +38,7 @@ The application creates a new Spanner instance and database, and it runs basic o
 3. Run the application.
     
     ```
-    ./target/com.example.spannersampleapplication 
+    ./target/spanner-sample
     ```
 
 4. The application will run through some basic Spanner operations and log some output statements.

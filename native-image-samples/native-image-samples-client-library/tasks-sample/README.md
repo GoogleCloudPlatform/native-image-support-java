@@ -24,7 +24,7 @@ Navigate to this directory in a new terminal.
 2. Run the application:
 
     ```
-    ./target/com.example.taskssampleapplication
+    ./target/tasks-sample
     ```
 
 3. The application runs through some basic Cloud Tasks operations (create queue, create task) and then prints some results of the operations.
