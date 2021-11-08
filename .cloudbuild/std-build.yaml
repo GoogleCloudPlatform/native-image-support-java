@@ -50,31 +50,31 @@ steps:
   # Run all the samples
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/pubsub-sample/target/pubsub-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/pubsub-sample/target/pubsub-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/storage-sample/target/storage-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/storage-sample/target/storage-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/bigquery-sample/target/bigquery-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/bigquery-sample/target/bigquery-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/logging-sample/target/logging-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/logging-sample/target/logging-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/trace-sample/target/trace-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/trace-sample/target/trace-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/secretmanager-sample/target/secretmanager-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/secretmanager-sample/target/secretmanager-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/tasks-sample/target/tasks-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/tasks-sample/target/tasks-sample-0.10.0-SNAPSHOT.jar']
 
   - name: openjdk:11-jdk
     entrypoint: java
@@ -82,7 +82,7 @@ steps:
         '-jar',
         '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
         '-Dpassword=root',
-        'native-image-samples/native-image-samples-client-library/cloud-sql-sample/target/cloud-sql-sample-0.9.0-SNAPSHOT.jar'
+        'native-image-samples/native-image-samples-client-library/cloud-sql-sample/target/cloud-sql-sample-0.10.0-SNAPSHOT.jar'
     ]
 
   - name: openjdk:11-jdk
@@ -90,30 +90,30 @@ steps:
     args: [
         '-jar',
         '-Dinstance=cloud-graalvm-support-ci:us-central1:test-postgres',
-        'native-image-samples/native-image-samples-client-library/cloud-sql-postgres-sample/target/cloud-sql-postgres-sample-0.9.0-SNAPSHOT.jar'
+        'native-image-samples/native-image-samples-client-library/cloud-sql-postgres-sample/target/cloud-sql-postgres-sample-0.10.0-SNAPSHOT.jar'
     ]
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/firestore-sample/target/firestore-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/firestore-sample/target/firestore-sample-0.10.0-SNAPSHOT.jar']
     env:
       - 'FIRESTORE_EMULATOR_HOST=firestore-emulator:9010'
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/spanner-sample/target/spanner-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/spanner-sample/target/spanner-sample-0.10.0-SNAPSHOT.jar']
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/bigtable-sample/target/bigtable-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/bigtable-sample/target/bigtable-sample-0.10.0-SNAPSHOT.jar']
     env:
       - 'BIGTABLE_EMULATOR_HOST=bigtable-emulator:9010'
 
   - name: openjdk:11-jdk
     entrypoint: java
-    args: ['-jar', 'native-image-samples/native-image-samples-client-library/datastore-sample/target/datastore-sample-0.9.0-SNAPSHOT.jar']
+    args: ['-jar', 'native-image-samples/native-image-samples-client-library/datastore-sample/target/datastore-sample-0.10.0-SNAPSHOT.jar']
     env:
       - 'DATASTORE_EMULATOR_HOST=http://datastore-emulator:9010'
 
