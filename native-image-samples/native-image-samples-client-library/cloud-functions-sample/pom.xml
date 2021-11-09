@@ -50,7 +50,7 @@
       <plugin>
         <groupId>com.google.cloud.functions</groupId>
         <artifactId>function-maven-plugin</artifactId>
-        <version>0.9.8</version>
+        <version>0.10.0</version>
         <configuration>
           <functionTarget>com.example.function.PubSubBackgroundFunction</functionTarget>
         </configuration>
