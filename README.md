@@ -27,8 +27,8 @@ To compile with native image, ensure the client library version in your project 
 | Native Image Support version | GraalVM Compiler Version | *`libraries-bom` version | `grpc-netty-shaded` version |
 |-------------------------|--------------------------|:-------------------------|-------------------------------|
 | `0.10.0`                | `>= 21.3.0`              | `24.0.0` or later        | `1.42.0` or later             |
-| `0.9.0`                 | `<= 21.3.0`              | `<= 24.0.0`              | `1.41.0`                      |
-| `0.8.0`                 | `<= 21.2.0`              | `<= 24.0.0`              | `1.41.0`                      |
+| `0.9.0`                 | `>= 21.3.0`              | `24.0.0`                 | `1.41.0`                      |
+| `0.8.0`                 | `>= 21.2.0`              | `23.x.x`                 | `1.41.0`                      |
 
 Typically, you can just depend on the latest versions of the client libraries to get something working if you are not sure about what versions of (transitive) dependencies are being used by your project.
 
