@@ -20,7 +20,7 @@ You will need to follow these prerequisite steps in order to run these samples:
     
 3. Install the GraalVM compiler.
     
-    You can follow the [official installation instructions](https://www.graalvm.org/docs/getting-started-with-graalvm/#install-graalvm) from the GraalVM website.
+    You can follow the [official installation instructions](https://www.graalvm.org/docs/getting-started/#install-graalvm) from the GraalVM website.
     After following the instructions, ensure that you install the Native Image extension installed by running:
     
     ```
