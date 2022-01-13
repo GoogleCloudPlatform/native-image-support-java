@@ -100,5 +100,31 @@ final class CloudSqlFeature implements Feature {
       // Additional MySQL resources.
       resourcesRegistry.addResourceBundles("com.mysql.cj.LocalizedErrorMessages");
     }
+
+    // Support Unix Domain Socket
+    if (access.findClassByName("jnr.ffi.provider.FFIProvider") != null) {
+      //note: not support AsmLibraryLoader, must execute application with argument "-Djnr.ffi.asm.enabled=false"
+      //try to "bake" the property at build time
+      String asmEnabledPropertyKey = "jnr.ffi.asm.enabled";
+      //if no property set for native-image
+      if (System.getProperty(asmEnabledPropertyKey) == null) {
+        System.setProperty(asmEnabledPropertyKey, String.valueOf(false));
+      }
+      //Provider
+      NativeImageUtils.registerForReflectiveInstantiation(access, "jnr.ffi.provider.jffi.Provider");
+      //bake system property
+      RuntimeClassInitialization.initializeAtBuildTime("jnr.ffi.provider.jffi.NativeLibraryLoader");
+      //StubLoader
+      //StubLoader will extract and load native library, can't init at build time
+      //TODO only cover linux usage yet, since can't use determineOS() and determineCPU() in StubLoader
+      NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.internal.StubLoader");
+      NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.Version");
+      //stub library path
+      resourcesRegistry.addResources("jni/x86_64-Linux/libjffi-\\d+\\.\\d+\\.so");
+      //TypeAliases
+      NativeImageUtils.registerClassForReflection(access, "jnr.ffi.provider.jffi.platform.x86_64.linux.TypeAliases");
+      //platform constants
+      NativeImageUtils.registerPackageForReflection(access, "jnr.constants.platform.linux");
+    }
   }
 }
