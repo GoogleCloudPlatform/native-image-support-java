@@ -39,6 +39,7 @@ public class CloudSqlSampleApplication {
     String user = System.getProperty("user", "root");
     String password = System.getProperty("password", "");
     String instanceName = System.getProperty("instance");
+    String unixSocketPath = System.getProperty("unixSocketPath");
     String databaseName = System.getProperty("database", "test_db");
 
     HikariConfig config = new HikariConfig();
@@ -48,6 +49,9 @@ public class CloudSqlSampleApplication {
     config.addDataSourceProperty("password", password);
     config.addDataSourceProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory");
     config.addDataSourceProperty("cloudSqlInstance", instanceName);
+    if (unixSocketPath != null) {
+      config.addDataSourceProperty("unixSocketPath", unixSocketPath);
+    }
 
     HikariDataSource connectionPool = new HikariDataSource(config);
 
