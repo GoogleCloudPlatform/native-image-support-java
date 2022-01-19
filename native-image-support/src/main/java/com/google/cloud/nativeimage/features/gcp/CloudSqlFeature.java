@@ -118,7 +118,8 @@ final class CloudSqlFeature implements Feature {
       // StubLoader loads the native stub library and is only intended to be called reflectively. Note that this configuration only covers linux x86_64 platform at the moment. 
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.internal.StubLoader");
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.Version");
-      //stub library path
+      
+      // Stub library. For example: jni/x86_64-Linux/libjffi-1.2.so
       resourcesRegistry.addResources("jni/x86_64-Linux/libjffi-\\d+\\.\\d+\\.so");
       //TypeAliases
       NativeImageUtils.registerClassForReflection(access,
