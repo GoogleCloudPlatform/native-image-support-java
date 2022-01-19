@@ -103,7 +103,8 @@ final class CloudSqlFeature implements Feature {
 
     // Support Unix Domain Socket
     if (access.findClassByName("jnr.ffi.provider.FFIProvider") != null) {
-      //note: not support AsmLibraryLoader, must execute application with argument "-Djnr.ffi.asm.enabled=false"
+      //note: not support AsmLibraryLoader
+      //must execute application with argument "-Djnr.ffi.asm.enabled=false"
       //try to "bake" the property at build time
       String asmEnabledPropertyKey = "jnr.ffi.asm.enabled";
       //if no property set for native-image
@@ -116,7 +117,8 @@ final class CloudSqlFeature implements Feature {
       RuntimeClassInitialization.initializeAtBuildTime("jnr.ffi.provider.jffi.NativeLibraryLoader");
       //StubLoader
       //StubLoader will extract and load native library, can't init at build time
-      //TODO only cover linux usage yet, since can't use determineOS() and determineCPU() in StubLoader
+      //TODO only cover linux usage yet
+      //since can't use determineOS() and determineCPU() in StubLoader
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.internal.StubLoader");
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.Version");
       //stub library path
