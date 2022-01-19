@@ -122,7 +122,8 @@ final class CloudSqlFeature implements Feature {
       //stub library path
       resourcesRegistry.addResources("jni/x86_64-Linux/libjffi-\\d+\\.\\d+\\.so");
       //TypeAliases
-      NativeImageUtils.registerClassForReflection(access, "jnr.ffi.provider.jffi.platform.x86_64.linux.TypeAliases");
+      NativeImageUtils.registerClassForReflection(access,
+          "jnr.ffi.provider.jffi.platform.x86_64.linux.TypeAliases");
       //platform constants
       NativeImageUtils.registerPackageForReflection(access, "jnr.constants.platform.linux");
     }
