@@ -115,10 +115,7 @@ final class CloudSqlFeature implements Feature {
       NativeImageUtils.registerForReflectiveInstantiation(access, "jnr.ffi.provider.jffi.Provider");
       //bake system property
       RuntimeClassInitialization.initializeAtBuildTime("jnr.ffi.provider.jffi.NativeLibraryLoader");
-      //StubLoader
-      //StubLoader will extract and load native library, can't init at build time
-      //TODO only cover linux usage yet
-      //since can't use determineOS() and determineCPU() in StubLoader
+      // StubLoader loads the native stub library and is only intended to be called reflectively. Note that this configuration only covers linux x86_64 platform at the moment. 
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.internal.StubLoader");
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.Version");
       //stub library path
