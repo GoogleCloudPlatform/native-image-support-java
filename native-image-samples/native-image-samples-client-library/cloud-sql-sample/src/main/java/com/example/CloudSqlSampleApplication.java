@@ -31,15 +31,12 @@ import java.util.stream.Collectors;
  */
 public class CloudSqlSampleApplication {
 
-  /**
-   * Entrypoint to the Cloud SQL (with MySQL) sample application.
-   */
+  /** Entrypoint to the Cloud SQL (with MySQL) sample application. */
   public static void main(String[] args) throws Exception {
 
     String user = System.getProperty("user", "root");
     String password = System.getProperty("password", "");
     String instanceName = System.getProperty("instance");
-    String unixSocketPath = System.getProperty("unixSocketPath");
     String databaseName = System.getProperty("database", "test_db");
 
     HikariConfig config = new HikariConfig();
@@ -49,6 +46,8 @@ public class CloudSqlSampleApplication {
     config.addDataSourceProperty("password", password);
     config.addDataSourceProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory");
     config.addDataSourceProperty("cloudSqlInstance", instanceName);
+
+    String unixSocketPath = System.getProperty("unixSocketPath");
     if (unixSocketPath != null) {
       config.addDataSourceProperty("unixSocketPath", unixSocketPath);
     }

@@ -23,6 +23,7 @@ import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeClassInitialization;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
+import org.graalvm.nativeimage.impl.ConfigurationCondition;
 
 /**
  * Registers GraalVM configuration for the Cloud SQL libraries for MySQL and Postgres.
@@ -101,23 +102,30 @@ final class CloudSqlFeature implements Feature {
       resourcesRegistry.addResourceBundles("com.mysql.cj.LocalizedErrorMessages");
     }
 
-    // Support Unix Domain Socket
+    // Register config for Unix Domain Socket support
     if (access.findClassByName("jnr.ffi.provider.FFIProvider") != null) {
-      // Try to "bake" the property at build time
+
+      // Disabling this as ASM (runtime code generation library) can sometimes cause issues during
+      // native image build.
       String asmEnabledPropertyKey = "jnr.ffi.asm.enabled";
       if (System.getProperty(asmEnabledPropertyKey) == null) {
         System.setProperty(asmEnabledPropertyKey, String.valueOf(false));
       }
+
       NativeImageUtils.registerForReflectiveInstantiation(access, "jnr.ffi.provider.jffi.Provider");
       RuntimeClassInitialization.initializeAtBuildTime("jnr.ffi.provider.jffi.NativeLibraryLoader");
+
       // StubLoader loads the native stub library and is only intended to be called reflectively.
       // Note that this configuration only covers linux x86_64 platform at the moment.
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.internal.StubLoader");
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.Version");
+
       // Stub library. For example: jni/x86_64-Linux/libjffi-1.2.so
-      resourcesRegistry.addResources("jni/x86_64-Linux/libjffi-\\d+\\.\\d+\\.so");
-      NativeImageUtils.registerClassForReflection(access,
-          "jnr.ffi.provider.jffi.platform.x86_64.linux.TypeAliases");
+      resourcesRegistry.addResources(
+          ConfigurationCondition.alwaysTrue(), "jni/x86_64-Linux/libjffi-\\d+\\.\\d+\\.so");
+
+      NativeImageUtils.registerClassForReflection(
+          access, "jnr.ffi.provider.jffi.platform.x86_64.linux.TypeAliases");
       NativeImageUtils.registerPackageForReflection(access, "jnr.constants.platform.linux");
     }
   }
