@@ -18,7 +18,10 @@ package com.google.cloud.nativeimage.features.gcp;
 
 import com.google.cloud.nativeimage.features.NativeImageUtils;
 import com.oracle.svm.core.annotate.AutomaticFeature;
+import com.oracle.svm.core.configure.ConditionalElement;
 import com.oracle.svm.core.configure.ResourcesRegistry;
+import com.oracle.svm.reflect.proxy.hosted.ProxyRegistry;
+import java.util.Arrays;
 import org.graalvm.nativeimage.ImageSingletons;
 import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeClassInitialization;
@@ -103,6 +106,7 @@ final class CloudSqlFeature implements Feature {
     }
 
     // Register config for Unix Domain Socket support
+    ProxyRegistry proxyRegistry = ImageSingletons.lookup(ProxyRegistry.class);
     if (access.findClassByName("jnr.ffi.provider.FFIProvider") != null) {
 
       // Disabling this as ASM (runtime code generation library) can sometimes cause issues during
@@ -119,6 +123,12 @@ final class CloudSqlFeature implements Feature {
       // Note that this configuration only covers linux x86_64 platform at the moment.
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.internal.StubLoader");
       NativeImageUtils.registerClassForReflection(access, "com.kenai.jffi.Version");
+
+      // Dynamic proxy for jnr
+      proxyRegistry.accept(new ConditionalElement<>(ConfigurationCondition.alwaysTrue(),
+          Arrays.asList("jnr.unixsocket.Native$LibC", "jnr.ffi.provider.LoadedLibrary")));
+      proxyRegistry.accept(new ConditionalElement<>(ConfigurationCondition.alwaysTrue(),
+          Arrays.asList("jnr.enxio.channels.Native$LibC", "jnr.ffi.provider.LoadedLibrary")));
 
       // Stub library. For example: jni/x86_64-Linux/libjffi-1.2.so
       resourcesRegistry.addResources(
