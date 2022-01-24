@@ -44,12 +44,13 @@ The application runs some simple Cloud SQL queries to demonstrate compatibility.
    By default the application connects with the `root` user and an empty password to the `test_db` database.
    You may override the settings by passing additional arguments with the `-D` prefix to the executable:
    
-   | Property        | Description                                 |
-   | --------------- | ------------------------------------------- |
-   | `-Dusername`    | Set the username to use. (Defaults to root) |
-   | `-Dpassword`    | Set the password to use. (Defaults to "")   |
-   | `-Dinstance`    | Specify the instance connection string.     |
-   | `-Ddatabase`    | Specify the database to connect to.         |
+   | Property           | Description                                             |
+   | ------------------ | ------------------------------------------------------- |
+   | `-Dusername`       | Set the username to use. (Defaults to root)             |
+   | `-Dpassword`       | Set the password to use. (Defaults to "")               |
+   | `-Dinstance`       | Specify the instance connection string.                 |
+   | `-DunixSocketPath` | Specify the unix domain socket path. (Defaults to null) |
+   | `-Ddatabase`       | Specify the database to connect to.                     |
    
 3. The application will run through some basic operations to create a table and read records from it.
 
