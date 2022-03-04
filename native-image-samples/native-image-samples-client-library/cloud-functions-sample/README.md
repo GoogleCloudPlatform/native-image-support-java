@@ -37,7 +37,7 @@ The resulting image is outputted to the `target/` directory.
     
     Run this command to invoke the image: 
     ```
-    ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.function.PubSubBackgroundFunction
+    ./target/cloud-functions-sample --target com.example.function.PubSubBackgroundFunction
     ```
     
     In a new terminal window, send a POST request to the service to simulate receiving a Background event:
@@ -64,7 +64,7 @@ The resulting image is outputted to the `target/` directory.
     Just change the function to run with `--target`:
     
     ```
-    ./target/com.google.cloud.functions.invoker.runner.invoker --target com.example.function.PubSubHttpFunction
+    ./target/cloud-functions-sample --target com.example.function.PubSubHttpFunction
     ```
     
     Once it's running, visit `localhost:8080` to verify it works.
