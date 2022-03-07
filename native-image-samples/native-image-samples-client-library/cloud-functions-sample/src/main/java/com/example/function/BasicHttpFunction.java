@@ -24,6 +24,6 @@ public class BasicHttpFunction implements HttpFunction {
 
   @Override
   public void service(HttpRequest httpRequest, HttpResponse httpResponse) throws Exception {
-    httpResponse.getWriter().write("Hello, World\n");
+    httpResponse.getWriter().write("Hello, Native Image\n");
   }
 }
