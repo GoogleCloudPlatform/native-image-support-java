@@ -14,7 +14,7 @@
   <properties>
     <compiler-plugin.version>3.10.0</compiler-plugin.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-    <libraries.bom.version>24.4.0</libraries.bom.version>
+    <libraries.bom.version>25.0.0</libraries.bom.version>
   </properties>
 
   <artifactId>native-image-samples</artifactId>
