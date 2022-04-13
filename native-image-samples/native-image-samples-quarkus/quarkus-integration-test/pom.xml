@@ -50,9 +50,12 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
+    <!-- Version needs to be specified here as starting from Quarkus Bom 2.8.0.Final
+    assertj-core is not included in the Bom-->
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
+      <version>3.22.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
