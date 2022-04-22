@@ -16,7 +16,7 @@
   <artifactId>native-image-samples-spring</artifactId>
 
   <properties>
-    <spring-boot.version>2.5.12</spring-boot.version>
+    <spring-boot.version>2.5.13</spring-boot.version>
     <spring-cloud-gcp.version>1.2.8.RELEASE</spring-cloud-gcp.version>
   </properties>
 
