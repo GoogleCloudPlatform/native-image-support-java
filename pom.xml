@@ -7,7 +7,7 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <graalvm.version>22.0.0.2</graalvm.version>
+    <graalvm.version>21.3.2</graalvm.version>
     <native.maven.plugin.version>0.9.11</native.maven.plugin.version>
     <grpc.netty.version>1.46.0</grpc.netty.version>
   </properties>

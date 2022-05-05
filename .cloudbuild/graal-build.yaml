@@ -12,7 +12,7 @@ steps:
         fi
 
   # Build the sample images
-  - name: ghcr.io/graalvm/graalvm-ce:java11-21.3.0
+  - name: ghcr.io/graalvm/graalvm-ce:java11-21.3.2
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
