@@ -3,14 +3,14 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <groupId>com.google.cloud</groupId>
     <artifactId>native-image-samples-client-library</artifactId>
-    <version>0.14.0-SNAPSHOT</version>
+    <groupId>com.google.cloud</groupId>
+    <version>0.11.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>storage-sample</artifactId>
+  <artifactId>cloud-functions-sample</artifactId>
 
   <dependencies>
     <dependency>
@@ -19,6 +19,21 @@
       <version>${project.version}</version>
     </dependency>
 
+    <!-- Function Framework Deps -->
+    <dependency>
+      <groupId>com.google.cloud.functions</groupId>
+      <artifactId>functions-framework-api</artifactId>
+      <version>1.0.4</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.cloud.functions.invoker</groupId>
+      <artifactId>java-function-invoker</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+
+    <!-- Pub/Sub deps -->
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-core</artifactId>
@@ -26,20 +41,28 @@
 
     <dependency>
       <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-storage</artifactId>
+      <artifactId>google-cloud-pubsub</artifactId>
     </dependency>
   </dependencies>
 
   <build>
-    <!-- These plugins enable building the application to a JAR *not* using Native Image -->
     <plugins>
+      <plugin>
+        <groupId>com.google.cloud.functions</groupId>
+        <artifactId>function-maven-plugin</artifactId>
+        <version>0.10.0</version>
+        <configuration>
+          <functionTarget>com.example.function.PubSubBackgroundFunction</functionTarget>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.StorageSampleApplication</mainClass>
+              <mainClass>com.google.cloud.functions.invoker.runner.Invoker</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -57,11 +80,10 @@
             <artifactId>native-maven-plugin</artifactId>
             <version>${native.maven.plugin.version}</version>
             <configuration>
-              <mainClass>com.example.StorageSampleApplication</mainClass>
+              <mainClass>com.google.cloud.functions.invoker.runner.Invoker</mainClass>
               <buildArgs>
                 --no-fallback
                 --no-server
-                --initialize-at-build-time
               </buildArgs>
             </configuration>
             <executions>

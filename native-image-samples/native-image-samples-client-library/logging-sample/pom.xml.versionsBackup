@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.google.cloud</groupId>
     <artifactId>native-image-samples-client-library</artifactId>
-    <version>0.14.0-SNAPSHOT</version>
+    <version>0.11.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>storage-sample</artifactId>
+  <artifactId>logging-sample</artifactId>
 
   <dependencies>
     <dependency>
@@ -21,17 +21,11 @@
 
     <dependency>
       <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-storage</artifactId>
+      <artifactId>google-cloud-logging</artifactId>
     </dependency>
   </dependencies>
 
   <build>
-    <!-- These plugins enable building the application to a JAR *not* using Native Image -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -39,7 +33,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.StorageSampleApplication</mainClass>
+              <mainClass>com.example.LoggingSampleApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -57,7 +51,7 @@
             <artifactId>native-maven-plugin</artifactId>
             <version>${native.maven.plugin.version}</version>
             <configuration>
-              <mainClass>com.example.StorageSampleApplication</mainClass>
+              <mainClass>com.example.LoggingSampleApplication</mainClass>
               <buildArgs>
                 --no-fallback
                 --no-server
@@ -78,4 +72,12 @@
       </build>
     </profile>
   </profiles>
+
+  <repositories>
+    <repository>
+      <id>spring-milestone</id>
+      <name>Spring milestone</name>
+      <url>https://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
 </project>
