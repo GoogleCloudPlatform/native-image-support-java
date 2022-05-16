@@ -124,9 +124,5 @@ final class GrpcNettyFeature implements Feature {
 
     registerForUnsafeFieldAccess(
         access, "javax.net.ssl.SSLContext", "contextSpi");
-    registerClassForReflection(
-        access, "java.lang.management.ManagementFactory");
-    registerClassForReflection(
-        access, "java.lang.management.RuntimeMXBean");
   }
 }
