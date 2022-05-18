@@ -56,7 +56,7 @@ jobs:
     - name: Set up GraalVM Compiler
       uses: DeLaGuardo/setup-graalvm@4.0
       with:
-        graalvm: '21.3.0'
+        graalvm: '22.1.0'
         java: 'java11'
         arch: 'amd64'
 
