@@ -114,7 +114,7 @@
         <quarkus.package.type>native</quarkus.package.type>
         <!-- We initialize PubSubUtils at runtime since the PROJECT_ID is statically initialized there. -->
         <quarkus.native.additional-build-args>
-          --initialize-at-run-time=com.example.PubSubUtils
+          --initialize-at-run-time=com.example.PubSubUtils,io.grpc.netty.shaded.io.netty.util.internal.logging.Slf4JLoggerFactory,io.grpc.netty.shaded.io.netty.util.internal.logging.Log4JLogger
         </quarkus.native.additional-build-args>
       </properties>
     </profile>
