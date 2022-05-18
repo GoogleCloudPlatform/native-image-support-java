@@ -19,7 +19,7 @@
 
   <groupId>com.google.cloud</groupId>
   <artifactId>native-image-support-parent</artifactId>
-  <version>0.14.1-SNAPSHOT</version>
+  <version>0.14.2-SNAPSHOT</version>
 
   <scm>
     <url>https://github.com/GoogleCloudPlatform/native-image-support-java</url>
