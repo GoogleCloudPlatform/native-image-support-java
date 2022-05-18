@@ -12,7 +12,7 @@ steps:
         fi
 
   # Build the sample images
-  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
+  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-22.1.0
     entrypoint: bash
     args: ['./.cloudbuild/graal-build-script.sh']
 
@@ -48,26 +48,26 @@ steps:
     waitFor: [spanner-emulator, firestore-emulator, datastore-emulator, bigtable-emulator]
 
   # Run the tests
-  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
+  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-22.1.0
     args: [ './native-image-samples/native-image-samples-client-library/bigquery-sample/target/bigquery-sample' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
+  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-22.1.0
     args: [
         './native-image-samples/native-image-samples-client-library/cloud-sql-sample/target/cloud-sql-sample',
         '-Dinstance=cloud-graalvm-support-ci:us-east1:test-instance',
         '-Dpassword=root'
     ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
+  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-22.1.0
     args: [
         './native-image-samples/native-image-samples-client-library/cloud-sql-postgres-sample/target/cloud-sql-postgres-sample',
         '-Dinstance=cloud-graalvm-support-ci:us-central1:test-postgres',
     ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
+  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-22.1.0
     args: [ './native-image-samples/native-image-samples-client-library/pubsub-sample/target/pubsub-sample' ]
 
-  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
+  - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-22.1.0
     args: [ './native-image-samples/native-image-samples-client-library/storage-sample/target/storage-sample' ]
 
   - name: ghcr.io/graalvm/graalvm-ce:ol7-java11-21.3.2
