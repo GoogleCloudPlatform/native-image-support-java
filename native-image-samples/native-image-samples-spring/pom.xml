@@ -6,7 +6,7 @@
   <parent>
     <artifactId>native-image-samples</artifactId>
     <groupId>com.google.cloud</groupId>
-    <version>0.14.1-SNAPSHOT</version>
+    <version>0.14.2-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -16,7 +16,7 @@
   <artifactId>native-image-samples-spring</artifactId>
 
   <properties>
-    <spring-boot.version>2.5.13</spring-boot.version>
+    <spring-boot.version>2.5.14</spring-boot.version>
     <spring-cloud-gcp.version>1.2.8.RELEASE</spring-cloud-gcp.version>
   </properties>
 
