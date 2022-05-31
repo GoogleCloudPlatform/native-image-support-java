@@ -16,7 +16,7 @@
 
   <properties>
     <quarkus.platform.version>2.8.2.Final</quarkus.platform.version>
-    <assertj-core.version>3.22.0</assertj-core.version>
+    <assertj-core.version>3.23.1</assertj-core.version>
   </properties>
 
   <modules>
