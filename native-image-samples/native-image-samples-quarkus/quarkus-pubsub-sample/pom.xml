@@ -13,11 +13,11 @@
   <artifactId>quarkus-pubsub-sample</artifactId>
 
   <dependencies>
-    <dependency>
-      <groupId>com.google.cloud</groupId>
-      <artifactId>native-image-support</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.google.cloud</groupId>-->
+<!--      <artifactId>native-image-support</artifactId>-->
+<!--      <version>${project.version}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>io.quarkus</groupId>
