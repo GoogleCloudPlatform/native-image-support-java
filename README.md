@@ -1,5 +1,7 @@
 # Native Image Support for Google Cloud Libraries
 
+**Please Note**: If you are using version 25.4.0 or later of the `libraries-bom`, the Cloud Client Libraries of Java have built-in support for native image configurations. 
+
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java#supported-apis) to be built as [GraalVM Native Images](https://www.graalvm.org/reference-manual/native-image/).
