@@ -1,6 +1,6 @@
 # Native Image Support for Google Cloud Libraries
 
-**Please Note**: If you are using version 25.4.0 or later of the `libraries-bom`, the Cloud Client Libraries of Java come with the native image configurations built-in. This means that the Cloud Client libraries can be compiled into native images without the need for adding the `native-image-support` dependency. 
+**Please Note**: If you are using version 25.4.0 or later of the `libraries-bom`, the Cloud Client Libraries for Java come with the native image configurations built-in. This means that the Cloud Client libraries can be compiled into native images without the need for adding the `native-image-support` dependency. 
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
