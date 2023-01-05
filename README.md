@@ -1,8 +1,10 @@
 # Native Image Support for Google Cloud Libraries
 
-**Please Note**: If you are using version 25.4.0 or later of the `libraries-bom`, the Cloud Client Libraries for Java come with the native image configurations built-in. This means that the Cloud Client libraries can be compiled into native images without the need for adding the `native-image-support` dependency. 
+![status: inactive](https://img.shields.io/badge/status-inactive-red.svg)
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+This project is no longer actively developed or maintained. If you are using version 25.4.0 or later of the `libraries-bom`, the Cloud Client Libraries for Java come with the native image configurations built-in. This means that the Cloud Client libraries can be compiled into native images without the need for adding the `native-image-support` dependency. 
+
+
 
 This repository provides support for applications using the [Google Java Client Libraries](https://github.com/googleapis/google-cloud-java#supported-apis) to be built as [GraalVM Native Images](https://www.graalvm.org/reference-manual/native-image/).
 
